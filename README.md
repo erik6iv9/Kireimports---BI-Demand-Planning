@@ -14,10 +14,8 @@ Proyecto integral de BI para Supply Chain: modelado dimensional, Data Warehouse,
 | **`StockItemKey`** | `INT` | Primary Key (Surrogate) | Clave subrogada autogenerada para el Data Warehouse. Mantiene la unicidad histórica de los registros. |
 | **`StockItemID`** | `INT` | Business Key (NK) | Identificador nativo del producto en el sistema de origen `kireimporter` (OLTP). |
 | **`StockItemName`** | `NVARCHAR(100)` | Atributo | Nombre comercial y descripción detallada del artículo. |
-| **`SupplierID`** | `INT` | Foreign Key | Identificador del proveedor principal que surte el producto. |
-| **`ColorID`** | `INT` | Foreign Key (Nullable) | Identificador de color asociado al artículo en catálogo. |
-| **`LeadTimeDays`** | `INT` | Atributo | Tiempo de entrega prometido por el proveedor (en días) para reabastecimiento. |
+| **`StockGroupName`** | `NVARCHAR(100)` | Atributo | Nombre de la familia a la que pertenece el artículo. |
 | **`QuantityPerOuter`** | `INT` | Atributo | Cantidad de piezas individuales contenidas en una caja máster o empaque exterior. |
-| **`IsCurrent`** | `BIT` | Control SCD2 | Indicador de vigencia (`1` = Registro activo / precio actual, `0` = Registro histórico). |
+| **`IsCurrent`** | `BIT` | Control SCD2 | Indicador de vigencia (`1` = Registro activo `0` = Registro histórico). |
 | **`ValidFrom`** | `DATE` | Control SCD2 | Fecha en la que entra en vigor esta versión de los datos del producto. |
 | **`ValidTo`** | `DATE` | Control SCD2 | Fecha en la que vence esta versión (por defecto `9999-12-31` para registros vigentes). |
