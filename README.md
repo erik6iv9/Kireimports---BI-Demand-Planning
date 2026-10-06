@@ -6,9 +6,13 @@ El proyecto simula un entorno empresarial en el que los datos provenientes de di
 
 Problemática
 
-KireImports registra sus operaciones de ventas, compras e inventarios en una base de datos OLTP, diseñada principalmente para soportar las operaciones diarias del negocio.
-Utilizar directamente esta base operativa como fuente principal para realizar análisis de información puede generar consultas complejas, afectar el rendimiento de las operaciones y dificultar la construcción de análisis consistentes y reutilizables.
-A medida que aumenta la necesidad de analizar el comportamiento del inventario, las ventas, las compras y la demanda, consultar directamente la estructura operacional se vuelve poco eficiente y puede representar un riesgo para la continuidad de las operaciones.
+KireImports presenta dificultades para llevar una planeación eficiente de sus operaciones, debido a que la información de ventas, compras e inventarios se encuentra concentrada en una misma base de datos operacional.
+
+Aunque esta base permite registrar y gestionar las transacciones diarias del negocio, utilizarla directamente para realizar análisis dificulta la consulta, integración y estandarización de la información necesaria para evaluar el desempeño de las operaciones.
+
+Como consecuencia, obtener una visión integral del comportamiento del inventario, las ventas, las compras y la demanda requiere realizar análisis sobre estructuras diseñadas principalmente para la operación, lo que limita la generación de información consistente y oportuna para la toma de decisiones.
+
+Ante esta problemática, KireImports requiere una solución de Business Intelligence que permita transformar los datos operativos en información estructurada, estandarizada y orientada al análisis, facilitando así la planeación y la toma de decisiones.
 
 La solución integra:
 
