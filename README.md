@@ -25,30 +25,40 @@ De esta manera, la solución busca integrar capacidades propias de Business Inte
 
 Stack tecnológico y conocimientos aplicados
 
-Tecnologías
-SQL / SQL Server
-Python
-Power BI
-Excel
+Para llevar a cabo este proyecto, se integraron distintas herramientas y conocimientos técnicos, analíticos y de negocio de la siguiente manera:
+
+SQL / SQL Server: Utilizado para gestionar y analizar la base de datos transaccional (OLTP), identificar entidades y relaciones entre las tablas operacionales, realizar consultas y transformaciones de datos, y diseñar el Data Warehouse mediante un modelo dimensional basado en Star Schema.
+
+Python: Empleado para automatizar procesos ETL (Extracción, Transformación y Carga), realizar la preparación y transformación de datos, trabajar con series temporales, analizar el comportamiento histórico de la demanda y desarrollar modelos de Forecasting, incluyendo la evaluación de los pronósticos.
+
+Power BI: Conectado al Data Warehouse para realizar el modelado analítico y desarrollar dashboards orientados a la toma de decisiones, con énfasis en el análisis de inventarios, rotación, cobertura, clasificación ABC y abastecimiento/resurtido.
+
+Excel: Utilizado como herramienta complementaria para la exploración inicial de los datos, validación de información y análisis preliminar.
+
+Fases de desarrollo del proyecto
+
+El desarrollo se estructuró de manera secuencial, siguiendo el flujo de transformación de datos operativos → información analítica → conocimiento para la toma de decisiones.
 
 Base de datos y fuentes de información
-Identificación de la base operacional (OLTP) → [Ver documentación]
-Análisis de las tablas operacionales → [Ver documentación]
-Identificación de entidades y relaciones → [Ver documentación]
-Análisis de los datos disponibles → [Ver documentación]
 
-Business Intelligence
-Diseño del Data Warehouse → [Ver documentación]
-Modelo dimensional / Star Schema → [Ver documentación]
-Proceso ETL → [Ver documentación]
-Modelado en Power BI → [Ver documentación]
+- Identificación de la base operacional (OLTP) → [Ver documentación]
+- Análisis de las tablas operacionales → [Ver documentación]
+- Identificación de entidades, relaciones y datos disponibles → [Ver documentación]
+
+Business Intelligence y modelado
+
+- Diseño del Data Warehouse y modelo dimensional / Star Schema → [Ver documentación]
+- Diseño y desarrollo del proceso ETL → [Ver documentación]
+- Modelado de datos y desarrollo en Power BI → [Ver documentación]
+
 Análisis de inventarios y Supply Chain
-Análisis de inventarios → [Ver documentación]
-Rotación y cobertura → [Ver documentación]
-Clasificación ABC → [Ver documentación]
-Análisis de abastecimiento y resurtido → [Ver documentación]
+
+- Análisis de inventarios: rotación y cobertura → [Ver documentación]
+- Clasificación ABC → [Ver documentación]
+- Análisis de abastecimiento y resurtido → [Ver documentación]
+
 Demand Planning
-Análisis histórico de la demanda → [Ver documentación]
-Preparación de series temporales → [Ver documentación]
-Forecasting → [Ver documentación]
-Evaluación del pronóstico → [Ver documentación]
+
+- Análisis histórico de la demanda → [Ver documentación]
+- Preparación de series temporales → [Ver documentación]
+- Modelado de Forecasting y evaluación de pronósticos → [Ver documentación]
