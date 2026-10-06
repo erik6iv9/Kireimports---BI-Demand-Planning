@@ -1,10 +1,8 @@
-KireImports
+Descripción del Proyecto
 
-Solución de Business Intelligence y Planeación de la Demanda
+KireImports es un proyecto de Business Intelligence que nace a partir de problemáticas operativas comunes en las empresas comercializadoras. Su objetivo principal es demostrar cómo la transformación de datos operativos en información de valor puede facilitar el análisis, mejorar la visibilidad de los procesos y apoyar la toma de decisiones estratégicas.
 
-KireImports es un proyecto de análisis de datos diseñado para simular el entorno de una empresa comercializadora que necesita mejorar el control de sus inventarios, ventas, compras y abastecimiento.
-
-El proyecto parte de información transaccional de un sistema OLTP y desarrolla un flujo completo de análisis que va desde la identificación del problema de negocio hasta la generación de información útil para la toma de decisiones.
+El proyecto simula un entorno empresarial en el que los datos provenientes de diferentes procesos operativos son integrados, transformados y analizados para generar información útil sobre inventarios, ventas, compras y planeación de la demanda.
 
 La solución integra:
 
