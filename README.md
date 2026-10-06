@@ -4,6 +4,12 @@ KireImports es un proyecto de Business Intelligence que nace a partir de problem
 
 El proyecto simula un entorno empresarial en el que los datos provenientes de diferentes procesos operativos son integrados, transformados y analizados para generar información útil sobre inventarios, ventas, compras y planeación de la demanda.
 
+Problemática
+
+KireImports registra sus operaciones de ventas, compras e inventarios en una base de datos OLTP, diseñada principalmente para soportar las operaciones diarias del negocio.
+Utilizar directamente esta base operativa como fuente principal para realizar análisis de información puede generar consultas complejas, afectar el rendimiento de las operaciones y dificultar la construcción de análisis consistentes y reutilizables.
+A medida que aumenta la necesidad de analizar el comportamiento del inventario, las ventas, las compras y la demanda, consultar directamente la estructura operacional se vuelve poco eficiente y puede representar un riesgo para la continuidad de las operaciones.
+
 La solución integra:
 
 SQL Server → Data Warehouse → Modelado Dimensional → Power BI → Python → Forecasting
