@@ -12,31 +12,18 @@ Aunque esta base permite registrar y gestionar las transacciones diarias del neg
 
 Como consecuencia, obtener una visión integral del comportamiento del inventario, las ventas, las compras y la demanda requiere realizar análisis sobre estructuras diseñadas principalmente para la operación, lo que limita la generación de información consistente y oportuna para la toma de decisiones.
 
-Ante esta problemática, KireImports requiere una solución de Business Intelligence que permita transformar los datos operativos en información estructurada, estandarizada y orientada al análisis, facilitando así la planeación y la toma de decisiones.
+Ante esta problemática, KireImports requiere una solución de Business Intelligence que permita transformar los datos operativos en información estructurada, estandarizada y orientada al análisis, con el objetivo de:
 
-La solución integra:
+- Analizar y controlar inventarios, identificando niveles de stock, rotación, cobertura y posibles excesos o faltantes.
+- Analizar la demanda y desarrollar pronósticos, utilizando el comportamiento histórico de las ventas como apoyo para la planeación.
+- Apoyar la planeación de abastecimiento y resurtido, facilitando la identificación de necesidades de compra y reposición.
+- Analizar el desempeño de compras y ventas, permitiendo evaluar tendencias y comportamiento de los productos.
+- Construir indicadores y dashboards de gestión, que proporcionen información oportuna para la toma de decisiones.
+- Detectar desviaciones y oportunidades de mejora, mediante el análisis sistemático de los datos operativos.
 
-SQL Server → Data Warehouse → Modelado Dimensional → Power BI → Python → Forecasting
+De esta manera, la solución busca integrar capacidades propias de Business Intelligence, análisis de datos, gestión de inventarios, Supply Chain y Demand Planning, convirtiendo los datos generados por la operación en información útil para la planeación y la toma de decisiones.
 
-El objetivo no es únicamente construir dashboards, sino demostrar cómo los datos pueden utilizarse para diagnosticar el comportamiento del negocio, identificar problemas de inventario y demanda, y generar información que apoye la planeación del abastecimiento.
 
----
-
-1. Caso de negocio
-
-Una empresa comercializadora necesita administrar una gran cantidad de productos que son vendidos, almacenados y adquiridos a diferentes proveedores.
-
-La empresa cuenta con información histórica de:
-
-- Ventas
-- Productos
-- Inventarios
-- Almacenes
-- Compras
-- Proveedores
-- Clientes
-
-Sin embargo, disponer de estos datos no significa necesariamente disponer de información útil para tomar decisiones.
 
 El área de negocio necesita responder preguntas como:
 
