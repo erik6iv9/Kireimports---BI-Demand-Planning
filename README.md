@@ -9,35 +9,12 @@ KireImports es un proyecto de <mark>Business Intelligence & Demand Planning</mar
 
 El proyecto simula un entorno empresarial en el que los datos provenientes de diferentes procesos operativos son integrados, transformados y analizados para generar información útil sobre inventarios, ventas, compras y planeación de la demanda.
 
-
+<h1>Problemática</h1>
 <table>
   <tr>
     <td width="55%">
-      <h3>Problemática</h3>
-
       <p>
-        La empresa cuenta con una base de datos operacional diseñada
-        principalmente para registrar las operaciones del negocio.
-      </p>
-
-      <p>
-        Sin embargo, la estructura no está optimizada para realizar
-        análisis de <strong>Business Intelligence</strong>, dificultando
-        la identificación de patrones de inventario, ventas y abastecimiento.
-      </p>
-    </td>
-
-    <td width="45%" align="center">
-      <img src="img/kire.png" width="100%">
-      <br>
-      <sub>Base de datos operacional (OLTP)</sub>
-    </td>
-  </tr>
-</table>
-
-<h1>Problemática</h1>
-
-KireImports presenta dificultades para llevar una planeación eficiente de sus operaciones, debido a que la información de ventas, compras e inventarios se encuentra concentrada en una misma base de datos operacional.
+       KireImports presenta dificultades para llevar una planeación eficiente de sus operaciones, debido a que la información de ventas, compras e inventarios se encuentra concentrada en una misma base de datos operacional.
 
 Aunque esta base permite registrar y gestionar las transacciones diarias del negocio, utilizarla directamente para realizar análisis dificulta la consulta, integración y estandarización de la información necesaria para evaluar el desempeño de las operaciones.
 
@@ -53,6 +30,15 @@ Ante esta problemática, KireImports requiere una solución de Business Intellig
 - Detectar desviaciones y oportunidades de mejora, mediante el análisis sistemático de los datos operativos.
 
 De esta manera, la solución busca integrar capacidades propias de <mark>Business Intelligence</mark>, <mark>análisis de datos</mark>, <mark>gestión de inventarios</mark>, <mark>Supply Chain & Demand Planning</mark>, convirtiendo los datos generados por la operación en información útil para la planeación y la toma de decisiones.
+      </p>
+    </td>
+    <td width="40%" align="center">
+      <img src="img/kire.png" width="100%">
+      <br>
+      <sub>Base de datos operacional (OLTP)</sub>
+    </td>
+  </tr>
+</table>
 
 <h1>Stack tecnológico y conocimientos aplicados</h1>
 
