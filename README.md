@@ -1,3 +1,5 @@
+![logo](https://github.com/tu-usuario/tu-repositorio/assets/...)
+
 Descripción del Proyecto
 
 KireImports es un proyecto de Business Intelligence que nace a partir de problemáticas operativas comunes en las empresas comercializadoras. Su objetivo principal es demostrar cómo la transformación de datos operativos en información de valor puede facilitar el análisis, mejorar la visibilidad de los procesos y apoyar la toma de decisiones estratégicas.
