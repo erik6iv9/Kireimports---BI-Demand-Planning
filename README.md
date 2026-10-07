@@ -9,6 +9,32 @@ KireImports es un proyecto de <mark>Business Intelligence & Demand Planning</mar
 
 El proyecto simula un entorno empresarial en el que los datos provenientes de diferentes procesos operativos son integrados, transformados y analizados para generar información útil sobre inventarios, ventas, compras y planeación de la demanda.
 
+
+<table>
+  <tr>
+    <td width="55%">
+      <h3>Problemática</h3>
+
+      <p>
+        La empresa cuenta con una base de datos operacional diseñada
+        principalmente para registrar las operaciones del negocio.
+      </p>
+
+      <p>
+        Sin embargo, la estructura no está optimizada para realizar
+        análisis de <strong>Business Intelligence</strong>, dificultando
+        la identificación de patrones de inventario, ventas y abastecimiento.
+      </p>
+    </td>
+
+    <td width="45%" align="center">
+      <img src="img/kire.png" width="100%">
+      <br>
+      <sub>Base de datos operacional (OLTP)</sub>
+    </td>
+  </tr>
+</table>
+
 <h1>Problemática</h1>
 
 KireImports presenta dificultades para llevar una planeación eficiente de sus operaciones, debido a que la información de ventas, compras e inventarios se encuentra concentrada en una misma base de datos operacional.
