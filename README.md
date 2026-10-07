@@ -1,4 +1,6 @@
-![logo](Diseño sin título.png)
+<p align="center">
+  <img src="img/logo.png" width="350" alt="Logo de Kireimports">
+</p>
 
 Descripción del Proyecto
 
