@@ -1,4 +1,4 @@
-![logo](https://github.com/tu-usuario/tu-repositorio/assets/...)
+![logo](Diseño sin título.png)
 
 Descripción del Proyecto
 
