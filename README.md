@@ -60,7 +60,7 @@ Base de datos y fuentes de información
 
 - Identificación de la base operacional (OLTP) → [Ver documentación](documentacion/oltp.md)
 - Análisis de los esquemas y tablas operacionales → [Ver documentación](documentacion/esquemas-operacionales.md)
-- Identificación de entidades, relaciones y datos disponibles → [Ver documentación]
+- Identificación de entidades, relaciones y datos disponibles → [Ver documentación](documentacion/datadiscovery.md)
 
 Business Intelligence y modelado
 
