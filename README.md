@@ -58,7 +58,7 @@ El desarrollo se estructuró de manera secuencial, siguiendo el flujo de transfo
 
 Base de datos y fuentes de información
 
-- Identificación de la base operacional (OLTP) → [Ver documentación]
+- Identificación de la base operacional (OLTP) → [Ver documentación](documentacion/oltp.md)
 - Análisis de las tablas operacionales → [Ver documentación]
 - Identificación de entidades, relaciones y datos disponibles → [Ver documentación]
 
