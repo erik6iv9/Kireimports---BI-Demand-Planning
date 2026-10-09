@@ -5,7 +5,7 @@
 <br>
 <h1>Descripción del Proyecto</h1>
 
-KireImports es un proyecto de <mark>Business Intelligence & Demand Planning</mark> que nace a partir de problemáticas operativas comunes en las empresas comercializadoras. Su objetivo principal es demostrar cómo la transformación de datos operativos en información de valor puede facilitar el análisis, mejorar la visibilidad de los procesos y apoyar la toma de decisiones estratégicas.
+KireImports es un proyecto de <ins>Business Intelligence & Demand Planning</ins> que nace a partir de problemáticas operativas comunes en las empresas comercializadoras. Su objetivo principal es demostrar cómo la transformación de datos operativos en información de valor puede facilitar el análisis, mejorar la visibilidad de los procesos y apoyar la toma de decisiones estratégicas.
 
 El proyecto simula un entorno empresarial en el que los datos provenientes de diferentes procesos operativos son integrados, transformados y analizados para generar información útil sobre inventarios, ventas, compras y planeación de la demanda.
 
@@ -29,7 +29,7 @@ Ante esta problemática, KireImports requiere una solución de Business Intellig
 - Construir indicadores y dashboards de gestión, que proporcionen información oportuna para la toma de decisiones.
 - Detectar desviaciones y oportunidades de mejora, mediante el análisis sistemático de los datos operativos.
 
-De esta manera, la solución busca integrar capacidades propias de <mark>Business Intelligence</mark>, <mark>análisis de datos</mark>, <mark>gestión de inventarios</mark>, <mark>Supply Chain & Demand Planning</mark>, convirtiendo los datos generados por la operación en información útil para la planeación y la toma de decisiones.
+De esta manera, la solución busca integrar capacidades propias de <ins>Business Intelligence, análisis de datos, gestión de inventarios, Supply Chain & Demand Planning</ins>, convirtiendo los datos generados por la operación en información útil para la planeación y la toma de decisiones.
       </p>
     </td>
     <td width="40%" align="center">
@@ -44,13 +44,13 @@ De esta manera, la solución busca integrar capacidades propias de <mark>Busines
 
 Para llevar a cabo este proyecto, se integraron distintas herramientas y conocimientos técnicos, analíticos y de negocio de la siguiente manera:
 
-<mark>SQL / SQL Server</mark>: Utilizado para gestionar y analizar la base de datos transaccional (OLTP), identificar entidades y relaciones entre las tablas operacionales, realizar consultas y transformaciones de datos, y diseñar el Data Warehouse</mark> mediante un <mark>modelo dimensional basado en Star Schema</mark>.
+<ins>SQL / SQL Server</ins>: Utilizado para gestionar y analizar la base de datos transaccional (OLTP), identificar entidades y relaciones entre las tablas operacionales, realizar consultas y transformaciones de datos, y <ins>diseñar el Data Warehouse mediante un modelo dimensional basado en Star Schema</ins>.
 
-<mark>Python</mark>: Empleado para automatizar procesos <mark>ETL (Extracción, Transformación y Carga)</mark>, realizar la preparación y transformación de datos, trabajar con <mark>series temporales</mark>, analizar el comportamiento histórico de la demanda y desarrollar modelos de <mark>Forecasting</mark>, incluyendo la evaluación de los pronósticos.
+<ins>Python</ins>: Empleado para automatizar procesos <ins>ETL (Extracción, Transformación y Carga)</ins>, realizar la preparación y transformación de datos, trabajar con <ins>series temporales</ins>, analizar el comportamiento histórico de la demanda y desarrollar modelos de <ins>Forecasting</ins>, incluyendo la evaluación de los pronósticos.
 
-<mark>Power BI</mark>: Conectado al Data Warehouse para realizar el modelado analítico y desarrollar <mark>dashboards</mark> orientados a la toma de decisiones, con énfasis en el análisis de inventarios, rotación, cobertura, clasificación ABC y abastecimiento/resurtido.
+<ins>Power BI</ins>: Conectado al Data Warehouse para realizar el modelado analítico y desarrollar <ins>dashboards</ins> orientados a la toma de decisiones, con énfasis en el análisis de inventarios, rotación, cobertura, clasificación ABC y <ins>abastecimiento/resurtido</ins>.
 
-<mark>Excel</mark>: Utilizado como herramienta complementaria para la exploración inicial de los datos, validación de información y análisis preliminar.
+<ins>Excel</ins>: Utilizado como herramienta complementaria para la exploración inicial de los datos, validación de información y análisis preliminar.
 
 <h1>Fases y desarrollo del proyecto</h1>
 
