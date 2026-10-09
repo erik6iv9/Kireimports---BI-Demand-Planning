@@ -1,6 +1,10 @@
 <h1>Análisis de los esquemas operacionales KireImports (WideWorldImporters)</h1>
 La base de datos operacional KireImports organiza sus objetos mediante esquemas funcionales que separan las distintas áreas de negocio de la empresa mayorista. 
 
+<p align="center">
+  <img src="img/logo.png" width="350" alt="Logo de Kireimports">
+</p>
+
 <h3>Para el diseño del Data Warehouse, los esquemas de mayor relevancia son:</h3>
 
 <h2>1. Esquema Sales (Ventas)</h2>
