@@ -1,7 +1,7 @@
 <h1>Identificación de la base operacional (OLTP)</h1>
 
 <h3>1. Identificación y Origen de la Fuente</h3>
-Para el desarrollo del proyecto se utilizó Wide World Importers como base de datos operacional. Esta corresponde a la base de datos de ejemplo oficial para Microsoft SQL Server (OLTP), la cual simula el entorno transaccional de una empresa mayorista de distribución de novedades y artículos de regalo a nivel internacional.
+El entorno operacional del proyecto <ins>KireImports</ins> se fundamenta en Wide World Importers, la base de datos transaccional de referencia provista por Microsoft para SQL Server. Su arquitectura modela con alto nivel de detalle las operaciones comerciales cotidianas de una organización global dedicada a la comercialización y distribución mayorista de mercancías.
 
 <h3>2. Contexto de Negocio y Operaciones</h3>
 El modelo operacional almacena y gestiona de manera estructurada las actividades cotidianas del negocio, abarcando áreas críticas como:
