@@ -1,24 +1,24 @@
 <h1>Identificación de la base operacional (OLTP)</h1>
 
-1. Identificación y Origen de la Fuente
+<h3>1. Identificación y Origen de la Fuente</h3>
 Para el desarrollo del proyecto se utilizó Wide World Importers como base de datos operacional. Esta corresponde a la base de datos de ejemplo oficial para Microsoft SQL Server (OLTP), la cual simula el entorno transaccional de una empresa mayorista de distribución de novedades y artículos de regalo a nivel internacional.
 
-2. Contexto de Negocio y Operaciones
+<h3>2. Contexto de Negocio y Operaciones</h3>
 El modelo operacional almacena y gestiona de manera estructurada las actividades cotidianas del negocio, abarcando áreas críticas como:
 
-Ventas y Pedidos: Registro de transacciones con clientes mayoristas y minoristas.
+-Ventas y Pedidos: Registro de transacciones con clientes mayoristas y minoristas.
 
-Gestión de Compras y Proveedores: Control de adquisición de mercancías.
+-Gestión de Compras y Proveedores: Control de adquisición de mercancías.
 
-Gestión de Inventarios y Existencias: Niveles de stock, movimientos de almacén y existencias físicas.
+-Gestión de Inventarios y Existencias: Niveles de stock, movimientos de almacén y existencias físicas.
 
-Estructura Organizacional: Información de empleados, sucursales y canales de distribución.
+-Estructura Organizacional: Información de empleados, sucursales y canales de distribución.
 
 <p align="center">
-  <img src="img/wwi.png" width="350" alt="WideWorldImporters sql server esquema">
+  <img src="../img/wwi.png" width="800" alt="WideWorldImporters sql server esquema">
 </p>
 
-3. Características Técnicas del Entorno Origen
+<h3>3. Características Técnicas del Entorno Origen</h3>
 
 Plataforma de Base de Datos: Microsoft SQL Server.
 
