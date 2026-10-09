@@ -14,6 +14,10 @@ Gestión de Inventarios y Existencias: Niveles de stock, movimientos de almacén
 
 Estructura Organizacional: Información de empleados, sucursales y canales de distribución.
 
+<p align="center">
+  <img src="img/wwi.png" width="350" alt="WideWorldImporters sql server esquema">
+</p>
+
 3. Características Técnicas del Entorno Origen
 
 Plataforma de Base de Datos: Microsoft SQL Server.
