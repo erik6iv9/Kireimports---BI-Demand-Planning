@@ -16,6 +16,9 @@ De esta manera, pretendo establecer una base sólida para construir un modelo an
 ## Entidad de articulos: `Warehouse.StockItems`
 
 Esta tabla representa el catálogo principal de artículos comercializados por KireImports. Es una entidad central porque permite identificar cada producto y conectar sus características con los registros de ventas, compras y movimientos de inventario.
+<p align="center">
+  <img src="../img/stockitems.png" width="850" alt="Stock item oltp">
+</p>
 
 | Columna | Significado | Utilidad analítica |
 |---|---|---|
