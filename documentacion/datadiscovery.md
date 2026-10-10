@@ -120,7 +120,7 @@ Estas tablas trabajan conjuntamente: `Orders` describe el encabezado del pedido,
 
 ## Entidades de ventas facturadas: `Sales.Invoices` y `Sales.InvoiceLines`
 
-Las líneas de factura constituyen una fuente candidata para analizar el volumen facturado y preparar los datos para un pronóstico de demanda. Es necesario validar las notas de crédito, devoluciones y demás reglas del negocio antes de definir qué representa la demanda observada.
+Estas tablas permiten analizar las ventas facturadas, las cantidades comercializadas y su evolución histórica. Desde la perspectiva del abastecimiento, es importante distinguir entre las cantidades solicitadas por los clientes y las cantidades facturadas, ya que pueden existir diferencias entre ambas.
 
 ### Tabla `Sales.Invoices`
 
@@ -142,7 +142,7 @@ Las líneas de factura constituyen una fuente candidata para analizar el volumen
 
 **Aplicación al modelo analítico:** `InvoiceLines` puede servir como base para una tabla de hechos de ventas, con granularidad de una línea de factura. La fecha se obtiene de `Invoices.InvoiceDate`, y las características del producto se incorporan desde `Warehouse.StockItems`.
 
-Para el pronóstico, se pueden agregar las cantidades por producto y periodo, después de definir el tratamiento de notas de crédito y devoluciones. Si el objetivo es estimar la demanda y no solamente las ventas registradas, también será necesario considerar la demanda no satisfecha cuando existan datos para identificarla.
+Para el pronóstico, se pueden agregar las cantidades por producto y periodo. Si el objetivo es estimar la demanda y no solamente las ventas registradas, también será necesario considerar la demanda no satisfecha.
 
 ---
 
