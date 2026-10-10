@@ -45,11 +45,10 @@ Esta tabla contiene información sobre las existencias de los productos. Sus val
 |---|---|---|
 | `StockItemID` | Identificador del producto. | Relacionar existencias con el catálogo. |
 | `QuantityOnHand` | Cantidad disponible registrada en existencias. | Evaluar el stock actual. |
-| `BinLocation` | Ubicación del artículo en el almacén. | Analizar la ubicación física. |
 | `LastStocktakeQuantity` | Cantidad registrada en el último conteo físico. | Comparar registros con conteos de inventario. |
 | `LastCostPrice` | Último costo registrado. | Estimar el valor del inventario, previa validación. |
-| `ReorderLevel` | Nivel de referencia para reordenar. | Detectar productos que requieren revisión de reposición. |
 | `TargetStockLevel` | Nivel de existencias objetivo. | Comparar el stock disponible con el objetivo. |
+|`LastEditedWhen` | Marca de tiempo de la última modificación o actualización del registro en el origen. | Sirve como referencia temporal de la carga inicial del snapshot y para auditoría o cargas incrementales. |
 
 **Aplicación al modelo analítico:** esta entidad puede apoyar indicadores como stock actual, brecha frente al nivel objetivo y productos que se encuentran por debajo del nivel de reorden.
 
