@@ -126,13 +126,8 @@ Las líneas de factura constituyen una fuente candidata para analizar el volumen
 
 | Columna | Significado | Utilidad analítica |
 |---|---|---|
-| `InvoiceID` | Identificador de factura. | Relacionar la factura con sus líneas. |
 | `CustomerID` | Cliente asociado. | Segmentar el análisis por cliente. |
-| `OrderID` | Pedido relacionado, si corresponde. | Conectar pedidos y facturación. |
 | `InvoiceDate` | Fecha de la factura. | Analizar la evolución temporal de la facturación. |
-| `IsCreditNote` | Indica si la factura corresponde a una nota de crédito. | Identificar documentos que requieren tratamiento específico. |
-| `TotalDryItems` | Total de artículos de tipo seco. | Examinar el volumen de artículos secos. |
-| `TotalChillerItems` | Total de artículos refrigerados. | Examinar el volumen de artículos refrigerados. |
 
 ### Tabla `Sales.InvoiceLines`
 
@@ -143,10 +138,7 @@ Las líneas de factura constituyen una fuente candidata para analizar el volumen
 | `StockItemID` | Producto facturado. | Analizar cantidades por producto. |
 | `Quantity` | Cantidad registrada en la línea. | Construir métricas de volumen facturado. |
 | `UnitPrice` | Precio unitario registrado. | Analizar precios e importes. |
-| `TaxRate` | Tasa de impuesto. | Apoyar cálculos fiscales. |
-| `TaxAmount` | Importe del impuesto. | Analizar componentes fiscales. |
-| `LineProfit` | Beneficio registrado para la línea. | Explorar la rentabilidad por producto. |
-| `ExtendedPrice` | Importe extendido de la línea. | Analizar valores de las operaciones. |
+
 
 **Aplicación al modelo analítico:** `InvoiceLines` puede servir como base para una tabla de hechos de ventas, con granularidad de una línea de factura. La fecha se obtiene de `Invoices.InvoiceDate`, y las características del producto se incorporan desde `Warehouse.StockItems`.
 
