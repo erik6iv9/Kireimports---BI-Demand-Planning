@@ -96,12 +96,9 @@ Estas tablas trabajan conjuntamente: `Orders` describe el encabezado del pedido,
 
 | Columna | Significado | Utilidad analítica |
 |---|---|---|
-| `OrderID` | Identificador del pedido. | Relacionar el encabezado con sus líneas. |
 | `CustomerID` | Cliente que realiza el pedido. | Analizar pedidos por cliente. |
 | `OrderDate` | Fecha del pedido. | Estudiar el comportamiento temporal de los pedidos. |
-| `ExpectedDeliveryDate` | Fecha prevista de entrega. | Analizar la planificación de entregas. |
-| `BackorderOrderID` | Referencia a otro pedido asociado con un pedido pendiente, cuando existe. | Investigar situaciones de pedidos pendientes. |
-| `IsUndersupplyBackordered` | Indica si el suministro insuficiente se gestiona mediante un pedido pendiente. | Analizar incidencias de suministro insuficiente. |
+
 
 ### Tabla `Sales.OrderLines`
 
@@ -112,10 +109,8 @@ Estas tablas trabajan conjuntamente: `Orders` describe el encabezado del pedido,
 | `StockItemID` | Producto solicitado. | Analizar pedidos por producto. |
 | `Quantity` | Cantidad solicitada. | Medir la demanda expresada en pedidos. |
 | `UnitPrice` | Precio unitario registrado en la línea. | Analizar el valor de los pedidos. |
-| `PickedQuantity` | Cantidad recogida para preparar el pedido. | Comparar cantidades solicitadas y preparadas. |
-| `PickingCompletedWhen` | Momento en que finalizó la preparación, si está registrado. | Estudiar tiempos de preparación. |
 
-**Aplicación al modelo analítico:** estas tablas permiten analizar las cantidades solicitadas y las incidencias de suministro. Sin embargo, la cantidad pedida no equivale necesariamente a la cantidad vendida o entregada. Es importante distinguir estas medidas en el diseño analítico.
+**Aplicación al modelo analítico:** estas tablas permiten analizar las cantidades solicitadas y estudiar el comportamiento histórico de los pedidos como una aproximación a la demanda. Esta información puede utilizarse como base para preparar las series temporales y desarrollar modelos de pronóstico.
 
 ---
 
