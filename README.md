@@ -58,8 +58,7 @@ El desarrollo se estructuró de manera secuencial, siguiendo el flujo de transfo
 
 Definición del problema y objetivos del negocio
 
-- Identificación de la problemática de negocio → [Ver documentación](documentacion/problematica.md)
-- Definición de objetivos y preguntas de negocio → [Ver documentación]
+- Identificación de la problemática de negocio, objetivos y preguntas de negocio → [Ver documentación](documentacion/problematica.md)
 - Establecimiento de indicadores clave de desempeño (KPIs) → [Ver documentación]
 
 Base de datos y fuentes de información
