@@ -41,6 +41,10 @@ Esta tabla representa el catálogo principal de artículos comercializados por K
 
 Esta tabla contiene información sobre las existencias de los productos. Sus valores representan el estado registrado del inventario y no deben interpretarse automáticamente como un historial completo de existencias.
 
+<p align="center">
+  <img src="../img/stockitemholdings.png" width="850" alt="Stock item oltp">
+</p>
+
 | Columna | Significado | Utilidad analítica |
 |---|---|---|
 | `StockItemID` | Identificador del producto. | Relacionar existencias con el catálogo. |
