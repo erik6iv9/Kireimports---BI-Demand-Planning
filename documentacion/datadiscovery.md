@@ -122,6 +122,10 @@ Estas tablas trabajan conjuntamente: `Orders` describe el encabezado del pedido,
 
 Estas tablas permiten analizar las ventas facturadas, las cantidades comercializadas y su evolución histórica. Desde la perspectiva del abastecimiento, es importante distinguir entre las cantidades solicitadas por los clientes y las cantidades facturadas, ya que pueden existir diferencias entre ambas.
 
+<p align="center">
+  <img src="../img/sales.png" width="850" alt="sales">
+</p>
+
 ### Tabla `Sales.Invoices`
 
 | Columna | Significado | Utilidad analítica |
