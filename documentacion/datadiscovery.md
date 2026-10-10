@@ -92,6 +92,10 @@ Esta tabla registra transacciones relacionadas con los movimientos de los artíc
 
 Estas tablas trabajan conjuntamente: `Orders` describe el encabezado del pedido, mientras que `OrderLines` registra los productos y las cantidades solicitadas.
 
+<p align="center">
+  <img src="../img/orders.png" width="850" alt="Orders">
+</p>
+
 ### Tabla `Sales.Orders`
 
 | Columna | Significado | Utilidad analítica |
