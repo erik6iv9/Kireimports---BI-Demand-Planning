@@ -56,6 +56,12 @@ Para llevar a cabo este proyecto, se integraron distintas herramientas y conocim
 
 El desarrollo se estructuró de manera secuencial, siguiendo el flujo de transformación de datos operativos → información analítica → conocimiento para la toma de decisiones.
 
+Definición del problema y objetivos del negocio
+
+- Identificación de la problemática de negocio → [Ver documentación]
+- Definición de objetivos y preguntas de negocio → [Ver documentación]
+- Establecimiento de indicadores clave de desempeño (KPIs) → [Ver documentación]
+
 Base de datos y fuentes de información
 
 - Identificación de la base operacional (OLTP) → [Ver documentación](documentacion/oltp.md)
