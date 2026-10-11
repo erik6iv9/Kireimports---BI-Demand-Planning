@@ -16,31 +16,36 @@ El resultado de esta fase será una comprensión documentada de la información 
 
 ## Entidad de articulos: `Warehouse.StockItems`
 
-Esta tabla representa el catálogo principal de artículos comercializados por KireImports. Es una entidad central porque permite identificar cada producto y conectar sus características con los registros de ventas, compras y movimientos de inventario.
+Esta tabla contiene el catálogo de artículos comercializados por KireImports. Permite identificar los productos y consultar características relacionadas con su clasificación, proveedor, precio y presentación comercial. Sus identificadores también permiten investigar las relaciones con los registros de pedidos, facturación, compras y movimientos de inventario.
+
 <p align="center">
   <img src="../img/stockitems.png" width="850" alt="Item oltp">
 </p>
 
 | Columna | Significado | Utilidad analítica |
 |---|---|---|
-| `StockItemID` | Identificador único del producto. | Relacionar ventas, compras e inventario. |
-| `StockItemName` | Nombre del producto. | Identificar productos en reportes. |
-| `SupplierID` | Proveedor habitual. | Analizar dependencia del proveedor. |
-| `UnitPrice` | Precio unitario de venta configurado. | Analizar precios y valores comerciales. |
-| `RecommendedRetailPrice` | Precio de venta al público recomendado. | Comparar referencias de precios. |
-`UnitPackageID` | Identificador del tipo de empaque para la unidad individual del producto. | Define la unidad base de conteo y comercialización para las líneas de pedido y stock. |
-| `OuterPackageID` | Identificador del tipo de empaque exterior o caja contenedora. | Facilita la planificación logística, el cálculo de volumen y la gestión de reabastecimiento por lote o caja. |
-| `QuantityPerOuter` | Unidades por empaque exterior. | Interpretar cantidades de compra y embalaje. |
-`ValidFrom` | Marca temporal de inicio de vigencia del registro o estado en el sistema. | Permite auditorías históricas y control de versiones del inventario (Tipo 2). |
-| `ValidTo` | Marca temporal de fin de vigencia del registro o estado. | Esencial para reconstruir la foto histórica del inventario en un periodo determinado. |
+| `StockItemID` | Identificador único del producto. | Identificar artículos y relacionarlos con otras tablas operacionales. |
+| `StockItemName` | Nombre del producto. | Consultar y analizar información por artículo. |
+| `SupplierID` | Identificador del proveedor asociado al producto. | Investigar las relaciones entre productos y proveedores. |
+| `UnitPrice` | Precio unitario registrado para el producto. | Analizar los precios registrados en el catálogo. |
+| `RecommendedRetailPrice` | Precio de venta al público recomendado. | Comparar el precio recomendado con otras referencias comerciales. |
+| `UnitPackageID` | Identificador del tipo de empaque correspondiente a la unidad individual. |Comprender la presentación de los productos |
+| `OuterPackageID` | Identificador del tipo de empaque exterior. | Identificar la presentación utilizada para agrupar unidades. |
+| `QuantityPerOuter` | Cantidad de unidades contenidas en un empaque exterior. | Interpretar las cantidades de compra y las conversiones entre presentaciones, previa validación de las unidades utilizadas. |
+| `ValidFrom` | Fecha y hora de inicio de vigencia del registro temporal, según el mecanismo de versionado de la tabla. | Investigar la vigencia temporal de los datos del producto.|
+| `ValidTo` | Fecha y hora de fin de vigencia del registro temporal, según el mecanismo de versionado de la tabla | Examinar los periodos de vigencia de los registros. |
 
-**Aplicación al modelo analítico:** esta entidad puede convertirse en una dimensión de productos que permita analizar métricas por artículo, marca, proveedor y otras características. Los identificadores deben conservarse para relacionarla con las tablas de hechos.
+**Aplicación al modelo analítico:** La información de esta tabla permite conocer las características de los artículos, investigar su relación con los proveedores y comprender las presentaciones en las que se manejan. También proporciona información relevante para estudiar los precios y las cantidades comercializadas.
+
+Antes de utilizar las columnas temporales para reconstruir estados históricos, es necesario verificar cómo funciona el versionado de la tabla de origen.
 
 ---
 
 ## Entidad de existencias: `Warehouse.StockItemHoldings`
 
-Esta tabla contiene información sobre las existencias de los productos. Sus valores representan el estado registrado del inventario y no deben interpretarse automáticamente como un historial completo de existencias.
+Esta tabla contiene información relacionada con las existencias registradas de los productos. Permite conocer las cantidades disponibles según el registro operacional y consultar otros valores asociados con el control de inventario.
+
+Es importante distinguir esta información de un historial completo de existencias: una tabla que registra el estado del inventario no necesariamente conserva todos los saldos anteriores.
 
 <p align="center">
   <img src="../img/stockitemholdings.png" width="850" alt="Stock item oltp">
@@ -48,12 +53,12 @@ Esta tabla contiene información sobre las existencias de los productos. Sus val
 
 | Columna | Significado | Utilidad analítica |
 |---|---|---|
-| `StockItemID` | Identificador del producto. | Relacionar existencias con el catálogo. |
-| `QuantityOnHand` | Cantidad disponible registrada en existencias. | Evaluar el stock actual. |
-| `LastStocktakeQuantity` | Cantidad registrada en el último conteo físico. | Comparar registros con conteos de inventario. |
-| `LastCostPrice` | Último costo registrado. | Estimar el valor del inventario, previa validación. |
-| `TargetStockLevel` | Nivel de existencias objetivo. | Comparar el stock disponible con el objetivo. |
-|`LastEditedWhen` | Marca de tiempo de la última modificación o actualización del registro en el origen. | Sirve como referencia temporal de la carga inicial del snapshot y para auditoría o cargas incrementales. |
+| `StockItemID` | Identificador del producto. | Relacionar las existencias con el catálogo de artículos. |
+| `QuantityOnHand` | Cantidad registrada en existencias. | Examinar el nivel de inventario registrado. |
+| `LastStocktakeQuantity` | Cantidad registrada en el último conteo físico. | Comparar la información del sistema con los resultados del conteo físico. |
+| `LastCostPrice` | Último costo registrado para el producto. | Investigar el costo asociado con las existencias, previa validación de su significado y vigencia. |
+| `TargetStockLevel` | Nivel de existencias objetivo. | Comparar la cantidad registrada con el nivel objetivo. |
+| `LastEditedWhen` | Fecha y hora de la última modificación registrada. | Conocer cuándo se modificó el registro, sin interpretarla como un historial completo del inventario. |
 
 **Aplicación al modelo analítico:** esta entidad puede apoyar indicadores como stock actual, brecha frente al nivel objetivo y productos que se encuentran por debajo del nivel de reorden.
 
