@@ -226,6 +226,10 @@ Estas tablas permiten investigar cómo se abastece la empresa y qué informació
 
 Esta entidad contiene información de los proveedores, como `SupplierID`, `SupplierName`, `SupplierCategoryID`
 
+<p align="center">
+  <img src="../im/suppliers.png" width="850" alt="Suppliers">
+</p>
+
 ### Tabla `Purchasing.Suppliers`
 
 | Columna | Significado | Utilidad analítica |
