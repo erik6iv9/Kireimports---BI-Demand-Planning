@@ -119,10 +119,16 @@ Estas tablas trabajan conjuntamente: `Orders` describe el encabezado del pedido,
 ---
 ## Entidades de clientes: `Sales.Customers` `Sales.CustomerCategories` `Application.Cities` y `Application.Countries`
 
+La construcción de esta dimensión integra múltiples fuentes transaccionales: Sales.Customers registra los datos generales del cliente, y se complementa con Sales.CustomerCategories para la segmentación comercial. Por otro lado, la ubicación geográfica se consolida vinculando Application.Cities con Application.Countries, permitiendo estructurar un análisis territorial robusto.
+
+<p align="center">
+  <img src="../img/customers.png" width="850" alt="Customers">
+</p>
+
 ### Tabla `Sales.Customers`
 
 | Columna | Significado | Utilidad analítica |
-| :--- | :--- | :--- |
+| --- | --- | --- |
 | `CustomerID`| Clave natural (*Natural Key*) del cliente en la fuente. | Identificador único del cliente en el sistema operacional. |
 | `CustomerName`| Nombre o razón social del cliente. | Identificar clientes en reportes comerciales y tableros analíticos. |
 | `ValidFrom`| Fecha/hora de inicio de vigencia del registro. | Controlar el inicio del historial del cliente (SCD Tipo 2). |
@@ -134,7 +140,7 @@ Estas tablas trabajan conjuntamente: `Orders` describe el encabezado del pedido,
 ### Tabla `Sales.CustomerCategories`
 
 | Columna | Significado | Utilidad analítica |
-| :--- | :--- | :--- |
+| --- | --- | --- |
 | `CustomerCategory`| Categoría o tipo de cliente (ej. Mayorista, Minorista). | Segmentar ventas y analizar el comportamiento comercial por tipo de cliente. |
 
 ---
@@ -142,9 +148,12 @@ Estas tablas trabajan conjuntamente: `Orders` describe el encabezado del pedido,
 ### Tabla `Application.Cities` y `Application.Countries`
 
 | Columna | Significado | Utilidad analítica |
-| :--- | :--- | :--- |
+| --- | --- | --- |
 | `DeliveryCity` | Ciudad de entrega asignada al cliente. | Facilitar el análisis geográfico y la planificación logística a nivel ciudad. |
 | `Countrie` | País asociado a la ubicación del cliente. | Agrupar métricas y generar reportes geográficos a nivel país. |
+
+**Aplicación al modelo analítico:**
+Esta información permite estudiar el comportamiento de compra por segmentos de clientes y regiones geográficas, sirviendo como base fundamental para la segmentación avanzada, análisis de rentabilidad por cliente y la identificación de patrones de consumo a lo largo del tiempo.
 
 ---
 
