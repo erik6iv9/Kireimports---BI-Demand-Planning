@@ -158,11 +158,8 @@ Estas tablas permiten investigar cómo se abastece la empresa y qué informació
 
 | Columna | Significado | Utilidad analítica |
 |---|---|---|
-| `PurchaseOrderID` | Identificador del pedido de compra. | Relacionar encabezados y líneas. |
 | `SupplierID` | Proveedor del pedido. | Analizar compras por proveedor. |
 | `OrderDate` | Fecha del pedido. | Estudiar la planificación de compras. |
-| `ExpectedDeliveryDate` | Fecha prevista de entrega. | Comparar planificación y recepción. |
-| `IsOrderFinalized` | Indica si el pedido está finalizado. | Identificar el estado del pedido. |
 
 ### Tabla `Purchasing.PurchaseOrderLines`
 
