@@ -72,7 +72,9 @@ Un resultado positivo indica que el stock actual está por debajo del nivel obje
 
 ## Entidad de movimientos: `Warehouse.StockItemTransactions`
 
-Esta tabla registra transacciones relacionadas con los movimientos de los artículos, incluidas operaciones de recepción, venta y otros movimientos de inventario. Es relevante para investigar cómo cambia el inventario a lo largo del tiempo.
+Esta tabla registra transacciones asociadas con los movimientos de los artículos. Su análisis permite investigar las operaciones que afectan al inventario y estudiar cómo se relacionan los productos con las transacciones registradas a lo largo del tiempo.
+
+Entre los datos relevantes se encuentran el identificador del producto, el tipo de transacción, la fecha del movimiento, la cantidad registrada y las referencias a documentos relacionados, cuando corresponda.
 
 <p align="center">
   <img src="../img/stockitemtransactions.png" width="850" alt="Stock item transactions">
@@ -90,13 +92,15 @@ Esta tabla registra transacciones relacionadas con los movimientos de los artíc
 | `TransactionOccurredWhen` | Fecha y hora del movimiento. | Analizar la evolución temporal. |
 | `Quantity` | Cantidad registrada en la transacción. | Cuantificar movimientos por tipo. |
 
-**Aplicación al modelo analítico:** esta tabla puede servir para estudiar entradas, salidas y ajustes. Antes de calcular el stock histórico, es necesario comprobar el signo de las cantidades, los tipos de transacción y si todos los movimientos relevantes están registrados.
+**Aplicación al modelo analítico:** esta información puede utilizarse para investigar las entradas y salidas de inventario y comprender la evolución de los movimientos registrados.
+
+Antes de calcular variaciones históricas del stock, será necesario identificar los tipos de transacción, comprobar el significado y el signo de las cantidades y verificar si los registros disponibles cubren todos los movimientos relevantes. También deberá evaluarse cómo se relacionan estas transacciones con las existencias registradas en Warehouse.StockItemHoldings.
 
 ---
 
 ## Entidades de pedidos: `Sales.Orders` y `Sales.OrderLines`
 
-Estas tablas trabajan conjuntamente: `Orders` describe el encabezado del pedido, mientras que `OrderLines` registra los productos y las cantidades solicitadas.
+Estas tablas representan dos niveles de información relacionados con los pedidos de los clientes. Sales.Orders contiene información general del pedido, mientras que Sales.OrderLines registra el detalle de los artículos solicitados.
 
 <p align="center">
   <img src="../img/orders.png" width="850" alt="Orders">
@@ -106,7 +110,7 @@ Estas tablas trabajan conjuntamente: `Orders` describe el encabezado del pedido,
 
 | Columna | Significado | Utilidad analítica |
 |---|---|---|
-| `CustomerID` | Cliente que realiza el pedido. | Analizar pedidos por cliente. |
+| `CustomerID` | Identificador del cliente asociado al pedido. | Investigar los pedidos por cliente |
 | `OrderDate` | Fecha del pedido. | Estudiar el comportamiento temporal de los pedidos. |
 
 
@@ -114,13 +118,15 @@ Estas tablas trabajan conjuntamente: `Orders` describe el encabezado del pedido,
 
 | Columna | Significado | Utilidad analítica |
 |---|---|---|
-| `OrderLineID` | Identificador de la línea. | Identificar cada línea del pedido. |
-| `OrderID` | Pedido al que pertenece. | Relacionar el detalle con el encabezado. |
-| `StockItemID` | Producto solicitado. | Analizar pedidos por producto. |
+| `OrderLineID` | Identificador de la línea del pedido. | Identificar cada registro. |
+| `OrderID` | Pedido al que pertenece. | Relacionar el detalle con el encabezado del pedido. |
+| `StockItemID` | Identificador del producto solicitado. | Analizar pedidos por producto. |
 | `Quantity` | Cantidad solicitada. | Medir la demanda expresada en pedidos. |
-| `UnitPrice` | Precio unitario registrado en la línea. | Analizar el valor de los pedidos. |
+| `UnitPrice` | Precio unitario registrado en la línea. | Analizar el valor comercial de los pedidos. |
 
-**Aplicación al modelo analítico:** estas tablas permiten analizar las cantidades solicitadas y estudiar el comportamiento histórico de los pedidos como una aproximación a la demanda. Esta información puede utilizarse como base para preparar las series temporales y desarrollar modelos de pronóstico.
+**Aplicación al modelo analítico:** estas tablas permiten estudiar el comportamiento histórico de los pedidos y las cantidades solicitadas por producto. Esta información puede contribuir al análisis de la demanda y a la preparación de series temporales para el pronóstico.
+
+Las cantidades solicitadas deben distinguirse de las cantidades facturadas. Para interpretar correctamente la demanda.
 
 ---
 ## Entidades de clientes: `Sales.Customers` `Sales.CustomerCategories` `Application.Cities` y `Application.Countries`
@@ -264,4 +270,19 @@ Esta entidad contiene información de los proveedores, como `SupplierID`, `Suppl
 | `StateProvinceName` | `StateProvinceName` (`Application.StateProvinces`) | Estado o provincia de ubicación del proveedor. | Permitir análisis macro-regionales y evaluaciones de riesgo de suministro por estado. |
 | `Countrie` | `CountryName` (`Application.Countries`) | País de origen o radicación del proveedor. | Agrupar métricas de compras y evaluar riesgos de la cadena de suministro a nivel internacional. |
 
+## 2. Hallazgos y aspectos pendientes de validación
+
+La exploración de las tablas operacionales permite identificar información relacionada con los productos, las existencias, los movimientos de inventario, los pedidos de clientes, las ventas facturadas, las compras y los proveedores.
+
+A partir de esta revisión, identifico tres aspectos relevantes para el proyecto:
+
+Disponibilidad de información comercial: los pedidos y las facturas permiten investigar las cantidades solicitadas y facturadas, respectivamente. Es necesario distinguir ambas medidas para evaluar qué información resulta más adecuada para estudiar la demanda.
+
+Información de inventario: las existencias registradas permiten examinar el estado del inventario, mientras que las transacciones ofrecen información para investigar sus movimientos. La reconstrucción histórica requiere validar la cobertura y consistencia de estos registros.
+
+Información de abastecimiento: los pedidos de compra, las líneas de compra y los datos de proveedores permiten estudiar las cantidades solicitadas y recibidas, así como explorar la información disponible sobre las recepciones.
+
+Antes de avanzar a la siguiente fase, será necesario verificar las claves de relación, los tipos de transacción, la interpretación de las cantidades y las fechas disponibles. También se deberá evaluar la calidad de los datos y determinar si la cobertura histórica es suficiente para los análisis previstos.
+
+Estos hallazgos constituyen la base para la siguiente etapa del proyecto, en la que se definirá cómo organizar la información en un modelo analítico de acuerdo con las necesidades del negocio.
 
