@@ -117,6 +117,36 @@ Estas tablas trabajan conjuntamente: `Orders` describe el encabezado del pedido,
 **Aplicación al modelo analítico:** estas tablas permiten analizar las cantidades solicitadas y estudiar el comportamiento histórico de los pedidos como una aproximación a la demanda. Esta información puede utilizarse como base para preparar las series temporales y desarrollar modelos de pronóstico.
 
 ---
+## Entidades de clientes: `Sales.Customers` `Sales.CustomerCategories` `Application.Cities` y `Application.Countries`
+
+### Tabla `Sales.Customers`
+
+| Columna | Significado | Utilidad analítica |
+| :--- | :--- | :--- |
+| `CustomerID`| Clave natural (*Natural Key*) del cliente en la fuente. | Identificador único del cliente en el sistema operacional. |
+| `CustomerName`| Nombre o razón social del cliente. | Identificar clientes en reportes comerciales y tableros analíticos. |
+| `ValidFrom`| Fecha/hora de inicio de vigencia del registro. | Controlar el inicio del historial del cliente (SCD Tipo 2). |
+| `ValidTo`| Fecha/hora de fin de vigencia del registro. | Reconstruir la foto histórica del cliente en un periodo determinado. |
+| `IsCurrent`| Indicador de registro activo (`1` o `0`). | Filtrar rápidamente la versión vigente del cliente sin evaluar fechas. |
+
+---
+
+### Tabla `Sales.CustomerCategories`
+
+| Columna | Significado | Utilidad analítica |
+| :--- | :--- | :--- |
+| `CustomerCategory`| Categoría o tipo de cliente (ej. Mayorista, Minorista). | Segmentar ventas y analizar el comportamiento comercial por tipo de cliente. |
+
+---
+
+### Tabla `Application.Cities` y `Application.Countries`
+
+| Columna | Significado | Utilidad analítica |
+| :--- | :--- | :--- |
+| `DeliveryCity` | Ciudad de entrega asignada al cliente. | Facilitar el análisis geográfico y la planificación logística a nivel ciudad. |
+| `Countrie` | País asociado a la ubicación del cliente. | Agrupar métricas y generar reportes geográficos a nivel país. |
+
+---
 
 ## Entidades de ventas facturadas: `Sales.Invoices` y `Sales.InvoiceLines`
 
