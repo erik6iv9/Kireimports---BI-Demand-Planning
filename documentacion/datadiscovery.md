@@ -217,9 +217,40 @@ Estas tablas permiten investigar cómo se abastece la empresa y qué informació
 | `LastReceiptDate` | Fecha de la última recepción registrada para la línea. | Investigar entregas y recepciones. |
 | `IsOrderLineFinalized` | Indica si la línea está finalizada. | Examinar el estado de los registros. |
 
+---
+
+## Entidades de proveedores: `Purchasing.Suppliers`, `Purchasing.SupplierCategories`
+
+Esta entidad contiene información de los proveedores, como `SupplierID`, `SupplierName`, `SupplierCategoryID`
+
 ### Tabla `Purchasing.Suppliers`
 
-Esta entidad contiene información de los proveedores, como `SupplierID`, `SupplierName`, `SupplierCategoryID`, `DeliveryMethodID` y `PaymentDays`, además de datos de contacto y dirección.
+| Columna | Significado | Utilidad analítica |
+| --- | --- | --- | --- |
+| `SupplierSK` | Clave sustituta (*Surrogate Key*) de la dimensión proveedor. | Clave primaria técnica del Data Warehouse para modelado dimensional y trazabilidad de cambios (SCD Tipo 2). |
+| `SupplierID` | Clave de negocio / clave natural (*Natural Key*) del proveedor en la fuente. | Identificador único del proveedor en el sistema transaccional (OLTP). |
+| `SupplierName` | Nombre o razón social del proveedor. | Identificar proveedores en reportes de compras, análisis de costos y abastecimiento. |
+| `ValidFrom` | Fecha/hora de inicio de vigencia de la versión del registro. | Marca el inicio del historial del proveedor en el modelo SCD Tipo 2. |
+| `ValidTo` | Fecha/hora de fin de vigencia de la versión del registro. | Permite reconstruir la historia del proveedor en un periodo determinado. |
+| `IsCurrent` | Indicador de versión activa (`1` o `0`). | Filtrar de forma rápida la versión vigente del proveedor en tableros analíticos. |
+
+---
+
+### Tabla `Purchasing.SupplierCategories`
+
+| Columna | Significado | Utilidad analítica |
+| --- | --- | --- | --- |
+| `SupplierCategoryName` | Categoría o tipo de proveedor (ej. Servicios, Fabricante, Distribuidor). | Permitir la segmentación comercial y evaluar la dependencia de abastecimiento por tipo de proveedor. |
+
+---
+
+### Tablas Geográficas (`Application`)
+
+| Columna | Columna Origen (OLTP) | Significado | Utilidad analítica |
+| :--- | :--- | :--- | :--- |
+| `DeliveryCityName` | `CityName` (`Application.Cities`) | Ciudad de entrega/despacho asociada al proveedor. | Facilitar el análisis de logística local y rutas a nivel ciudad. |
+| `StateProvinceName` | `StateProvinceName` (`Application.StateProvinces`) | Estado o provincia de ubicación del proveedor. | Permitir análisis macro-regionales y evaluaciones de riesgo de suministro por estado. |
+| `Countrie` | `CountryName` (`Application.Countries`) | País de origen o radicación del proveedor. | Agrupar métricas de compras y evaluar riesgos de la cadena de suministro a nivel internacional. |
 
 **Aplicación al modelo analítico:** estas entidades pueden ayudar a estudiar la relación entre demanda prevista y abastecimiento, comparar cantidades solicitadas con recibidas y analizar los plazos de suministro. Para calcular tiempos de entrega reales, es necesario definir qué fecha de recepción utilizar y validar la disponibilidad de registros completos.
 
