@@ -123,7 +123,7 @@ Estas tablas trabajan conjuntamente: `Orders` describe el encabezado del pedido,
 Estas tablas permiten analizar las ventas facturadas, las cantidades comercializadas y su evolución histórica. Desde la perspectiva del abastecimiento, es importante distinguir entre las cantidades solicitadas por los clientes y las cantidades facturadas, ya que pueden existir diferencias entre ambas.
 
 <p align="center">
-  <img src="../img/sales.png" width="850" alt="sales">
+  <img src="../img/sales.png" width="850" alt="Sales">
 </p>
 
 ### Tabla `Sales.Invoices`
@@ -154,6 +154,10 @@ Para el pronóstico, se pueden agregar las cantidades por producto y periodo. Si
 
 Estas tablas permiten investigar cómo se abastece la empresa y qué información existe para analizar la relación con los proveedores.
 
+<p align="center">
+  <img src="../img/purchasing.png" width="850" alt="Purchasing">
+</p>
+
 ### Tabla `Purchasing.PurchaseOrders`
 
 | Columna | Significado | Utilidad analítica |
@@ -165,14 +169,14 @@ Estas tablas permiten investigar cómo se abastece la empresa y qué informació
 
 | Columna | Significado | Utilidad analítica |
 |---|---|---|
-| `PurchaseOrderLineID` | Identificador de la línea de compra. | Identificar cada línea. |
+| `PurchaseOrderLineID` | Identificador de la línea de compra. | Identificar cada registro. |
 | `PurchaseOrderID` | Pedido al que pertenece. | Relacionar el detalle con el encabezado. |
 | `StockItemID` | Producto comprado. | Analizar compras por producto. |
 | `OrderedOuters` | Cantidad de empaques exteriores solicitados. | Analizar cantidades de compra. |
 | `ReceivedOuters` | Cantidad de empaques exteriores recibidos. | Comparar cantidades solicitadas y recibidas. |
 | `ExpectedUnitPricePerOuter` | Precio unitario esperado por empaque exterior. | Analizar costos esperados de adquisición. |
 | `LastReceiptDate` | Fecha de la última recepción registrada para la línea. | Investigar entregas y recepciones. |
-| `IsOrderLineFinalized` | Indica si la línea está finalizada. | Examinar el estado de las líneas. |
+| `IsOrderLineFinalized` | Indica si la línea está finalizada. | Examinar el estado de los registros. |
 
 ### Tabla `Purchasing.Suppliers`
 
