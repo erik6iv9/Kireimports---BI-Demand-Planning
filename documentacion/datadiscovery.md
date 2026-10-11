@@ -149,9 +149,9 @@ La construcción de esta dimensión integra múltiples fuentes transaccionales: 
 
 | Columna | Columna Origen (OLTP) | Significado | Utilidad analítica |
 | --- | --- | --- | --- |
-| `DeliveryCityName` | `CityName` (`Application.Cities`) | Ciudad de entrega/despacho asociada al proveedor. | Facilitar el análisis de logística local y rutas a nivel ciudad. |
-| `StateProvinceName` | `StateProvinceName` (`Application.StateProvinces`) | Estado o provincia de ubicación del proveedor. | Permitir análisis macro-regionales y evaluaciones de riesgo de suministro por estado. |
-| `Countrie` | `CountryName` (`Application.Countries`) | País de origen o radicación del proveedor. | Agrupar métricas de compras y evaluar riesgos de la cadena de suministro a nivel internacional. |
+| `DeliveryCityName` | `CityName` (`Application.Cities`) | Ciudad de entrega/despacho asociada al cliente. | Facilitar el análisis de clientes a nivel ciudad. |
+| `StateProvinceName` | `StateProvinceName` (`Application.StateProvinces`) | Estado o provincia de ubicación del cliente. | Permitir análisis macro-regionales y evaluaciones de clientes por estado. |
+| `Countrie` | `CountryName` (`Application.Countries`) | País de origen o radicación del cliente. | Agrupar métricas de clientes a nivel internacional. |
 
 **Aplicación al modelo analítico:**
 Esta información permite estudiar el comportamiento de compra por segmentos de clientes y regiones geográficas, sirviendo como base fundamental para la segmentación avanzada, análisis de rentabilidad por cliente y la identificación de patrones de consumo a lo largo del tiempo.
