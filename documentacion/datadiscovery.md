@@ -154,7 +154,7 @@ La construcción de esta dimensión integra múltiples fuentes transaccionales: 
 
 | Columna | Significado | Utilidad analítica |
 | --- | --- | --- |
-| `CustomerCategory`| Categoría o tipo de cliente (ej. Mayorista, Minorista). | Segmentar ventas y analizar el comportamiento comercial por tipo de cliente. |
+| `CustomerCategoryId`| Categoría o tipo de cliente (ej. Mayorista, Minorista). | Segmentar ventas y analizar el comportamiento comercial por tipo de cliente. |
 
 ---
 
