@@ -145,7 +145,7 @@ La construcción de esta dimensión integra múltiples fuentes transaccionales: 
 | `CustomerName`| Nombre o razón social del cliente. | Identificar clientes en reportes comerciales y tableros analíticos. |
 | `ValidFrom`| Fecha/hora de inicio de vigencia del registro. | Controlar el inicio del historial del cliente (SCD Tipo 2). |
 | `ValidTo`| Fecha/hora de fin de vigencia del registro. | Reconstruir la foto histórica del cliente en un periodo determinado. |
-| `IsCurrent`| Indicador de registro activo (`1` o `0`). | Filtrar rápidamente la versión vigente del cliente sin evaluar fechas. |
+
 
 ---
 
