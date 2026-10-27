@@ -62,9 +62,9 @@ Definición del problema y objetivos del negocio
 
 Fuentes de Datos y Análisis Transaccional (OLTP)
 
-- Identificación de la base operacional (OLTP) → [Ver documentación](documentacion/oltp.md)
-- Análisis de los esquemas y tablas operacionales → [Ver documentación](documentacion/esquemas-operacionales.md)
-- Identificación de entidades, relaciones y datos disponibles → [Ver documentación](documentacion/datadiscovery.md)
+- Identificación del sistema origen (OLTP) → [Ver documentación](documentacion/oltp.md)
+- Análisis de esquemas y tablas transaccionales → [Ver documentación](documentacion/esquemas-operacionales.md)
+- Mapeo de entidades y relaciones clave → [Ver documentación](documentacion/datadiscovery.md)
 
 Ingeniería de Datos y Business Intelligence
 
