@@ -57,7 +57,7 @@ Es importante distinguir esta información de un historial completo de existenci
 | `StockItemID` | Identificador del producto. | Relacionar las existencias con el catálogo de artículos. |
 | `QuantityOnHand` | Cantidad registrada en existencias. | Examinar el nivel de inventario registrado. |
 | `LastStocktakeQuantity` | Cantidad registrada en el último conteo físico. | Comparar la información del sistema con los resultados del conteo físico. |
-| `LastCostPrice` | Último costo registrado para el producto. | Investigar el costo asociado con las existencias, previa validación de su significado y vigencia. |
+| `LastCostPrice` | Último costo registrado para el producto. | Investigar el costo asociado con las existencias. |
 | `TargetStockLevel` | Nivel de existencias objetivo. | Comparar la cantidad registrada con el nivel objetivo. |
 | `LastEditedWhen` | Fecha y hora de la última modificación registrada. | Conocer cuándo se modificó el registro. |
 
