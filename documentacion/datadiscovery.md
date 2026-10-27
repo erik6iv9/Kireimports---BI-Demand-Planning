@@ -59,7 +59,7 @@ Es importante distinguir esta información de un historial completo de existenci
 | `LastStocktakeQuantity` | Cantidad registrada en el último conteo físico. | Comparar la información del sistema con los resultados del conteo físico. |
 | `LastCostPrice` | Último costo registrado para el producto. | Investigar el costo asociado con las existencias, previa validación de su significado y vigencia. |
 | `TargetStockLevel` | Nivel de existencias objetivo. | Comparar la cantidad registrada con el nivel objetivo. |
-| `LastEditedWhen` | Fecha y hora de la última modificación registrada. | Conocer cuándo se modificó el registro, sin interpretarla como un historial completo del inventario. |
+| `LastEditedWhen` | Fecha y hora de la última modificación registrada. | Conocer cuándo se modificó el registro. |
 
 **Aplicación al modelo analítico:** esta entidad puede apoyar indicadores como stock actual, brecha frente al nivel objetivo y productos que se encuentran por debajo del nivel de reorden.
 
