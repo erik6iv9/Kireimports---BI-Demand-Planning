@@ -56,30 +56,30 @@ Para llevar a cabo este proyecto, se integraron distintas herramientas y conocim
 
 El desarrollo se estructuró de manera secuencial, siguiendo el flujo de transformación de datos operativos → información analítica → conocimiento para la toma de decisiones.
 
-Definición del problema y objetivos del negocio
+<h3>Definición del problema y objetivos del negocio</h3>
 
 - Identificación de la problemática de negocio, objetivos y preguntas de negocio → [Ver documentación](documentacion/problematica.md)
 
-Fuentes de Datos y Análisis Transaccional (OLTP)
+<h3>Fuentes de Datos y Análisis Transaccional (OLTP)</h3>
 
 - Identificación del sistema origen (OLTP) → [Ver documentación](documentacion/oltp.md)
 - Análisis de esquemas y tablas transaccionales → [Ver documentación](documentacion/esquemas-operacionales.md)
 - Mapeo de entidades y relaciones clave → [Ver documentación](documentacion/datadiscovery.md)
 
-Ingeniería de Datos y Business Intelligence
+<h3>Ingeniería de Datos y Business Intelligence</h3>
 
 - Diseño del modelo dimensional / Star Schema → [Ver documentación](documentacion/modelodimensional.md)
 - Implementación del Data Warehouse → [Ver documentación]
 - Desarrollo del proceso ETL → [Ver documentación]
 - Modelado de datos y desarrollo en Power BI → [Ver documentación]
 
-Análisis de inventarios y Supply Chain
+<h3>Análisis de inventarios y Supply Chain</h3>
 
 - Análisis de inventarios: rotación y cobertura → [Ver documentación]
 - Clasificación ABC → [Ver documentación]
 - Análisis de abastecimiento y resurtido → [Ver documentación]
 
-Demand Planning
+<h3>Demand Planning</h3>
 
 - Análisis histórico de la demanda → [Ver documentación]
 - Preparación de series temporales → [Ver documentación]
