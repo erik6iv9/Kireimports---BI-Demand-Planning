@@ -68,7 +68,7 @@ Base de datos y fuentes de información
 
 Business Intelligence y modelado
 
-- Diseño del Data Warehouse y modelo dimensional / Star Schema → [Ver documentación]
+- Diseño del Data Warehouse y modelo dimensional / Star Schema → [Ver documentación](documentacion/modelodimencional.md)
 - Diseño y desarrollo del proceso ETL → [Ver documentación]
 - Modelado de datos y desarrollo en Power BI → [Ver documentación]
 
