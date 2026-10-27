@@ -31,7 +31,7 @@ Esta tabla contiene el catálogo de artículos comercializados por KireImports. 
 | `RecommendedRetailPrice` | Precio de venta al público recomendado. | Comparar el precio recomendado con otras referencias comerciales. |
 | `UnitPackageID` | Identificador del tipo de empaque correspondiente a la unidad individual. |Comprender la presentación de los productos |
 | `OuterPackageID` | Identificador del tipo de empaque exterior. | Identificar la presentación utilizada para agrupar unidades. |
-| `QuantityPerOuter` | Cantidad de unidades contenidas en un empaque exterior. | Interpretar las cantidades de compra y las conversiones entre presentaciones, previa validación de las unidades utilizadas. |
+| `QuantityPerOuter` | Cantidad de unidades contenidas en un empaque exterior. | Interpretar las cantidades de compra y las conversiones entre presentaciones. |
 | `StockGroupID` | Identificador del grupo o categoría a la que pertenece el producto (por ejemplo: juguetes, artículos novedosos, etc.). | Clasificar el inventario y analizar ventas, stock o rentabilidad segmentados por categoría de producto. |
 | `ValidFrom` | Fecha y hora de inicio de vigencia del registro temporal, según el mecanismo de versionado de la tabla. | Investigar la vigencia temporal de los datos del producto.|
 | `ValidTo` | Fecha y hora de fin de vigencia del registro temporal, según el mecanismo de versionado de la tabla | Examinar los periodos de vigencia de los registros. |
