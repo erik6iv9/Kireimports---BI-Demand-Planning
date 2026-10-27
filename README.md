@@ -60,7 +60,7 @@ Definición del problema y objetivos del negocio
 
 - Identificación de la problemática de negocio, objetivos y preguntas de negocio → [Ver documentación](documentacion/problematica.md)
 
-Base de datos y fuentes de información
+Fuentes de Datos y Análisis Transaccional (OLTP)
 
 - Identificación de la base operacional (OLTP) → [Ver documentación](documentacion/oltp.md)
 - Análisis de los esquemas y tablas operacionales → [Ver documentación](documentacion/esquemas-operacionales.md)
