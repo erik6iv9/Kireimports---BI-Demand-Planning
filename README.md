@@ -66,10 +66,10 @@ Base de datos y fuentes de información
 - Análisis de los esquemas y tablas operacionales → [Ver documentación](documentacion/esquemas-operacionales.md)
 - Identificación de entidades, relaciones y datos disponibles → [Ver documentación](documentacion/datadiscovery.md)
 
-Business Intelligence y modelado
+Ingeniería de Datos y Business Intelligence
 
 - Diseño del modelo dimensional / Star Schema → [Ver documentación](documentacion/modelodimensional.md)
-- Implementacion del Data Warehouse → [Ver documentación]
+- Implementación del Data Warehouse → [Ver documentación]
 - Desarrollo del proceso ETL → [Ver documentación]
 - Modelado de datos y desarrollo en Power BI → [Ver documentación]
 
