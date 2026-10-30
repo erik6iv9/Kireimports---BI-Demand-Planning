@@ -251,7 +251,7 @@ Esta entidad contiene información de los proveedores, como `SupplierID`, `Suppl
 | `SupplierName` | Nombre o razón social del proveedor. | Identificar proveedores en reportes de compras, análisis de costos y abastecimiento. |
 | `ValidFrom` | Fecha/hora de inicio de vigencia de la versión del registro. | Marca el inicio del historial del proveedor en el modelo SCD Tipo 2. |
 | `ValidTo` | Fecha/hora de fin de vigencia de la versión del registro. | Permite reconstruir la historia del proveedor en un periodo determinado. |
-| `IsCurrent` | Indicador de versión activa (`1` o `0`). | Filtrar de forma rápida la versión vigente del proveedor en tableros analíticos. |
+
 
 ---
 
