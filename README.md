@@ -66,9 +66,9 @@ El desarrollo se estructuró de manera secuencial, siguiendo el flujo de transfo
 - Análisis de esquemas y tablas transaccionales → [Ver documentación](documentacion/esquemas-operacionales.md)
 - Mapeo de entidades y relaciones clave → [Ver documentación](documentacion/datadiscovery.md)
 
-<h3>Diseño y construcción del Data Warehouse</h3>
+<h3>Diseño e implementación del Data Warehouse</h3>
 
-- Diseño del modelo dimensional / Star Schema → [Ver documentación](documentacion/modelodimensional.md)
+- Diseño de estructuras dimensionales: tablas de hechos y dimensiones → [Ver documentación](documentacion/modelodimensional.md)
 - Implementación del Data Warehouse → [Ver documentación]
 - Desarrollo del proceso ETL → [Ver documentación]
 - Modelado de datos y desarrollo en Power BI → [Ver documentación]
