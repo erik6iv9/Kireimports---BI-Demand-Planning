@@ -17,7 +17,7 @@ A continuación, detallo las tablas de dimensiones que diseñé para enriquecer 
 <table>
   <tr>
     <td width="35%" align="center">
-      <img src="ruta/a/tu/imagen/DimItem.png" alt="DimItem Schema" width="100%">
+      <img src="../img/DimItem.png" alt="DimItem" width="100%">
     </td>
     <td width="65%" valign="top">
 
