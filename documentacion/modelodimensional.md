@@ -1,4 +1,4 @@
-<h1> Diseño del modelo estrella </h1>
+<h1>  Tablas de hechos y dimensiones  </h1>
 
 Una vez realizado el análisis y descubrimiento de la base de datos operacional (OLTP), continúo con el diseño del modelo dimensional que utilizaré como base para la solución de **Business Intelligence y Demand Planning**.
 
