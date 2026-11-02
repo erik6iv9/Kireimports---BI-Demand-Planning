@@ -55,3 +55,24 @@ Diseñé **DimCustomer** para consolidar el perfil de los compradores y permitir
     </td>
   </tr>
 </table>
+
+### DimSupplier (Dimensión de Proveedores)
+
+<table>
+  <tr>
+    <td width="35%" align="center">
+      <img src="../img/DimSupplier.png" alt="DimSupplier Schema" width="100%">
+    </td>
+    <td width="65%" valign="top">
+
+#### Propósito y Análisis Técnico
+
+Diseñé **DimSupplier** para gestionar la información de los proveedores y facilitar el análisis de la cadena de suministro, tiempos de entrega y procedencia de las compras de importación.
+
+* **Claves:** Utilizo `SupplierKey` como clave sustituta (Surrogate Key) para el Data Warehouse y `SupplierID` como clave de negocio para mantener la trazabilidad con el sistema OLTP.
+* **Atributos y Geografía:** Incluye el nombre del proveedor (`SupplierName`), su categoría (`SupplierCategory`), método de entrega (`DeliveryMethod`) y ubicación (`StateProvince`, `Country`) para evaluar el rendimiento logístico por región.
+* **Historial (SCD Tipo 2):** Incorporé `ValidFrom`, `ValidTo` e `IsCurrent` para registrar cambios en los datos del proveedor a lo largo del tiempo sin distorsionar el historial de compras y abastecimiento.
+
+    </td>
+  </tr>
+</table>
