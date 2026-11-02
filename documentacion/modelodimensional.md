@@ -14,6 +14,8 @@ De este modo, el diseño dimensional establece las bases lógicas sobre las cual
 
 A continuación, detallo las tablas de dimensiones que diseñé para enriquecer el modelo, definiendo los atributos clave que permitirán contextualizar el análisis sobre clientes, productos, proveedores y periodos de tiempo.
 
+### DimItem (Dimensión de Productos)
+
 <table>
   <tr>
     <td width="35%" align="center">
@@ -33,10 +35,12 @@ Diseñé **DimItem** para centralizar la información descriptiva de los product
   </tr>
 </table>
 
+### DimCustomer (Dimensión de Clientes)
+
 <table>
   <tr>
     <td width="35%" align="center">
-      <img src="ruta/a/tu/imagen/DimCustomer.png" alt="DimCustomer Schema" width="100%">
+      <img src="../img/DimCustomer.png" alt="DimCustomer" width="100%">
     </td>
     <td width="65%" valign="top">
 
