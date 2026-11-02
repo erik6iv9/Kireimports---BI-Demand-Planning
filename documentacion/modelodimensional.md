@@ -32,3 +32,22 @@ Diseñé **DimItem** para centralizar la información descriptiva de los product
     </td>
   </tr>
 </table>
+
+<table>
+  <tr>
+    <td width="35%" align="center">
+      <img src="ruta/a/tu/imagen/DimCustomer.png" alt="DimCustomer Schema" width="100%">
+    </td>
+    <td width="65%" valign="top">
+
+#### Propósito y Análisis Técnico
+
+Diseñé **DimCustomer** para consolidar el perfil de los compradores y permitir el análisis del comportamiento de la demanda por tipo de cliente y zona geográfica.
+
+* **Claves:** Utilizo `CustomerKey` como clave sustituta (Surrogate Key) para el Data Warehouse y `CustomerID` como clave de negocio para vincular los datos con el OLTP.
+* **Segmentación y Geografía:** Incluye `CustomerName` y `CustomerCategory` para categorizar la cartera de clientes, además de `Country`, `State` y `City` para análisis de distribución territorial.
+* **Historial (SCD Tipo 2):** Incorporé `ValidFrom`, `ValidTo` e `IsCurrent` para rastrear cambios en la ubicación o categoría del cliente en el tiempo sin distorsionar el historial de ventas.
+
+    </td>
+  </tr>
+</table>
