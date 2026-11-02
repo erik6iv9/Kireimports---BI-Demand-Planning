@@ -1,15 +1,11 @@
 <h1>  Tablas de hechos y dimensiones  </h1>
 
-Una vez realizado el análisis y descubrimiento de la base de datos operacional (OLTP), continúo con el diseño del modelo dimensional que utilizaré como base para la solución de **Business Intelligence y Demand Planning**.
+Con el análisis de la base de datos operacional (OLTP) concluido, el desarrollo avanza hacia el diseño del modelo dimensional. Este modelo estrella (*Star Schema*) traduce las necesidades de negocio y las preguntas analíticas detectadas previamente en una estructura orientada a la consulta.   
 
-El objetivo de esta etapa es diseñar un **modelo estrella (Star Schema)** que me permita organizar la información operacional de acuerdo con las necesidades de análisis identificadas durante la definición de la problemática y las preguntas de negocio. Este diseño servirá como referencia para determinar cómo estructuraré la información que posteriormente será almacenada en el **Data Warehouse**.
+Mientras que el OLTP prioriza la integridad transaccional, el modelo dimensional busca simplificar y acelerar el análisis de las ventas, la demanda, el inventario y el abastecimiento. Tomando como base las entidades del entorno operacional, se determinaron los procesos de negocio representados, la granularidad, las métricas y las dimensiones clave.   
 
-A diferencia del modelo operacional, cuyo propósito principal es registrar y gestionar las transacciones del negocio, mi modelo dimensional estará orientado al análisis y consulta de la información. Con este diseño busco facilitar el análisis de las ventas, el comportamiento de la demanda, el desempeño del inventario y los procesos relacionados con el abastecimiento.
-
-Para construir el modelo partiré de las entidades, relaciones y datos que identifiqué durante el análisis del OLTP. A partir de estos elementos determinaré los procesos de negocio que serán representados, la granularidad de cada proceso, las tablas de hechos, las dimensiones y las métricas necesarias para responder a las preguntas de negocio planteadas.
-
-De esta manera, la arquitectura que planteo para el proyecto sigue el siguiente flujo:
+Esta fase da soporte al flujo general del proyecto:
 
 **OLTP → ETL → Data Warehouse → Power BI**
 
-Dentro de esta arquitectura, el **modelo estrella representa el diseño dimensional** que utilizaré para definir cómo se organizará la información analítica que posteriormente implementaré dentro del Data Warehouse.
+De este modo, el diseño dimensional establece las bases lógicas sobre las cuales se organizarán los datos que posteriormente poblarán el **Data Warehouse** y alimentarán los tableros de **Power BI**.
