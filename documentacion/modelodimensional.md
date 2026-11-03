@@ -48,11 +48,13 @@ Diseñé **DimItem** para centralizar el catálogo de productos dentro del Data 
 
 #### Propósito y Análisis Técnico
 
-Diseñé **DimCustomer** para consolidar el perfil de los compradores y permitir el análisis del comportamiento de la demanda por tipo de cliente y zona geográfica.
+Diseñé **DimCustomer** para consolidar el perfil de los compradores dentro del Data Warehouse, proporcionando una estructura que permita analizar el comportamiento de la demanda desde diferentes perspectivas, como el tipo de cliente y su ubicación geográfica.
 
-* **Claves:** Utilizo `SupplierKey` como clave sustituta (Surrogate Key) para el Data Warehouse y `SupplierID` como clave de negocio para mantener la trazabilidad con el sistema OLTP.
-* **Segmentación y Geografía:** Incluye `SupplierName` y `SupplierCategoryName` para agrupar proveedores por categoría, además de `DeliveryCityName`, `StateProvinceName` y `CountryName` para el análisis de distribución territorial y logística.
-* **Historial (SCD Tipo 2):** Incorporé `ValidFrom`, `ValidTo` e `IsCurrent` para rastrear cambios en la ubicación o categoría del proveedor en el tiempo sin distorsionar el historial de compras.
+- **Claves y Relaciones:** Utilizo `CustomerKey` como clave sustituta (*Surrogate Key*) para identificar cada registro dentro del Data Warehouse, mientras que `CustomerID` conserva la referencia a la clave de negocio del sistema OLTP, manteniendo la trazabilidad entre ambos sistemas.
+
+- **Segmentación y Geografía:** Incluye atributos descriptivos como `CustomerName` y `CustomerCategoryName`, que permiten identificar y segmentar a los clientes según su categoría. Además, incorpora información geográfica mediante `DeliveryCityName`, `StateProvinceName` y `CountryName`, facilitando el análisis de ventas, distribución territorial y comportamiento de la demanda por región.
+
+- **Gestión del Historial (SCD Tipo 2):** Implementé una estrategia de *Slowly Changing Dimension Tipo 2* mediante los campos `ValidFrom`, `ValidTo` e `IsCurrent`. Esto permite conservar las distintas versiones de un cliente cuando cambian determinados atributos, como su categoría o ubicación geográfica, manteniendo la trazabilidad histórica y evitando sobrescribir información necesaria para los análisis temporales.
 
     </td>
   </tr>
@@ -69,12 +71,13 @@ Diseñé **DimCustomer** para consolidar el perfil de los compradores y permitir
 
 #### Propósito y Análisis Técnico
 
-Diseñé **DimSupplier** para gestionar la información de los proveedores y facilitar el análisis de la cadena de suministro, tiempos de entrega y procedencia de las compras de importación.
+Diseñé **DimSupplier** para centralizar la información de los proveedores dentro del Data Warehouse, proporcionando una estructura que permita analizar la cadena de suministro, los tiempos de entrega y la procedencia geográfica de las compras, facilitando la evaluación y el seguimiento de las relaciones comerciales con los proveedores.
 
-* **Claves:** Utilizo `SupplierKey` como clave sustituta (Surrogate Key) para el Data Warehouse y `SupplierID` como clave de negocio para mantener la trazabilidad con el sistema OLTP.
-* **Atributos y Geografía:** Incluye `SupplierName` para la identificación de la empresa, `SupplierCategoryName` para la agrupación por categoría, y `DeliveryCityName`, `StateProvinceName` y `CountryName` para definir la jerarquía geográfica de entrega.
-* **Historial (SCD Tipo 2):** Incorporé `ValidFrom`, `ValidTo` e `IsCurrent` para auditar y mantener el historial de cambios en los datos del proveedor a lo largo del tiempo sin distorsionar el análisis analítico pasados.
+- **Claves y Relaciones:** Utilizo `SupplierKey` como clave sustituta (*Surrogate Key*) para identificar cada registro dentro del Data Warehouse, mientras que `SupplierID` conserva la referencia a la clave de negocio del sistema OLTP, manteniendo la trazabilidad entre ambos sistemas.
 
+- **Atributos y Geografía:** Incluye atributos descriptivos como `SupplierName` y `SupplierCategoryName`, que permiten identificar y agrupar a los proveedores según su categoría. Además, incorpora información geográfica mediante `DeliveryCityName`, `StateProvinceName` y `CountryName`, estableciendo una jerarquía territorial que facilita el análisis de la procedencia de las compras y la distribución logística.
+
+- **Gestión del Historial (SCD Tipo 2):** Implementé una estrategia de *Slowly Changing Dimension Tipo 2* mediante los campos `ValidFrom`, `ValidTo` e `IsCurrent`. Esto permite conservar las distintas versiones de un proveedor cuando cambian determinados atributos, como su categoría o ubicación geográfica, manteniendo la trazabilidad histórica y evitando sobrescribir información necesaria para los análisis temporales.
     </td>
   </tr>
 </table>
