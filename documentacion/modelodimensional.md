@@ -81,3 +81,24 @@ Diseñé **DimSupplier** para centralizar la información de los proveedores den
     </td>
   </tr>
 </table>
+
+### DimDate (Dimensión de Tiempo)
+
+<table>
+  <tr>
+    <td width="35%" align="center">
+      <img src="../img/DimDate.png" alt="DimDate" width="100%">
+    </td>
+    <td width="65%" valign="top">
+
+#### Propósito y Análisis Técnico
+
+Diseñé **DimDate** como la dimensión temporal del modelo, permitiendo realizar análisis de tendencias, comportamiento de la demanda y estacionalidad de ventas a través de múltiples niveles de agregación[cite: 9].
+
+* **Claves y Fecha:** Utilizo `DateKey` como clave sustituta en formato numérico (ej. YYYYMMDD) y `FullDate` para mantener el valor de fecha estándar[cite: 9].
+* **Jerarquías Temporales:** Incluye granularidades por día (`DayNumberOfWeek`, `DayName`, `DayNumberOfMonth`, `DayNumberOfYear`)[cite: 9], semana (`ISOWeekNumber`, `ISOYear`, `ISOYearWeek`, `WeekStartDate`, `WeekEndDate`)[cite: 9], mes (`MonthNumber`, `MonthName`, `MonthYear`, `MonthStartDate`, `MonthEndDate`)[cite: 9], trimestre (`Quarter`, `QuarterName`)[cite: 9] y año (`Year`)[cite: 9] para facilitar el drill-down en Power BI.
+* **Banderas y Calendario Laboral:** Incorporé atributos lógicos (`IsWeekend`, `IsWorkingDay`, `IsHoliday`, `HolidayName`)[cite: 9] para filtrar días laborables y festivos, además de marcadores de inicio/fin de periodo (`IsFirstDayOfMonth`, `IsLastDayOfMonth`, `IsFirstDayOfQuarter`, `IsLastDayOfQuarter`)[cite: 9] para cálculos analíticos avanzados de cierre.
+
+    </td>
+  </tr>
+</table>
