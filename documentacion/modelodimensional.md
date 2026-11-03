@@ -25,11 +25,11 @@ A continuación, detallo las tablas de dimensiones que diseñé para enriquecer 
 
 #### Propósito y Análisis Técnico
 
-Diseñé **DimItem** para centralizar la información descriptiva de los productos y analizar ventas y demanda por categoría, empaque y proveedor.
+Diseñé **DimItem** para centralizar el catálogo de productos y analizar las ventas y la demanda por categoría, empaque, precio y proveedor.
 
-* **Claves:** `ItemKey` actúa como clave sustituta (Surrogate Key) para el modelo analítico y `StockItemID` como clave de negocio para mantener trazabilidad con el OLTP.
-* **Atributos y Jerarquías:** Incluye `StockItemName` y `StockGroupName` para agrupaciones en Power BI, junto con métricas de precios (`UnitPrice`) y empaques (`UnitPackage`, `QuantityPerOuter`).
-* **Historial (SCD Tipo 2):** Incorporé `ValidFrom`, `ValidTo` e `IsCurrent` para registrar cambios en los atributos del producto a lo largo del tiempo sin alterar el contexto histórico de las ventas.
+* **Claves y Relaciones:** Utilizo `ItemKey` como clave sustituta (Surrogate Key) para el Data Warehouse, `StockItemID` como clave de negocio con el OLTP y `SupplierKey` para vincular directamente con la dimensión de proveedores.
+* **Atributos y Jerarquías:** Incluye `StockItemName` y `StockGroupName` para agrupaciones en Power BI, además de precios (`UnitPrice`, `RecommendedRetailPrice`) y especificaciones de empaque (`UnitPackage`, `OuterPackage`, `QuantityPerOuter`).
+* **Historial (SCD Tipo 2):** Incorporé `ValidFrom`, `ValidTo` e `IsCurrent` para registrar cambios en los precios o categorías del producto sin alterar el historial analítico.
 
     </td>
   </tr>
