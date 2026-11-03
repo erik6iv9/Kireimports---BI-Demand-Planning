@@ -95,6 +95,8 @@ Diseñé **DimSupplier** para centralizar la información de los proveedores den
 
 Diseñé **DimDate** como la dimensión temporal del modelo, proporcionando una estructura que permita analizar tendencias, comportamiento de la demanda y patrones de estacionalidad en las ventas a través de diferentes periodos y niveles de agregación.
 
+- **Origen y Construcción:** A diferencia de las dimensiones obtenidas a partir de las entidades del sistema OLTP, `DimDate` fue diseñada y construida específicamente para el Data Warehouse. Su generación es independiente de las fuentes operacionales, mediante un proceso que permite crear un calendario estructurado con los atributos temporales necesarios para los análisis históricos y de planificación.
+
 - **Claves y Fecha:** Utilizo `DateKey` como clave sustituta (*Surrogate Key*), representada mediante un valor numérico en formato `YYYYMMDD`, mientras que `FullDate` conserva el valor de fecha estándar para facilitar las operaciones y relaciones temporales dentro del Data Warehouse.
 
 - **Jerarquías Temporales:** Incluye atributos que permiten organizar y analizar la información en diferentes granularidades: día (`DayNumberOfWeek`, `DayName`, `DayNumberOfMonth`, `DayNumberOfYear`), semana (`ISOWeekNumber`, `ISOYear`, `ISOYearWeek`, `WeekStartDate`, `WeekEndDate`), mes (`MonthNumber`, `MonthName`, `MonthYear`, `MonthStartDate`, `MonthEndDate`), trimestre (`Quarter`, `QuarterName`) y año (`Year`). Esta estructura facilita la navegación entre periodos (*Drill-down*) y la comparación de resultados temporales en Power BI.
