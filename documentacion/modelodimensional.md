@@ -93,11 +93,13 @@ Diseñé **DimSupplier** para centralizar la información de los proveedores den
 
 #### Propósito y Análisis Técnico
 
-Diseñé **DimDate** como la dimensión temporal del modelo, permitiendo realizar análisis de tendencias, comportamiento de la demanda y estacionalidad de ventas a través de múltiples niveles de agregación[cite: 9].
+Diseñé **DimDate** como la dimensión temporal del modelo, proporcionando una estructura que permita analizar tendencias, comportamiento de la demanda y patrones de estacionalidad en las ventas a través de diferentes periodos y niveles de agregación.
 
-* **Claves y Fecha:** Utilizo `DateKey` como clave sustituta en formato numérico (ej. YYYYMMDD) y `FullDate` para mantener el valor de fecha estándar[cite: 9].
-* **Jerarquías Temporales:** Incluye granularidades por día (`DayNumberOfWeek`, `DayName`, `DayNumberOfMonth`, `DayNumberOfYear`)[cite: 9], semana (`ISOWeekNumber`, `ISOYear`, `ISOYearWeek`, `WeekStartDate`, `WeekEndDate`)[cite: 9], mes (`MonthNumber`, `MonthName`, `MonthYear`, `MonthStartDate`, `MonthEndDate`)[cite: 9], trimestre (`Quarter`, `QuarterName`)[cite: 9] y año (`Year`)[cite: 9] para facilitar el drill-down en Power BI.
-* **Banderas y Calendario Laboral:** Incorporé atributos lógicos (`IsWeekend`, `IsWorkingDay`, `IsHoliday`, `HolidayName`)[cite: 9] para filtrar días laborables y festivos, además de marcadores de inicio/fin de periodo (`IsFirstDayOfMonth`, `IsLastDayOfMonth`, `IsFirstDayOfQuarter`, `IsLastDayOfQuarter`)[cite: 9] para cálculos analíticos avanzados de cierre.
+- **Claves y Fecha:** Utilizo `DateKey` como clave sustituta (*Surrogate Key*), representada mediante un valor numérico en formato `YYYYMMDD`, mientras que `FullDate` conserva el valor de fecha estándar para facilitar las operaciones y relaciones temporales dentro del Data Warehouse.
+
+- **Jerarquías Temporales:** Incluye atributos que permiten organizar y analizar la información en diferentes granularidades: día (`DayNumberOfWeek`, `DayName`, `DayNumberOfMonth`, `DayNumberOfYear`), semana (`ISOWeekNumber`, `ISOYear`, `ISOYearWeek`, `WeekStartDate`, `WeekEndDate`), mes (`MonthNumber`, `MonthName`, `MonthYear`, `MonthStartDate`, `MonthEndDate`), trimestre (`Quarter`, `QuarterName`) y año (`Year`). Esta estructura facilita la navegación entre periodos (*Drill-down*) y la comparación de resultados temporales en Power BI.
+
+- **Banderas y Calendario Laboral:** Incorporé atributos lógicos como `IsWeekend`, `IsWorkingDay`, `IsHoliday` y `HolidayName` para identificar fines de semana, días laborables y festivos. Además, incluí indicadores de inicio y cierre de periodos (`IsFirstDayOfMonth`, `IsLastDayOfMonth`, `IsFirstDayOfQuarter`, `IsLastDayOfQuarter`), que permiten simplificar filtros y desarrollar cálculos analíticos relacionados con el seguimiento y comparación de periodos.
 
     </td>
   </tr>
