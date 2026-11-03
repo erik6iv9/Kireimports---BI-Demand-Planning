@@ -104,3 +104,7 @@ Diseñé **DimDate** como la dimensión temporal del modelo, proporcionando una 
     </td>
   </tr>
 </table>
+
+<h1>  Hechos  </h1>
+
+A continuación, presento las tablas de hechos que diseñé para registrar y cuantificar las principales operaciones del negocio, estableciendo las métricas necesarias para analizar el comportamiento de las ventas, la demanda y el desempeño del inventario. Estas tablas se relacionan con las dimensiones del modelo para facilitar el análisis de la actividad comercial y apoyar la toma de decisiones en la planificación del abastecimiento.
