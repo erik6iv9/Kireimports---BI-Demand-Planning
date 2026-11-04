@@ -1,8 +1,8 @@
 <h1>  Tablas de hechos y dimensiones  </h1>
 
-Con el análisis de la base de datos operacional (OLTP) concluido, el desarrollo avanza hacia el diseño del modelo dimensional. Este modelo traduce las necesidades de negocio y las preguntas analíticas detectadas previamente en una estructura orientada al a analisis.   
+Con el análisis de la base de datos operacional (OLTP) concluido, el desarrollo avanza hacia el diseño del modelo dimensional. Este modelo traduce las necesidades del negocio y las preguntas analíticas identificadas previamente en una estructura orientada al análisis de la información.
 
-Mientras que el OLTP prioriza la integridad transaccional, el modelo dimensional busca simplificar y acelerar el análisis de las ventas, la demanda, el inventario y el abastecimiento. Tomando como base las entidades del entorno operacional, se determinaron los procesos de negocio representados, la granularidad, las métricas y las dimensiones clave.   
+Mientras que el OLTP prioriza la integridad transaccional y la gestión de las operaciones, el modelo dimensional busca simplificar y optimizar el análisis de las ventas, la demanda, el inventario y el abastecimiento. A partir de las entidades del entorno operacional, se identificaron los procesos de negocio que serán representados, así como su granularidad, métricas y dimensiones clave.
 
 Esta fase da soporte al flujo general del proyecto:
 
