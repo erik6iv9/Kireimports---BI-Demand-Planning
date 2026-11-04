@@ -182,4 +182,52 @@ Diseñé **FactSalesOrderLines** para almacenar el detalle transaccional de las 
 
     </td>
   </tr>
-</table>v
+</table>
+
+### FactSalesLines (Tabla de Hechos de Líneas de Facturación de Venta)
+
+<table>
+  <tr>
+    <td width="35%" align="center">
+      <img src="../img/FactSalesLines.png" alt="FactSalesLines" width="100%">
+    </td>
+    <td width="65%" valign="top">
+
+#### Propósito y Análisis Técnico
+
+Diseñé **FactSalesLines** para almacenar el detalle transaccional de las facturas de venta dentro del Data Warehouse, proporcionando una fuente de información para analizar las ventas facturadas, los ingresos generados y el desempeño comercial de la empresa. Esta tabla permite evaluar los resultados financieros desde diferentes perspectivas, como producto, cliente y periodo, facilitando el seguimiento de los ingresos y la identificación de tendencias comerciales.
+
+- **Granularidad:** Establecí una granularidad a nivel de línea de factura, donde cada registro representa un producto o concepto individual facturado dentro de un documento de venta. Este nivel de detalle permite analizar cada artículo facturado de manera independiente y conservar su relación con la factura de origen.
+
+- **Claves y Relaciones:** Utilizo `InvoiceLineKey` como clave primaria para identificar cada registro de la tabla de hechos, mientras que `InvoiceID` conserva la referencia a la factura de origen. Además, incorporo `DateKey`, `ItemKey` y `CustomerKey` como claves foráneas (*Foreign Keys*), permitiendo relacionar cada línea facturada con las dimensiones de tiempo (`DimDate`), productos (`DimItem`) y clientes (`DimCustomer`).
+
+- **Métricas Financieras:** Almacena las medidas cuantitativas fundamentales para el análisis de ventas, como `Quantity`, que representa la cantidad de unidades facturadas, y `UnitPrice`, que registra el precio unitario aplicado en la transacción. Estas métricas permiten calcular los importes por línea de factura y desarrollar indicadores financieros y comerciales, como ingresos por producto, facturación por cliente y evolución de las ventas por periodo en Power BI.
+
+    </td>
+  </tr>
+</table>
+
+### FactPurchaseLines (Tabla de Hechos de Líneas de Órdenes de Compra)
+
+<table>
+  <tr>
+    <td width="35%" align="center">
+      <img src="../img/FactPurchaseLines.png" alt="FactPurchaseLines" width="100%">
+    </td>
+    <td width="65%" valign="top">
+
+#### Propósito y Análisis Técnico
+
+Diseñé **FactPurchaseLines** para almacenar el detalle transaccional de las órdenes de compra dentro del Data Warehouse, proporcionando información que permita analizar el proceso de abastecimiento, las compras de importación y el desempeño de los proveedores. Esta tabla facilita el seguimiento de las cantidades solicitadas y recibidas, los costos de adquisición y el cumplimiento de los compromisos de entrega, proporcionando una base para desarrollar análisis de abastecimiento y planeación de inventario.
+
+- **Granularidad:** Establecí una granularidad a nivel de línea de orden de compra, donde cada registro representa un producto específico solicitado a un proveedor dentro de una orden. Este nivel de detalle permite realizar el seguimiento individual de cada producto comprado y conservar su relación con la orden de origen.
+
+- **Claves y Relaciones:** Utilizo `PurchaseLineKey` como clave primaria para identificar cada registro de la tabla de hechos, mientras que `PurchaseOrderID` conserva la referencia a la orden de compra de origen. Además, incorporo `DateKey`, `ItemKey` y `SupplierKey` como claves foráneas (*Foreign Keys*), permitiendo relacionar cada línea de compra con las dimensiones de tiempo (`DimDate`), productos (`DimItem`) y proveedores (`DimSupplier`). También incluyo `LastReceiptDateKey` para identificar la fecha de la última recepción física de mercancía y facilitar el análisis temporal del abastecimiento.
+
+- **Métricas de Compra y Cumplimiento:** Almacena medidas cuantitativas fundamentales para el seguimiento de las compras, como `OrderedOuters`, que representa la cantidad de empaques solicitados; `ReceivedOuters`, que registra los empaques recibidos; y `ExpectedUnitPricePerOuter`, que establece el precio esperado por empaque. Estas métricas permiten comparar las cantidades solicitadas frente a las recibidas, analizar los costos de adquisición y evaluar el nivel de cumplimiento de los proveedores.
+
+- **Estado de la Línea:** Incorpora el indicador lógico `IsOrderLineFinalized` para identificar si una línea de orden de compra ha sido completada o continúa pendiente de recepción. Este atributo facilita la identificación de compromisos de abastecimiento pendientes y el seguimiento del estado de las compras.
+
+    </td>
+  </tr>
+</table>
