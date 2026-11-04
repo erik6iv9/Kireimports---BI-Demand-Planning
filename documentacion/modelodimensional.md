@@ -122,13 +122,64 @@ A continuación, presento las tablas de hechos que diseñé para registrar y cua
 
 #### Propósito y Análisis Técnico
 
-Diseñé **FactStockHoldings** para monitorear los niveles de stock y el estado del inventario, facilitando el análisis de disponibilidad, valoración de almacén y planeación de reabastecimiento[cite: 10].
+Diseñé **FactStockHoldings** para registrar y monitorear los niveles de inventario dentro del Data Warehouse, proporcionando información que permita analizar la disponibilidad de productos, la valoración del inventario y las necesidades de reabastecimiento. Esta tabla de hechos constituye una base para desarrollar análisis de desempeño del inventario y apoyar la toma de decisiones en la planeación de abastecimiento.
 
-* **Granularidad:** Un registro representa el estado diario del inventario por cada producto (nivel de detalle: **1 producto por fecha/día**).
-* **Claves y Relaciones:** Contiene `StockHoldingKey` como clave primaria de la tabla de hechos, así como `ItemKey` y `DateKey` como claves foráneas (FK) para conectar con las dimensiones de producto y tiempo[cite: 10].
-* **Métricas y Niveles de Stock:** Almacena variables cuantitativas clave como las existencias disponibles (`QuantityOnHand`)[cite: 10], el último costo registrado (`LastCostPrice`)[cite: 10], la cantidad en el último recuento físico (`LastStocktakeQuantity`)[cite: 10] y el objetivo ideal de stock (`TargetStockLevel`)[cite: 10].
-* **Auditoría:** Incluye `LastEditedWhen` para el seguimiento y control de la última actualización del registro[cite: 10].
+- **Granularidad:** Establecí una granularidad de un registro por producto y fecha, representando el estado del inventario de cada artículo en un momento determinado. Este nivel de detalle permite realizar un seguimiento temporal de las existencias y comparar su comportamiento entre diferentes periodos.
+
+- **Claves y Relaciones:** Utilizo `StockHoldingKey` como clave primaria para identificar cada registro de la tabla de hechos, mientras que `ItemKey` y `DateKey` funcionan como claves foráneas (*Foreign Keys*), permitiendo relacionar las métricas de inventario con las dimensiones de producto (`DimItem`) y tiempo (`DimDate`).
+
+- **Métricas y Niveles de Stock:** Almacena medidas cuantitativas fundamentales para el análisis del inventario, como `QuantityOnHand`, que representa las existencias disponibles; `LastCostPrice`, que permite estimar el valor del inventario; `LastStocktakeQuantity`, que registra la cantidad identificada en el último recuento físico; y `TargetStockLevel`, que establece el nivel objetivo de existencias para evaluar posibles necesidades de reabastecimiento.
+
+- **Auditoría y Trazabilidad:** Incorpora `LastEditedWhen` para identificar la fecha y hora de la última modificación del registro, facilitando el seguimiento de las actualizaciones y el control de la información almacenada.
 
     </td>
   </tr>
 </table>
+
+### FactStockItemTransactions (Tabla de Hechos de Transacciones de Inventario)
+
+<table>
+  <tr>
+    <td width="35%" align="center">
+      <img src="../img/FactStockItemTransactions.png" alt="FactStockItemTransactions" width="100%">
+    </td>
+    <td width="65%" valign="top">
+
+#### Propósito y Análisis Técnico
+
+Diseñé **FactStockItemTransactions** para registrar el historial de movimientos de inventario dentro del Data Warehouse, proporcionando trazabilidad sobre las entradas, salidas y ajustes de existencias. Esta tabla permite analizar el flujo de productos a lo largo del tiempo, identificar patrones de movimiento y generar información relevante para evaluar la rotación del inventario y apoyar la planeación de abastecimiento.
+
+- **Granularidad:** Establecí una granularidad a nivel de transacción individual, donde cada registro representa un movimiento específico de un producto en un momento determinado. Este nivel de detalle permite identificar y analizar cada operación de inventario de manera independiente, conservando su contexto operativo y documental.
+
+- **Claves y Relaciones:** Utilizo `StockItemTransactionKey` como clave primaria para identificar cada registro de la tabla de hechos. Además, incorporo `ItemKey` y `DateKey` como claves foráneas (*Foreign Keys*) para relacionar los movimientos con las dimensiones de producto (`DimItem`) y tiempo (`DimDate`). También incluyo `CustomerKey` y `SupplierKey` para identificar las entidades comerciales involucradas en las transacciones, cuando corresponda.
+
+- **Atributos de Negocio y Métricas:** Incorpora referencias documentales mediante `PurchaseOrder` e `Invoice`, que permiten mantener la trazabilidad con los documentos de origen. Asimismo, utiliza `TransactionType` para clasificar la naturaleza del movimiento y `Quantity` para cuantificar el volumen de productos involucrados en cada operación. Estos atributos permiten analizar las entradas, salidas y ajustes de inventario desde diferentes perspectivas.
+
+- **Auditoría Temporal:** Incluye `TransactionOccurredWhen` para registrar la fecha y hora exactas (*Timestamp*) en que ocurrió cada movimiento, permitiendo conservar la secuencia temporal de las operaciones y realizar análisis detallados de la actividad del inventario.
+
+    </td>
+  </tr>
+</table>
+
+### FactSalesOrderLines (Tabla de Hechos de Líneas de Ordenes de Venta)
+
+<table>
+  <tr>
+    <td width="35%" align="center">
+      <img src="../img/FactSalesOrderLines.png" alt="FactSalesOrderLines" width="100%">
+    </td>
+    <td width="65%" valign="top">
+
+#### Propósito y Análisis Técnico
+
+Diseñé **FactSalesOrderLines** para almacenar el detalle transaccional de las órdenes de venta dentro del Data Warehouse, proporcionando una fuente de información que permita analizar el volumen de pedidos, el comportamiento de la demanda y el desempeño comercial. Esta tabla constituye una base para evaluar las ventas desde diferentes perspectivas, como producto, cliente y periodo, facilitando el desarrollo de indicadores y análisis en Power BI.
+
+- **Granularidad:** Establecí una granularidad a nivel de línea de orden de venta, donde cada registro representa un producto específico solicitado dentro de una orden. Este nivel de detalle permite analizar individualmente los productos incluidos en cada pedido y conservar la relación entre las operaciones comerciales.
+
+- **Claves y Relaciones:** Utilizo `OrderLineKey` como clave primaria para identificar cada registro de la tabla de hechos, mientras que `OrderID` conserva la referencia a la orden de venta de origen. Además, incorporo `DateKey`, `CustomerKey` e `ItemKey` como claves foráneas (*Foreign Keys*), permitiendo relacionar cada línea de venta con las dimensiones de tiempo (`DimDate`), clientes (`DimCustomer`) y productos (`DimItem`).
+
+- **Métricas Transaccionales:** Almacena las medidas cuantitativas fundamentales para el análisis comercial, como `Quantity`, que representa la cantidad de unidades solicitadas, y `UnitPrice`, que registra el precio unitario del producto en la orden. Estas métricas permiten calcular el importe de cada línea de venta y desarrollar indicadores agregados, como volumen de ventas, ingresos por producto y comportamiento de la demanda por periodo.
+
+    </td>
+  </tr>
+</table>v
