@@ -69,7 +69,7 @@ El desarrollo se estructuró de manera secuencial, siguiendo el flujo de transfo
 <h3>Diseño e implementación del Data Warehouse</h3>
 
 - Diseño de estructuras dimensionales: tablas de hechos y dimensiones → [Ver documentación](documentacion/modelodimensional.md)
-- Diseño de esquemas estrella por proceso de negocio → [Ver documentación](documentacion/modeloprocesonegocio.md) 
+- Diseño de esquemas estrella por proceso de negocio → [Ver documentación](documentacion/modeladoprocesonegocio.md) 
 - Diseño del modelo dimensional integrado (esquema constelación) → [Ver documentación]()
 - Implementación del Data Warehouse → [Ver documentación]
 - Desarrollo del proceso ETL → [Ver documentación]
