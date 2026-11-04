@@ -44,7 +44,7 @@ De esta manera, la solución busca integrar capacidades propias de <ins>Business
 
 Para llevar a cabo este proyecto, se integraron distintas herramientas y conocimientos técnicos, analíticos y de negocio de la siguiente manera:
 
-<ins>SQL / SQL Server</ins>: Utilizado para gestionar y analizar la base de datos transaccional (OLTP), identificar entidades y relaciones entre las tablas operacionales, realizar consultas y transformaciones de datos, y <ins>diseñar e implementar un Data Warehouse mediante un modelo dimensional basado en una arquitectura de constelación de hechos (Fact Constellation), integrando múltiples esquemas estrella mediante dimensiones conformadas.</ins>.
+<ins>SQL / SQL Server</ins>: Utilizado para gestionar y analizar la base de datos transaccional (OLTP), identificar entidades y relaciones entre las tablas operacionales, realizar consultas y transformaciones de datos y <ins>diseñar e implementar un Data Warehouse mediante un modelo dimensional basado en una arquitectura de constelación de hechos (Fact Constellation), integrando múltiples esquemas estrella mediante dimensiones conformadas.</ins>.
 
 <ins>Python</ins>: Empleado para automatizar procesos <ins>ETL (Extracción, Transformación y Carga)</ins>, realizar la preparación y transformación de datos, trabajar con <ins>series temporales</ins>, analizar el comportamiento histórico de la demanda y desarrollar modelos de <ins>Forecasting</ins>, incluyendo la evaluación de los pronósticos.
 
