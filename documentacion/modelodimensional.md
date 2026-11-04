@@ -110,3 +110,25 @@ Diseñé **DimDate** como la dimensión temporal del modelo, proporcionando una 
 <h1>  Hechos  </h1>
 
 A continuación, presento las tablas de hechos que diseñé para registrar y cuantificar las principales operaciones del negocio, estableciendo las métricas necesarias para analizar el comportamiento de las ventas, la demanda y el desempeño del inventario. Estas tablas se relacionan con las dimensiones del modelo para facilitar el análisis de la actividad comercial y apoyar la toma de decisiones en la planificación del abastecimiento.
+
+### FactStockHoldings (Tabla de Hechos de Inventario)
+
+<table>
+  <tr>
+    <td width="35%" align="center">
+      <img src="../img/FactStockHoldings.png" alt="FactStockHoldings" width="100%">
+    </td>
+    <td width="65%" valign="top">
+
+#### Propósito y Análisis Técnico
+
+Diseñé **FactStockHoldings** para monitorear los niveles de stock y el estado del inventario, facilitando el análisis de disponibilidad, valoración de almacén y planeación de reabastecimiento[cite: 10].
+
+* **Granularidad:** Un registro representa el estado diario del inventario por cada producto (nivel de detalle: **1 producto por fecha/día**).
+* **Claves y Relaciones:** Contiene `StockHoldingKey` como clave primaria de la tabla de hechos, así como `ItemKey` y `DateKey` como claves foráneas (FK) para conectar con las dimensiones de producto y tiempo[cite: 10].
+* **Métricas y Niveles de Stock:** Almacena variables cuantitativas clave como las existencias disponibles (`QuantityOnHand`)[cite: 10], el último costo registrado (`LastCostPrice`)[cite: 10], la cantidad en el último recuento físico (`LastStocktakeQuantity`)[cite: 10] y el objetivo ideal de stock (`TargetStockLevel`)[cite: 10].
+* **Auditoría:** Incluye `LastEditedWhen` para el seguimiento y control de la última actualización del registro[cite: 10].
+
+    </td>
+  </tr>
+</table>
