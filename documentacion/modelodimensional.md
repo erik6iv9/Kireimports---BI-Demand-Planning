@@ -130,8 +130,6 @@ Diseñé **FactStockHoldings** para registrar y monitorear los niveles de invent
 
 - **Métricas y Niveles de Stock:** Almacena medidas cuantitativas fundamentales para el análisis del inventario, como `QuantityOnHand`, que representa las existencias disponibles; `LastCostPrice`, que permite estimar el valor del inventario; `LastStocktakeQuantity`, que registra la cantidad identificada en el último recuento físico; y `TargetStockLevel`, que establece el nivel objetivo de existencias para evaluar posibles necesidades de reabastecimiento.
 
-- **Auditoría y Trazabilidad:** Incorpora `LastEditedWhen` para identificar la fecha y hora de la última modificación del registro, facilitando el seguimiento de las actualizaciones y el control de la información almacenada.
-
     </td>
   </tr>
 </table>
