@@ -6,4 +6,14 @@ Estas representaciones constituyen la base del diseño dimensional del Data Ware
 
 Finalmente, al término de este documento se presenta el diseño dimensional integrado del Data Warehouse, representado mediante el modelo constelación que reúne los diferentes procesos de negocio en una arquitectura analítica unificada.
 
-### Modelo Estrella de Inventario (FactStockHoldings)
+# Modelo Dimensional: Daily Inventory Snapshot Data Mart
+
+## 📌 Descripción General
+Este modelo en estrella (*Star Schema*) está diseñado para el análisis cuantitativo, seguimiento y valoración periódica de los niveles de inventario. Implementa un patrón de **hechos de instantánea periódica (*Periodic Snapshot Fact Table*)** que registra el estado diario del stock por producto, facilitando el monitoreo de disponibilidad, niveles de reabastecimiento y valoración de activos en bodega a lo largo del tiempo.
+
+---
+
+## 🏛️ Arquitectura del Modelo
+
+* **Grano del Modelo:** Un registro por cada producto (`ItemKey`) por cada fecha de corte diaria (`DateKey`).
+* **Tipo de Esquema:** Estrella (*Star Schema*) estandarizado bajo metodología Kimball.
