@@ -8,6 +8,10 @@ Finalmente, al término de este documento se presenta el diseño dimensional int
 
 # Modelo Dimensional: Daily Inventory Snapshot Data Mart
 
+<p align="center">
+  <img src="../img/wwi.png" width="800" alt="WideWorldImporters sql server esquema">
+</p>
+
 ## 📌 Descripción General
 Este modelo en estrella (*Star Schema*) está diseñado para el análisis cuantitativo, seguimiento y valoración periódica de los niveles de inventario. Implementa un patrón de **hechos de instantánea periódica (*Periodic Snapshot Fact Table*)** que registra el estado diario del stock por producto, facilitando el monitoreo de disponibilidad, niveles de reabastecimiento y valoración de activos en bodega a lo largo del tiempo.
 
