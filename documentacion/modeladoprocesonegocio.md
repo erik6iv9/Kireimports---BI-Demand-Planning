@@ -9,7 +9,7 @@ Finalmente, al término de este documento se presenta el diseño dimensional int
 # Modelo Dimensional: Daily Inventory Snapshot Data Mart
 
 <p align="center">
-  <img src="../img/wwi.png" width="800" alt="WideWorldImporters sql server esquema">
+  <img src="../img/StartInventario.png" width="800" alt="WideWorldImporters sql server esquema">
 </p>
 
 ## 📌 Descripción General
@@ -21,3 +21,10 @@ Este modelo en estrella (*Star Schema*) está diseñado para el análisis cuanti
 
 * **Grano del Modelo:** Un registro por cada producto (`ItemKey`) por cada fecha de corte diaria (`DateKey`).
 * **Tipo de Esquema:** Estrella (*Star Schema*) estandarizado bajo metodología Kimball.
+
+Casos de Uso del Negocio
+
+1. **Valoración de Inventario:** Cálculo del valor total de activos en bodega (QuantityOnHand x LastCostPrice) en cualquier fecha o cierre de mes.
+2. **Control de Abastecimiento:** Monitoreo del porcentaje de cumplimiento frente al nivel objetivo (QuantityOnHand vs TargetStockLevel).
+3. **Auditoría y Mermas:** Comparativa entre el stock teórico en sistema y el conteo físico real (`LastStocktakeQuantity`).
+4. **Análisis de Tendencias:** Evaluación de la variación en los niveles de stock diario comparando períodos hábiles contra festivos o fines de semana.
