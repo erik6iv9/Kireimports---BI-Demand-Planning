@@ -118,45 +118,41 @@ Implementa un patrón de **hechos de transacciones (*****Transaction Fact Table*
   <img src="../img/StartFactSalesOrderLines.png" width="800" alt="startesquemaorders">
 </p>
 
-## 1\. Descripción General
 
-Este modelo en estrella (*Star Schema*) está diseñado para el análisis comercial, de ingresos y de rendimiento de ventas.
+### ​1. Descripción General
 
-Implementa un patrón de **hechos de transacciones por línea de orden (*****Transactional Fact Table*****)**, el cual registra cada línea individual dentro de los pedidos de venta realizados por los clientes. Esto permite analizar con precisión los volúmenes de comercialización, el comportamiento de compra de los clientes y la facturación desglosada por producto a lo largo del tiempo.
+​Este modelo en estrella (*Star Schema*) está diseñado específicamente para capturar y analizar la **demanda de los clientes a través del proceso de órdenes de venta**, constituyéndose como la fuente analítica fundamental para la **planeación de la demanda** (*Demand Planning*).
 
-## 2\. Arquitectura del Modelo
+​Implementa un patrón de **tabla de hechos transaccional por línea de orden** (*Transactional Fact Table*), registrando cada unidad de demanda individual solicitada. Esta alta granularidad permite a los planeadores de la cadena de suministro analizar los volúmenes reales de pedidos, detectar patrones de estacionalidad, evaluar la variabilidad del consumo y proyectar requerimientos futuros con precisión.
 
--   **Grano del Modelo:** Un registro representa una línea individual de producto (`ItemKey`) dentro de una orden de venta específica (`OrderID`), asociada a un cliente (`CustomerKey`) y una fecha de transacción (`DateKey`).
--   **Tipo de Esquema:** Modelo estrella (*Star Schema*), siguiendo los principios de modelado dimensional de Ralph Kimball.
--   **Tabla de Hechos:** `FactSalesOrderLines`.
--   **Dimensiones:**
--   -   `DimCustomer` (Clientes)
-    -   `DimItem` (Productos)
-    -   `DimDate` (Tiempo)
--   **Tipo de Hecho:** Transaccional por línea de detalle (*Transactional Fact Table*).
+### ​2. Arquitectura del Modelo
 
-### Integridad y granularidad
+-   ​**Grano del Modelo:** Cada registro representa una línea individual de producto demandada (ItemKey) dentro de una orden de venta específica (OrderID), vinculada a un cliente (CustomerKey) y a la fecha exacta en que se generó la necesidad (DateKey).
+-   ​**Tipo de Esquema:** Modelo estrella (*Star Schema*), bajo los principios de diseño dimensional de Ralph Kimball.
+-   ​**Tabla de Hechos:** FactSalesOrderLines (Hechos de líneas de órdenes de venta como señal de demanda).
+-   ​**Dimensiones Clave:**
+-   -   ​DimCustomer (Clientes / Canales de distribución)
+    -   ​DimItem (Catálogo de productos y jerarquía de inventarios)
+    -   ​DimDate (Dimensión de tiempo para análisis de estacionalidad y horizonte temporal)
+-   ​**Integridad y Trazabilidad (SCD Tipo 2):** Las dimensiones principales implementan **Slowly Changing Dimensions Tipo 2** (ValidFrom, ValidTo, IsCurrent). Esto es crítico para la planeación de la demanda, ya que garantiza que el análisis histórico refleje las características del cliente o del producto exactamente como estaban vigentes en el momento en que se originó la orden, evitando distorsiones en las métricas de consumo histórico.
 
--   Cada fila corresponde a una línea de detalle comercial dentro de un pedido, conectando las dimensiones clave de negocio.
--   Las dimensiones principales incorporan gestión de cambios históricos mediante **SCD Tipo 2** (`ValidFrom`, `ValidTo`, `IsCurrent`), lo que garantiza que las ventas históricas mantengan los atributos vigentes del cliente o producto al momento de la transacción.
+### ​3. Métricas y Atributos de Soporte a la Demanda
 
-## 3\. Métricas y Atributos de Análisis
+-   ​**Métricas Cuantitativas (Drivers de Demanda):**
+-   -   ​Quantity: Métrica primaria de volumen. Representa la cantidad exacta de unidades demandadas por línea de orden, siendo el insumo base para calcular la demanda histórica y construir pronósticos.
+    -   ​UnitPrice: Precio unitario asociado a la transacción (útil para ponderar la criticidad o valor monetario de la demanda).
+-   ​**Atributos de Control y Contexto:**
+-   -   ​OrderLineKey: Identificador único de la línea de detalle (Clave primaria).
+    -   ​OrderID: Identificador del pedido global, fundamental para analizar el tamaño medio de los lotes de pedido (*Order Batching*).
 
--   **Métricas Cuantitativas:**
--   -   `Quantity`: Cantidad de unidades del producto vendidas en esa línea de orden.
-    -   `UnitPrice`: Precio unitario de venta aplicado al artículo en la transacción.
--   **Atributos de Control y Descriptivos:**
--   -   `OrderLineKey`: Identificador único de la línea de orden (Clave primaria de la tabla de hechos).
-    -   `OrderID`: Identificador del pedido general al que pertenece la línea.
+### ​4. Casos de Uso en Planeación de la Demanda
 
-## 4\. Casos de Uso del Negocio
+-   ​**Línea Base para Pronósticos (*****Demand Forecasting*****):** Proporciona la historia de transacciones limpia y estructurada necesaria para alimentar modelos de pronóstico estadístico (como suavizamiento exponencial, modelos ARIMA o análisis de tendencias) a nivel de SKU y cliente.
+-   ​**Análisis de Estacionalidad y Patrones Temporales:** Permite identificar ciclos de demanda diarios, semanales, mensuales o estacionales mediante la integración con DimDate, facilitando la anticipación de picos de consumo (*Demand Spikes*).
+-   ​**Segmentación de Clientes por Comportamiento de Compra:** Utiliza los atributos de DimCustomer para clasificar la demanda por zonas geográficas, canales o tipología de cliente, permitiendo ajustar los modelos de pronóstico a perfiles de consumo específicos.
+-   ​**Rotación y Comportamiento del Producto:** A través de DimItem, ayuda a identificar productos de alta rotación frente a artículos de demanda errática o intermitente, optimizando las políticas de inventario de seguridad.
 
-1.  **Análisis de Ingresos y Facturación:** Cálculo del valor total de ventas por línea o pedido mediante la multiplicación de $\\text{Quantity} \\times \\text{UnitPrice}$, facilitando reportes financieros y comerciales.
-2.  **Comportamiento y Segmentación de Clientes:** Evaluación del volumen de compras, categorías preferidas y distribución geográfica de los clientes utilizando los atributos de `DimCustomer`.
-3.  **Rendimiento de Productos:** Identificación de los artículos más vendidos, clasificación por grupos de stock (`StockGroupName`) y análisis de rotación comercial a través de `DimItem`.
-4.  **Análisis Temporal y Estacionalidad:** Monitoreo de tendencias de venta diarias, semanales, mensuales o por periodos hábiles/festivos gracias a la integración con `DimDate`.
+### ​5. Consideraciones Analíticas
 
-## 5\. Consideraciones Analíticas
-
--   Las métricas cuantitativas como `Quantity` son **completamente aditivas** a través de cualquier dimensión (producto, cliente, categoría temporal o geográfica).
--   El cálculo de ingresos totales o valor de ventas se realiza de manera dinámica multiplicando cantidad por precio unitario en cada línea, asegurando precisión analítica en herramientas de Business Intelligence como Power BI.
+-   ​**Aditividad de la Demanda:** La métrica Quantity es completamente aditiva a lo largo de cualquier eje dimensional (se puede sumar por categoría de producto, región de cliente, semana o año comercial), lo que permite evaluar el volumen de demanda en el nivel de agregación requerido para la toma de decisiones operativas o tácticas.
+-   ​**Visibilidad del Comportamiento de Pedidos:** Al conservar el detalle a nivel de línea de orden, el modelo permite estudiar no solo *cuánto* se vende, sino *cómo* se compone la demanda (cantidad de líneas por pedido, diversidad de productos solicitados por transacción), aportando inteligencia clave para la estrategia de inventarios y reabastecimiento.
