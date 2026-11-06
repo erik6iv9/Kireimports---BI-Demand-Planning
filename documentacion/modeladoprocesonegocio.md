@@ -123,7 +123,7 @@ Implementa un patrón de **hechos de transacciones (*****Transaction Fact Table*
 
 ​Este modelo en estrella (*Star Schema*) está diseñado específicamente para capturar y analizar la **demanda de los clientes a través del proceso de órdenes de venta**, constituyéndose como la fuente analítica fundamental para la **planeación de la demanda** (*Demand Planning*).
 
-​Implementa un patrón de **tabla de hechos transaccional por línea de orden** (*Transactional Fact Table*), registrando cada unidad de demanda individual solicitada. Esta alta granularidad permite a los planeadores de la cadena de suministro analizar los volúmenes reales de pedidos, detectar patrones de estacionalidad, evaluar la variabilidad del consumo y proyectar requerimientos futuros con precisión.
+​Implementa un patrón de **tabla de hechos transaccional por línea de orden** (*Transactional Fact Table*), registrando cada unidad de demanda individual solicitada. Esta alta granularidad permite analizar los volúmenes reales de pedidos, detectar patrones de estacionalidad, evaluar la variabilidad del consumo y proyectar requerimientos futuros con precisión.
 
 ### ​2. Arquitectura del Modelo
 
