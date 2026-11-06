@@ -21,7 +21,7 @@ Implementa un patrón de hechos de instantánea periódica (*Periodic Snapshot F
 ## 2\. Arquitectura del Modelo
 
 -   **Grano del Modelo:** Un registro representa un producto (`ItemKey`) en una fecha específica de captura diaria (`DateKey`).
--   **Tipo de Esquema:** Modelo estrella (*Star Schema*), siguiendo los principios de modelado dimensional de Ralph Kimball.
+-   **Tipo de Esquema:** Modelo estrella (*Star Schema*).
 -   **Tabla de Hechos:** `FactStockHoldings`.
 -   **Dimensiones:** `DimItem` (Productos) y `DimDate` (Tiempo).
 -   **Tipo de Hecho:** Fotografía periódica (*Periodic Snapshot*).
@@ -74,7 +74,7 @@ Implementa un patrón de **hechos de transacciones (*****Transaction Fact Table*
 ## 2\. Arquitectura del Modelo
 
 -   **Grano del Modelo:** Un registro representa una transacción individual de inventario (`StockItemTransactionKey`) asociada a un producto específico, un momento en el tiempo, y opcionalmente a un cliente o proveedor.
--   **Tipo de Esquema:** Modelo estrella (*Star Schema*), siguiendo los principios de modelado dimensional de Ralph Kimball.
+-   **Tipo de Esquema:** Modelo estrella (*Star Schema*).
 -   **Tabla de Hechos:** `FactStockItemTransactions`.
 -   **Dimensiones:**
 -   -   `DimItem` (Productos)
