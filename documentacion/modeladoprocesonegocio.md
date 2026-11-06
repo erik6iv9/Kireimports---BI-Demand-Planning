@@ -6,10 +6,10 @@ Estas representaciones constituyen la base del diseño dimensional del Data Ware
 
 Finalmente, al término de este documento se presenta el diseño dimensional integrado del Data Warehouse, representado mediante el modelo constelación que reúne los diferentes procesos de negocio en una arquitectura analítica unificada.
 
-# Modelo Dimensional: Daily Inventory Snapshot Data Mart
+# Modelo Dimensional: Daily Inventory Snapshot
 
 <p align="center">
-  <img src="../img/StartInventario.png" width="800" alt="WideWorldImporters sql server esquema">
+  <img src="../img/StarStockHoldings.png" width="800" alt="startesquemainventario">
 </p>
 
 ## 1\. Descripción General
@@ -61,7 +61,7 @@ Estas consideraciones permiten construir indicadores consistentes y evitar error
 # Modelo Estrella de Transacciones de Inventario (FactStockItemTransactions)
 
 <p align="center">
-  <img src="../img/StartInventario.png" width="800" alt="WideWorldImporters sql server esquema">
+  <img src="../img/StartStockItemTransactions.png" width="800" alt="startesquematransaccion">
 </p>
 
 
