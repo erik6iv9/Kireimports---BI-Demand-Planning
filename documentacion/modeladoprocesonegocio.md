@@ -55,3 +55,57 @@ Las métricas de inventario requieren un tratamiento específico durante la agre
 -   La valoración del inventario debe calcularse considerando las cantidades y los costos correspondientes a cada producto en la fecha analizada.
 
 Estas consideraciones permiten construir indicadores consistentes y evitar errores de agregación en las herramientas de análisis, especialmente en Power BI.
+
+
+
+# Modelo Estrella de Transacciones de Inventario (FactStockItemTransactions)
+
+<p align="center">
+  <img src="../img/StartInventario.png" width="800" alt="WideWorldImporters sql server esquema">
+</p>
+
+
+## 1\. Descripción General
+
+Este modelo en estrella (*Star Schema*) está diseñado para el análisis detallado y transaccional de los movimientos de inventario.
+
+Implementa un patrón de **hechos de transacciones (*****Transaction Fact Table*****)**, el cual registra cada evento o movimiento individual que afecta el inventario (como entradas por compras, salidas por ventas, ajustes o devoluciones). A diferencia de las tablas de instantáneas, este esquema permite analizar la dinámica operativa, el volumen de operaciones y la trazabilidad completa de los productos a medida que interactúan con clientes y proveedores a lo largo del tiempo.
+
+## 2\. Arquitectura del Modelo
+
+-   **Grano del Modelo:** Un registro representa una transacción individual de inventario (`StockItemTransactionKey`) asociada a un producto específico, un momento en el tiempo, y opcionalmente a un cliente o proveedor.
+-   **Tipo de Esquema:** Modelo estrella (*Star Schema*), siguiendo los principios de modelado dimensional de Ralph Kimball.
+-   **Tabla de Hechos:** `FactStockItemTransactions`.
+-   **Dimensiones:**
+-   -   `DimItem` (Productos)
+    -   `DimSupplier` (Proveedores)
+    -   `DimCustomer` (Clientes)
+    -   `DimDate` (Tiempo)
+-   **Tipo de Hecho:** Transaccional (*Transactional Fact Table*).
+
+### Integridad y granularidad
+
+-   Cada fila corresponde a un movimiento o evento discreto en el sistema transaccional.
+-   Las dimensiones integran control de cambios históricos mediante **SCD Tipo 2** (`ValidFrom`, `ValidTo`, `IsCurrent`), asegurando que las transacciones históricas conserven los atributos vigentes del producto, cliente o proveedor en el momento en que ocurrió el evento.
+
+## 3\. Métricas y Atributos de Análisis
+
+-   **Métrica Cuantitativa:**
+-   -   `Quantity`: Cantidad de unidades involucradas en la transacción (positiva para entradas/ingresos, negativa o dirigida según el tipo de movimiento).
+-   **Atributos Descriptivos y de Control:**
+-   -   `TransactionType`: Tipo de movimiento (por ejemplo, venta, compra, ajuste de inventario).
+    -   `PurchaseOrder`: Número de orden de compra asociado (si aplica).
+    -   `Invoice`: Número de factura comercial asociada (si aplica).
+    -   `TransactionOccurredWhen`: Marca de tiempo exacta en que ocurrió la transacción en el sistema fuente.
+
+## 4\. Casos de Uso del Negocio
+
+1.  **Análisis de Flujo de Inventario:** Monitoreo detallado de entradas y salidas de mercancía para entender la velocidad de rotación y el comportamiento operativo del almacén.
+2.  **Trazabilidad de Ventas y Compras:** Cruce directo entre el movimiento de stock y los actores involucrados (`DimCustomer` y `DimSupplier`), permitiendo auditar qué cliente adquirió qué producto o qué proveedor lo suministró.
+3.  **Auditoría de Documentos Comerciales:** Seguimiento de operaciones respaldadas por órdenes de compra e facturas (`PurchaseOrder`, `Invoice`) para conciliar inventarios físicos con registros administrativos.
+4.  **Análisis de Patrones Operativos por Período:** Evaluación de volúmenes de transacciones agrupados por días hábiles, fines de semana o cierres mensuales utilizando la robusta estructura de `DimDate`.
+
+## 5\. Consideraciones Analíticas
+
+-   `Quantity` es una métrica **completamente aditiva**: puede sumarse a través de cualquier dimensión (por producto, tipo de transacción, cliente, proveedor o período de tiempo) sin restricciones.
+-   Permite complementar los análisis de saldo estático (*Stock Holdings*) con la dinámica real de flujo de mercancías, formando una arquitectura de Data Warehouse madura bajo el enfoque Kimball.
