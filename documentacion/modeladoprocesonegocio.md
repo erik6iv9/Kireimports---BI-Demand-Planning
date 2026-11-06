@@ -108,4 +108,55 @@ Implementa un patrón de **hechos de transacciones (*****Transaction Fact Table*
 ## 5\. Consideraciones Analíticas
 
 -   `Quantity` es una métrica **completamente aditiva**: puede sumarse a través de cualquier dimensión (por producto, tipo de transacción, cliente, proveedor o período de tiempo) sin restricciones.
--   Permite complementar los análisis de saldo estático (*Stock Holdings*) con la dinámica real de flujo de mercancías, formando una arquitectura de Data Warehouse madura bajo el enfoque Kimball.
+-   Permite complementar los análisis de saldo estático (*Stock Holdings*) con la dinámica real de flujo de mercancías.
+
+
+
+# Modelo Estrella de Líneas de Órdenes de Ventas (FactSalesOrderLines)
+
+<p align="center">
+  <img src="../img/StartFactSalesOrderLines.png" width="800" alt="startesquemaorders">
+</p>
+
+## 1\. Descripción General
+
+Este modelo en estrella (*Star Schema*) está diseñado para el análisis comercial, de ingresos y de rendimiento de ventas.
+
+Implementa un patrón de **hechos de transacciones por línea de orden (*****Transactional Fact Table*****)**, el cual registra cada línea individual dentro de los pedidos de venta realizados por los clientes. Esto permite analizar con precisión los volúmenes de comercialización, el comportamiento de compra de los clientes y la facturación desglosada por producto a lo largo del tiempo.
+
+## 2\. Arquitectura del Modelo
+
+-   **Grano del Modelo:** Un registro representa una línea individual de producto (`ItemKey`) dentro de una orden de venta específica (`OrderID`), asociada a un cliente (`CustomerKey`) y una fecha de transacción (`DateKey`).
+-   **Tipo de Esquema:** Modelo estrella (*Star Schema*), siguiendo los principios de modelado dimensional de Ralph Kimball.
+-   **Tabla de Hechos:** `FactSalesOrderLines`.
+-   **Dimensiones:**
+-   -   `DimCustomer` (Clientes)
+    -   `DimItem` (Productos)
+    -   `DimDate` (Tiempo)
+-   **Tipo de Hecho:** Transaccional por línea de detalle (*Transactional Fact Table*).
+
+### Integridad y granularidad
+
+-   Cada fila corresponde a una línea de detalle comercial dentro de un pedido, conectando las dimensiones clave de negocio.
+-   Las dimensiones principales incorporan gestión de cambios históricos mediante **SCD Tipo 2** (`ValidFrom`, `ValidTo`, `IsCurrent`), lo que garantiza que las ventas históricas mantengan los atributos vigentes del cliente o producto al momento de la transacción.
+
+## 3\. Métricas y Atributos de Análisis
+
+-   **Métricas Cuantitativas:**
+-   -   `Quantity`: Cantidad de unidades del producto vendidas en esa línea de orden.
+    -   `UnitPrice`: Precio unitario de venta aplicado al artículo en la transacción.
+-   **Atributos de Control y Descriptivos:**
+-   -   `OrderLineKey`: Identificador único de la línea de orden (Clave primaria de la tabla de hechos).
+    -   `OrderID`: Identificador del pedido general al que pertenece la línea.
+
+## 4\. Casos de Uso del Negocio
+
+1.  **Análisis de Ingresos y Facturación:** Cálculo del valor total de ventas por línea o pedido mediante la multiplicación de $\\text{Quantity} \\times \\text{UnitPrice}$, facilitando reportes financieros y comerciales.
+2.  **Comportamiento y Segmentación de Clientes:** Evaluación del volumen de compras, categorías preferidas y distribución geográfica de los clientes utilizando los atributos de `DimCustomer`.
+3.  **Rendimiento de Productos:** Identificación de los artículos más vendidos, clasificación por grupos de stock (`StockGroupName`) y análisis de rotación comercial a través de `DimItem`.
+4.  **Análisis Temporal y Estacionalidad:** Monitoreo de tendencias de venta diarias, semanales, mensuales o por periodos hábiles/festivos gracias a la integración con `DimDate`.
+
+## 5\. Consideraciones Analíticas
+
+-   Las métricas cuantitativas como `Quantity` son **completamente aditivas** a través de cualquier dimensión (producto, cliente, categoría temporal o geográfica).
+-   El cálculo de ingresos totales o valor de ventas se realiza de manera dinámica multiplicando cantidad por precio unitario en cada línea, asegurando precisión analítica en herramientas de Business Intelligence como Power BI.
