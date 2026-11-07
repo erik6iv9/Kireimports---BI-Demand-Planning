@@ -172,7 +172,7 @@ Implementa un patrón de **hechos de transacciones (*****Transactional Fact Tabl
 ## 2\. Arquitectura del Modelo
 
 -   **Grano del Modelo:** Un registro representa una línea individual de producto (`ItemKey`) dentro de una factura específica (`InvoiceID`), asociada a un cliente (`CustomerKey`) y una fecha de emisión de factura (`DateKey`).
--   **Tipo de Esquema:** Modelo estrella (*Star Schema*), siguiendo los principios de modelado dimensional de Ralph Kimball.
+-   **Tipo de Esquema:** Modelo estrella (*Star Schema*).
 -   **Tabla de Hechos:** `FactSalesLines`.
 -   **Dimensiones:**
 -   -   `DimItem` (Productos)
