@@ -185,6 +185,8 @@ Estas tablas permiten analizar las ventas facturadas, las cantidades comercializ
 |---|---|---|
 | `CustomerID` | Cliente asociado. | Segmentar el análisis por cliente. |
 | `InvoiceDate` | Fecha de la factura. | Analizar la evolución temporal de la facturación. |
+| `OrderID` | Identificador de la orden de venta de origen. | Conectar las líneas de facturación con el pedido inicial para realizar análisis de cumplimiento (Gap Analysis entre demanda y venta facturada). |
+
 
 ### Tabla `Sales.InvoiceLines`
 
