@@ -187,7 +187,7 @@ Diseñé **FactSalesOrderLines** para almacenar el detalle transaccional de las 
 <table>
   <tr>
     <td width="35%" align="center">
-      <img src="../img/FactSalesLines.png" alt="FactSalesLines" width="100%">
+      <img src="../img/FactSalesLine.png" alt="FactSalesLines" width="100%">
     </td>
     <td width="65%" valign="top">
 
