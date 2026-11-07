@@ -128,11 +128,11 @@ Implementa un patrón de **hechos de transacciones (*****Transaction Fact Table*
 ### ​2. Arquitectura del Modelo
 
 -   ​**Grano del Modelo:** Cada registro representa una línea individual de producto demandada (ItemKey) dentro de una orden de venta específica (OrderID), vinculada a un cliente (CustomerKey) y a la fecha exacta en que se generó la necesidad (DateKey).
--   ​**Tipo de Esquema:** Modelo estrella (*Star Schema*), bajo los principios de diseño dimensional de Ralph Kimball.
+-   ​**Tipo de Esquema:** Modelo estrella (*Star Schema*).
 -   ​**Tabla de Hechos:** FactSalesOrderLines (Hechos de líneas de órdenes de venta como señal de demanda).
 -   ​**Dimensiones Clave:**
--   -   ​DimCustomer (Clientes / Canales de distribución)
-    -   ​DimItem (Catálogo de productos y jerarquía de inventarios)
+-   -   ​DimCustomer (Clientes)
+    -   ​DimItem (Catálogo de productos)
     -   ​DimDate (Dimensión de tiempo para análisis de estacionalidad y horizonte temporal)
 -   ​**Integridad y Trazabilidad (SCD Tipo 2):** Las dimensiones principales implementan **Slowly Changing Dimensions Tipo 2** (ValidFrom, ValidTo, IsCurrent). Esto es crítico para la planeación de la demanda, ya que garantiza que el análisis histórico refleje las características del cliente o del producto exactamente como estaban vigentes en el momento en que se originó la orden, evitando distorsiones en las métricas de consumo histórico.
 
