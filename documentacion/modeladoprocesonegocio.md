@@ -224,7 +224,7 @@ Implementa un patrón de **hechos de transacciones por línea de orden de compra
 ## 2\. Arquitectura del Modelo
 
 -   **Grano del Modelo:** Un registro representa una línea individual de producto (`ItemKey`) dentro de una orden de compra específica (`PurchaseOrderID`), asociada a un proveedor (`SupplierKey`) y una fecha de emisión o transacción (`DateKey`).
--   **Tipo de Esquema:** Modelo estrella (*Star Schema*), siguiendo los principios de modelado dimensional de Ralph Kimball.
+-   **Tipo de Esquema:** Modelo estrella (*Star Schema*).
 -   **Tabla de Hechos:** `FactPurchaseLines`.
 -   **Dimensiones:**
 -   -   `DimItem` (Productos)
