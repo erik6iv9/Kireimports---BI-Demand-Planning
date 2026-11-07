@@ -154,5 +154,55 @@ Implementa un patrón de **hechos de transacciones (*****Transaction Fact Table*
 
 ### ​5. Consideraciones Analíticas
 
+
+# Modelo Estrella de Líneas de Facturación (FactSalesLines)
+
+<p align="center">
+  <img src="../img/StartFactSalesLines.png" width="800" alt="startesquemasales">
+</p>
+
+## 1\. Descripción General
+
+Este modelo en estrella (*Star Schema*) está diseñado para el análisis financiero, de ingresos reales y de comportamiento comercial de ventas facturadas.
+
+Implementa un patrón de **hechos de transacciones (*****Transactional Fact Table*****)**, el cual registra de forma detallada cada línea de producto dentro de una factura comercial emitida a los clientes. A diferencia de las órdenes de venta proyectadas, este modelo refleja las transacciones completadas y facturadas, permitiendo auditar con precisión la facturación, el rendimiento por cliente y la comercialización de productos a lo largo del tiempo.
+
+## 2\. Arquitectura del Modelo
+
+-   **Grano del Modelo:** Un registro representa una línea individual de producto (`ItemKey`) dentro de una factura específica (`InvoiceID`), asociada a un cliente (`CustomerKey`) y una fecha de emisión de factura (`DateKey`).
+-   **Tipo de Esquema:** Modelo estrella (*Star Schema*), siguiendo los principios de modelado dimensional de Ralph Kimball.
+-   **Tabla de Hechos:** `FactSalesLines`.
+-   **Dimensiones:**
+-   -   `DimItem` (Productos)
+    -   `DimCustomer` (Clientes)
+    -   `DimDate` (Tiempo)
+-   **Tipo de Hecho:** Transaccional (*Transactional Fact Table*).
+
+### Integridad y granularidad
+
+-   Cada fila corresponde a una línea de detalle comercial facturada, conectando las dimensiones clave de negocio mediante claves foráneas.
+-   Las dimensiones incorporan control de cambios históricos mediante **SCD Tipo 2** (`ValidFrom`, `ValidTo`, `IsCurrent`), asegurando que las facturas históricas mantengan los atributos vigentes del cliente o producto en el momento en que se realizó la transacción comercial.
+
+## 3\. Métricas y Atributos de Análisis
+
+-   **Métricas Cuantitativas:**
+-   -   `Quantity`: Cantidad de unidades del producto facturadas en la línea de venta.
+    -   `UnitPrice`: Precio unitario aplicado y facturado al cliente en la transacción.
+-   **Atributos de Control y Descriptivos:**
+-   -   `InvoiceLineKey`: Identificador único de la línea de factura (Clave primaria de la tabla de hechos).
+    -   `InvoiceID`: Identificador de la factura comercial general a la que pertenece la línea.
+
+## 4\. Casos de Uso del Negocio
+
+1.  **Análisis de Ingresos y Facturación Real:** Cálculo preciso de los ingresos totales generados mediante la multiplicación de Quantity×UnitPrice\\text{Quantity} \\times \\text{UnitPrice}Quantity×UnitPrice a nivel de línea, factura, cliente o categoría de producto.
+2.  **Segmentación y Comportamiento de Clientes:** Evaluación del volumen de compras, categorías preferidas (`CustomerCategory`) y distribución geográfica (`Country`, `State`, `City`) de los clientes activos utilizando `DimCustomer`.
+3.  **Rendimiento de Líneas de Productos:** Identificación de los artículos más rentables y vendidos, clasificados por sus grupos de stock (`StockGroupName`) a través de `DimItem`.
+4.  **Análisis Financiero y Temporal:** Monitoreo de tendencias de facturación diarias, semanales, mensuales o por periodos de cierre contable (`IsLastDayOfMonth`, `IsWorkingDay`) gracias a la integración con `DimDate`.
+
+## 5\. Consideraciones Analíticas
+
+-   Las métricas cuantitativas como `Quantity` y los valores calculados de ingresos son **completamente aditivos** a través de cualquier dimensión del modelo.
+-   Permite cerrar el ciclo comercial del Data Warehouse al contrastar los pedidos planeados (`FactSalesOrderLines`) frente a las transacciones de ingresos reales consolidadas (`FactSalesLines`).
+
 -   ​**Aditividad de la Demanda:** La métrica Quantity es completamente aditiva a lo largo de cualquier eje dimensional (se puede sumar por categoría de producto, región de cliente, semana o año comercial), lo que permite evaluar el volumen de demanda en el nivel de agregación requerido para la toma de decisiones operativas o tácticas.
 -   ​**Visibilidad del Comportamiento de Pedidos:** Al conservar el detalle a nivel de línea de orden, el modelo permite estudiar no solo *cuánto* se vende, sino *cómo* se compone la demanda (cantidad de líneas por pedido, diversidad de productos solicitados por transacción), aportando inteligencia clave para la estrategia de inventarios y reabastecimiento.
