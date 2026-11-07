@@ -152,8 +152,10 @@ Implementa un patrón de **hechos de transacciones (*****Transaction Fact Table*
 -   ​**Segmentación de Clientes por Comportamiento de Compra:** Utiliza los atributos de DimCustomer para clasificar la demanda por zonas geográficas, canales o tipología de cliente, permitiendo ajustar los modelos de pronóstico a perfiles de consumo específicos.
 -   ​**Rotación y Comportamiento del Producto:** A través de DimItem, ayuda a identificar productos de alta rotación frente a artículos de demanda errática o intermitente, optimizando las políticas de inventario de seguridad.
 
-### ​5. Consideraciones Analíticas
+## 5\. Consideraciones Analíticas
 
+-   Las métricas cuantitativas como `Quantity` son **completamente aditivas** a través de cualquier dimensión (producto, cliente, categoría temporal o geográfica).
+-   El cálculo de ingresos totales o valor de ventas se realiza de manera dinámica multiplicando cantidad por precio unitario en cada línea, asegurando precisión analítica en herramientas de Business Intelligence como Power BI
 
 # Modelo Estrella: Venta Facturada
 
