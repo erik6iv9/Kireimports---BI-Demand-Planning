@@ -261,3 +261,9 @@ Implementa un patrón de **hechos de transacciones por línea de orden de compra
 -   Las métricas cuantitativas de volumen (`OrderedOuters`, `ReceivedOuters`) son **completamente aditivas** a través de las dimensiones de tiempo, producto y proveedor.
 -   Facilita métricas clave de cadena de suministro como el nivel de servicio del proveedor (*fill rate*) al contrastar las cantidades pedidas con las recibidas.
 -   Permite cerrar el ciclo de inventarios y ventas conectando las entradas de mercancía con los saldos de stock y las salidas comerciales del Data Warehouse.
+
+
+
+
+
+\*Nota de herramientas:\* Todos los diagramas de modelos dimensionales incluidos en este documento fueron diseñados utilizando \[DrawDB\](https://www.drawdb.app/).
