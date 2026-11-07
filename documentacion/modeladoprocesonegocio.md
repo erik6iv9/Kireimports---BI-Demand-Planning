@@ -206,3 +206,56 @@ Implementa un patrón de **hechos de transacciones (*****Transactional Fact Tabl
 
 -   ​**Aditividad de la Demanda:** La métrica Quantity es completamente aditiva a lo largo de cualquier eje dimensional (se puede sumar por categoría de producto, región de cliente, semana o año comercial), lo que permite evaluar el volumen de demanda en el nivel de agregación requerido para la toma de decisiones operativas o tácticas.
 -   ​**Visibilidad del Comportamiento de Pedidos:** Al conservar el detalle a nivel de línea de orden, el modelo permite estudiar no solo *cuánto* se vende, sino *cómo* se compone la demanda (cantidad de líneas por pedido, diversidad de productos solicitados por transacción), aportando inteligencia clave para la estrategia de inventarios y reabastecimiento.
+
+# Modelo Estrella de Líneas de Órdenes de Compra (FactPurchaseLines)
+
+<p align="center">
+  <img src="../img/StartFactPurchaseLines.png" width="800" alt="startesquemasales">
+</p>
+
+## 1\. Descripción General
+
+Este modelo en estrella (*Star Schema*) está diseñado para el análisis del proceso de compras, abastecimiento y la relación comercial con los proveedores.
+
+Implementa un patrón de **hechos de transacciones por línea de orden de compra (*****Transactional Fact Table*****)**, el cual registra de manera detallada cada línea de artículo solicitada a los proveedores. Permite auditar el volumen de mercancía pedida frente a la recibida, los costos esperados, el control de entregas y el estado de finalización de las órdenes de aprovisionamiento a lo largo del tiempo.
+
+## 2\. Arquitectura del Modelo
+
+-   **Grano del Modelo:** Un registro representa una línea individual de producto (`ItemKey`) dentro de una orden de compra específica (`PurchaseOrderID`), asociada a un proveedor (`SupplierKey`) y una fecha de emisión o transacción (`DateKey`).
+-   **Tipo de Esquema:** Modelo estrella (*Star Schema*), siguiendo los principios de modelado dimensional de Ralph Kimball.
+-   **Tabla de Hechos:** `FactPurchaseLines`.
+-   **Dimensiones:**
+-   -   `DimItem` (Productos)
+    -   `DimSupplier` (Proveedores)
+    -   `DimDate` (Tiempo)
+-   **Tipo de Hecho:** Transaccional por línea de detalle (*Transactional Fact Table*).
+
+### Integridad y granularidad
+
+-   Cada fila corresponde a una línea de detalle dentro de un pedido de compra, vinculando las dimensiones clave del negocio mediante claves foráneas.
+-   Las dimensiones incorporan control de cambios históricos mediante **SCD Tipo 2** (`ValidFrom`, `ValidTo`, `IsCurrent`), asegurando que las compras históricas conserven los atributos vigentes del producto o proveedor en el momento en que se generó la orden.
+
+## 3\. Métricas y Atributos de Análisis
+
+-   **Métricas Cuantitativas y Operativas:**
+-   -   `OrderedOuters`: Cantidad de contenedores/bultos exteriores pedidos al proveedor.
+    -   `ReceivedOuters`: Cantidad de contenedores/bultos exteriores efectivamente recibidos en almacén.
+    -   `ExpectedUnitPricePerOuter`: Precio unitario esperado por contenedor exterior.
+-   **Atributos de Control y Descriptivos:**
+-   -   `PurchaseLineKey`: Identificador único de la línea de compra (Clave primaria de la tabla de hechos).
+    -   `PurchaseOrderID`: Identificador de la orden de compra general.
+    -   `LastReceiptDateKey`: Clave de la fecha correspondiente a la última recepción de mercancía para esa línea.
+    -   `IsOrderLineFinished`: Bandera lógica (`BIT`) que indica si la línea de la orden de compra ha sido completada o finalizada.
+
+## 4\. Casos de Uso del Negocio
+
+1.  **Control de Abastecimiento y Cumplimiento:** Evaluación de la eficiencia de los proveedores comparando el volumen pedido frente al recibido (`OrderedOuters` vs. `ReceivedOuters`).
+2.  **Auditoría de Costos de Adquisición:** Seguimiento de los precios pactados o esperados (`ExpectedUnitPricePerOuter`) para optimizar presupuestos y negociaciones de compras.
+3.  **Gestión de Entregas y Tiempos:** Monitoreo del estado de las órdenes (`IsOrderLineFinished`) y la fecha de última recepción (`LastReceiptDateKey`) para medir los plazos de entrega (*Lead Times*).
+4.  **Evaluación de Proveedores:** Análisis del rendimiento de los proveedores (`DimSupplier`) agrupados por ubicación geográfica y categorías de suministro.
+
+## 5\. Consideraciones Analíticas
+
+-   Las métricas cuantitativas de volumen (`OrderedOuters`, `ReceivedOuters`) son **completamente aditivas** a través de las dimensiones de tiempo, producto y proveedor.
+-   Facilita métricas clave de cadena de suministro como el nivel de servicio del proveedor (*fill rate*) al contrastar las cantidades pedidas con las recibidas.
+-   Permite cerrar el ciclo de inventarios y ventas conectando las entradas de mercancía con los saldos de stock y las salidas comerciales del Data Warehouse.
