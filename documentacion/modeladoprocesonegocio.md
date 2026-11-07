@@ -210,7 +210,7 @@ Implementa un patrón de **hechos de transacciones (*****Transactional Fact Tabl
 # Modelo Estrella de Líneas de Órdenes de Compra (FactPurchaseLines)
 
 <p align="center">
-  <img src="../img/StartFactPurchaseLine.png" width="800" alt="startesquemapurchase">
+  <img src="../img/StartFactPurchaseLines.png" width="800" alt="startesquemapurchase">
 </p>
 
 ## 1\. Descripción General
