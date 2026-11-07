@@ -160,7 +160,7 @@ Implementa un patrón de **hechos de transacciones (*****Transaction Fact Table*
 # Modelo Estrella: Venta Facturada
 
 <p align="center">
-  <img src="../img/StartFactSalesLines.png" width="800" alt="startesquemasales">
+  <img src="../img/StartFactSalesLine.png" width="800" alt="startesquemasales">
 </p>
 
 ## 1\. Descripción General
