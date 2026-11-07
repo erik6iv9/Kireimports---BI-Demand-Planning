@@ -6,7 +6,7 @@ Estas representaciones constituyen la base del diseño dimensional del Data Ware
 
 Finalmente, al término de este documento se presenta el diseño dimensional integrado del Data Warehouse, representado mediante el modelo constelación que reúne los diferentes procesos de negocio en una arquitectura analítica unificada.
 
-# Modelo Dimensional: Daily Inventory Snapshot
+# Modelo Estrella: Control y Seguimiento de Inventario
 
 <p align="center">
   <img src="../img/StarStockHoldings.png" width="800" alt="startesquemainventario">
@@ -58,7 +58,7 @@ Estas consideraciones permiten construir indicadores consistentes y evitar error
 
 
 
-# Modelo Estrella de Transacciones de Inventario (FactStockItemTransactions)
+# Modelo Estrella: Transacciones de Inventario
 
 <p align="center">
   <img src="../img/StartStockItemTransaction.png" width="800" alt="startesquematransaccion">
@@ -112,7 +112,7 @@ Implementa un patrón de **hechos de transacciones (*****Transaction Fact Table*
 
 
 
-# Modelo Estrella de Líneas de Órdenes de Ventas (FactSalesOrderLines)
+# Modelo Estrella: Órdenes de Venta
 
 <p align="center">
   <img src="../img/StartFactSalesOrderLines.png" width="800" alt="startesquemaorders">
@@ -155,7 +155,7 @@ Implementa un patrón de **hechos de transacciones (*****Transaction Fact Table*
 ### ​5. Consideraciones Analíticas
 
 
-# Modelo Estrella de Líneas de Facturación (FactSalesLines)
+# Modelo Estrella: Ventas Facturadas
 
 <p align="center">
   <img src="../img/StartFactSalesLines.png" width="800" alt="startesquemasales">
@@ -207,7 +207,7 @@ Implementa un patrón de **hechos de transacciones (*****Transactional Fact Tabl
 -   ​**Aditividad de la Demanda:** La métrica Quantity es completamente aditiva a lo largo de cualquier eje dimensional (se puede sumar por categoría de producto, región de cliente, semana o año comercial), lo que permite evaluar el volumen de demanda en el nivel de agregación requerido para la toma de decisiones operativas o tácticas.
 -   ​**Visibilidad del Comportamiento de Pedidos:** Al conservar el detalle a nivel de línea de orden, el modelo permite estudiar no solo *cuánto* se vende, sino *cómo* se compone la demanda (cantidad de líneas por pedido, diversidad de productos solicitados por transacción), aportando inteligencia clave para la estrategia de inventarios y reabastecimiento.
 
-# Modelo Estrella de Líneas de Órdenes de Compra (FactPurchaseLines)
+# Modelo Estrella: Órdenes de Compra
 
 <p align="center">
   <img src="../img/StartFactPurchaseLines.png" width="800" alt="startesquemapurchase">
