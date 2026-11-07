@@ -112,7 +112,7 @@ Implementa un patrón de **hechos de transacciones (*****Transaction Fact Table*
 
 
 
-# Modelo Estrella: Órden de Venta
+# Modelo Estrella: Demanda de Venta
 
 <p align="center">
   <img src="../img/StartFactSalesOrderLines.png" width="800" alt="startesquemaorders">
