@@ -196,7 +196,7 @@ Implementa un patrón de **hechos de transacciones (*****Transactional Fact Tabl
 
 ## 4\. Casos de Uso del Negocio
 
-1.  **Análisis de Ingresos y Facturación Real:** Cálculo preciso de los ingresos totales generados mediante la multiplicación de Quantity×UnitPrice\\text{Quantity} \\times \\text{UnitPrice}Quantity×UnitPrice a nivel de línea, factura, cliente o categoría de producto.
+1.  **Análisis de Ingresos y Facturación Real:** Cálculo preciso de los ingresos totales generados mediante la multiplicación de Quantity × UnitPrice a nivel de línea, factura, cliente o categoría de producto.
 2.  **Segmentación y Comportamiento de Clientes:** Evaluación del volumen de compras, categorías preferidas (`CustomerCategory`) y distribución geográfica (`Country`, `State`, `City`) de los clientes activos utilizando `DimCustomer`.
 3.  **Rendimiento de Líneas de Productos:** Identificación de los artículos más rentables y vendidos, clasificados por sus grupos de stock (`StockGroupName`) a través de `DimItem`.
 4.  **Análisis Financiero y Temporal:** Monitoreo de tendencias de facturación diarias, semanales, mensuales o por periodos de cierre contable (`IsLastDayOfMonth`, `IsWorkingDay`) gracias a la integración con `DimDate`.
@@ -207,7 +207,7 @@ Implementa un patrón de **hechos de transacciones (*****Transactional Fact Tabl
 -   Permite cerrar el ciclo comercial del Data Warehouse al contrastar los pedidos planeados (`FactSalesOrderLines`) frente a las transacciones de ingresos reales consolidadas (`FactSalesLines`).
 
 -   ​**Aditividad de la Demanda:** La métrica Quantity es completamente aditiva a lo largo de cualquier eje dimensional (se puede sumar por categoría de producto, región de cliente, semana o año comercial), lo que permite evaluar el volumen de demanda en el nivel de agregación requerido para la toma de decisiones operativas o tácticas.
--   ​**Visibilidad del Comportamiento de Pedidos:** Al conservar el detalle a nivel de línea de orden, el modelo permite estudiar no solo *cuánto* se vende, sino *cómo* se compone la demanda (cantidad de líneas por pedido, diversidad de productos solicitados por transacción), aportando inteligencia clave para la estrategia de inventarios y reabastecimiento.
+
 
 # Modelo Estrella: Órden de Compra
 
