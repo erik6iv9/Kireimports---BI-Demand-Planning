@@ -61,7 +61,7 @@ Estas consideraciones permiten construir indicadores consistentes y evitar error
 # Modelo Estrella: Transaccion de Inventario
 
 <p align="center">
-  <img src="../img/StartStockItemTransaction.png" width="800" alt="startesquematransaccion">
+  <img src="../img/StartStockItemTransactions.png" width="800" alt="startesquematransaccion">
 </p>
 
 
