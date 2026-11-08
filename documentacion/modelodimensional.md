@@ -139,7 +139,7 @@ Diseñé **FactStockHoldings** para registrar y monitorear los niveles de invent
 <table>
   <tr>
     <td width="35%" align="center">
-      <img src="../img/FactStockItemTransactions.png" alt="FactStockItemTransactions" width="100%">
+      <img src="../img/FactStockItemTransaction.png" alt="FactStockItemTransactions" width="100%">
     </td>
     <td width="65%" valign="top">
 
@@ -149,7 +149,7 @@ Diseñé **FactStockItemTransactions** para registrar el historial de movimiento
 
 - **Granularidad:** Establecí una granularidad a nivel de transacción individual, donde cada registro representa un movimiento específico de un producto en un momento determinado. Este nivel de detalle permite identificar y analizar cada operación de inventario de manera independiente, conservando su contexto operativo y documental.
 
-- **Claves y Relaciones:** Utilizo `StockItemTransactionKey` como clave primaria para identificar cada registro de la tabla de hechos asi como StockItemTransactionID que es el identificador natural del oltp de la transaccion. Además, incorporo `ItemKey` y `DateKey` como claves foráneas (*Foreign Keys*) para relacionar los movimientos con las dimensiones de producto (`DimItem`) y tiempo (`DimDate`). También incluyo `CustomerKey` y `SupplierKey` para identificar las entidades comerciales involucradas en las transacciones, cuando corresponda.
+- **Claves y Relaciones:** Utilizo `StockItemTransactionKey` como clave primaria para identificar cada registro de la tabla de hechos. Además, incorporo `ItemKey` y `DateKey` como claves foráneas (*Foreign Keys*) para relacionar los movimientos con las dimensiones de producto (`DimItem`) y tiempo (`DimDate`). También incluyo `CustomerKey` y `SupplierKey` para identificar las entidades comerciales involucradas en las transacciones, cuando corresponda.
 
 - **Atributos de Negocio y Métricas:** Incorpora referencias documentales mediante `PurchaseOrder` e `Invoice`, que permiten mantener la trazabilidad con los documentos de origen. Asimismo, utiliza `TransactionType` para clasificar la naturaleza del movimiento y `Quantity` para cuantificar el volumen de productos involucrados en cada operación. Estos atributos permiten analizar las entradas, salidas y ajustes de inventario desde diferentes perspectivas.
 
