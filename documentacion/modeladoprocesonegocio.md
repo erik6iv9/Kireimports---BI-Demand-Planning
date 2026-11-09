@@ -266,7 +266,7 @@ Implementa un patrón de **hechos de transacciones por línea de orden de compra
 # Arquitectura del Data Warehouse: Esquema de Constelación (Star Schema Constellation)
 
 <p align="center">
-  <img src="../img/StartFactPurchaseLines.png" width="800" alt="startesquemapurchase">
+  <img src="../img/Datawharehouse.png" width="800" alt="Datawharehouse">
 </p>
 
 ## Enfoque Estratégico: Análisis de Inventarios, Planificación de la Demanda, Abastecimiento y Business Intelligence
