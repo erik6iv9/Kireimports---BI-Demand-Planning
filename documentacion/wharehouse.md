@@ -1,4 +1,4 @@
-#Implementación física y construcción del Data Warehouse
+# Implementación física y construcción del Data Warehouse
 
 Esta sección documenta el proceso de implementación física del Data Warehouse de KireImports, tomando como referencia el diseño dimensional y la arquitectura de tipo constelación definidos en los apartados anteriores. En esta etapa, los modelos dimensionales previamente diseñados se materializan mediante la creación de las estructuras físicas de almacenamiento en el sistema gestor de bases de datos.
 
