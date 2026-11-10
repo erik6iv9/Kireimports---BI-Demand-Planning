@@ -69,11 +69,22 @@ El desarrollo se estructuró de manera secuencial, siguiendo el flujo de transfo
 <h3>Diseño e implementación del Data Warehouse</h3>
 
 - Diseño de estructuras dimensionales: tablas de hechos y dimensiones → [Ver documentación](documentacion/modelodimensional.md)
-- Diseño y Modelado Dimensional del Data Warehouse → [Ver documentación](documentacion/modeladoprocesonegocio.md) 
-- Diseño del modelo dimensional integrado (esquema constelación) → [Ver documentación]()
-- Implementación del Data Warehouse → [Ver documentación]
-- Desarrollo del proceso ETL → [Ver documentación]
-- Modelado de datos y desarrollo en Power BI → [Ver documentación]
+- Diseño de modelos estrella por proceso de negocio → [Ver documentación](documentacion/modeladoprocesonegocio.md) 
+- Integración del modelo dimensional (esquema constelación) → [Ver documentación]()
+- Implementación física y construcción del Data Warehouse → [Ver documentación]
+
+<h3>Diseño e implementación del proceso ETL/ELT</h3>
+
+- Definición de vistas SQL sobre la base de datos OLTP → [Ver documentación]
+- Diseño de la arquitectura de extracción → [Ver documentación]
+- Construcción del proceso de extracción → [Ver documentación]
+- Diseño e implementación del Staging Area → [Ver documentación]
+- Transformación y preparación de los datos → [Ver documentación]
+- Validación y controles de calidad de datos → [Ver documentación]
+- Carga de dimensiones y tablas de hechos → [Ver documentación]
+- Validación e integridad de los datos cargados → [Ver documentación]
+- Automatización y monitoreo del proceso → [Ver documentación]
+
 
 <h3>Análisis de inventarios y Supply Chain</h3>
 
