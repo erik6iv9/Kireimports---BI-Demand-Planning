@@ -66,7 +66,7 @@ El desarrollo se estructuró de manera secuencial, siguiendo el flujo de transfo
 - Análisis de esquemas y tablas transaccionales → [Ver documentación](documentacion/esquemas-operacionales.md)
 - Mapeo de entidades y relaciones clave → [Ver documentación](documentacion/datadiscovery.md)
 
-<h3>Diseño e implementación del Data Warehouse</h3>
+<h3>Diseño e implementación del Data Warehouse para KireImports</h3>
 
 - Diseño de estructuras dimensionales: tablas de hechos y dimensiones → [Ver documentación](documentacion/modelodimensional.md)
 - Diseño de modelos estrella por proceso de negocio → [Ver documentación](documentacion/modeladoprocesonegocio.md) 
