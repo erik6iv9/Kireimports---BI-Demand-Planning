@@ -1,4 +1,12 @@
-# Arquitectura del Data Warehouse: Esquema de Constelación (Star Schema Constellation)
+# Integración del modelo dimensional del Data Warehouse de KireImports (Esquema Constelación)
+
+Esta sección documenta la integración de los diferentes modelos estrella diseñados para los procesos de negocio de KireImports, dando lugar a una arquitectura dimensional de tipo constelación (Star Schema Constellation). Esta integración permite consolidar los distintos modelos analíticos dentro de una estructura común, estableciendo relaciones entre las tablas de hechos y las dimensiones compartidas.
+
+El proceso de integración se fundamenta en la identificación y utilización de dimensiones conformadas, las cuales permiten mantener definiciones, atributos y criterios de análisis consistentes entre los diferentes procesos de negocio. De esta manera, se facilita el análisis transversal de las operaciones, permitiendo relacionar información de ventas, demanda, abastecimiento e inventarios desde perspectivas dimensionales comunes.
+
+Asimismo, se establece una visión global de la arquitectura del Data Warehouse, mostrando cómo interactúan los diferentes modelos estrella y cómo se complementan para proporcionar una estructura analítica integrada, escalable y orientada a las necesidades de Business Intelligence, planificación de la demanda y toma de decisiones.
+
+Finalmente, se presenta el diseño dimensional integrado de KireImports mediante su diagrama de constelación, representando las tablas de hechos, dimensiones conformadas y relaciones que constituyen la arquitectura analítica del Data Warehouse.
 
 <p align="center">
   <img src="../img/Datawharehouse.png" width="800" alt="Datawharehouse">
