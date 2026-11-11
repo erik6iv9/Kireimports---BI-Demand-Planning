@@ -84,3 +84,26 @@ GO
 ```
 ![Verificación de los esquemas](../img/implementaciones/esquemaverifidw.png)
 
+# 3. Implementación de las tablas de dimensiones
+
+## 3.1. Descripción
+
+Se implementarán físicamente las cuatro tablas dimensionales del Data Warehouse de KireImports en SQL Server, tomando como referencia el modelo dimensional integrado (esquema constelación) definido durante la etapa de diseño.
+
+Las dimensiones se almacenarán dentro del esquema `dim` y proporcionarán los atributos descriptivos necesarios para analizar los diferentes procesos de negocio de inventarios, demanda de venta, ventas facturadas y abastecimiento.
+
+La implementación contempla la definición de claves sustitutas (Surrogate Keys), claves de negocio (Business Keys), tipos de datos, restricciones de integridad y atributos para la gestión de cambios históricos mediante Slowly Changing Dimensions Tipo 2 (SCD Type 2), en las dimensiones correspondientes.
+
+Las dimensiones conformadas se implementarán como estructuras únicas y compartidas entre las diferentes tablas de hechos, evitando la duplicación de información y manteniendo la consistencia del modelo dimensional.
+
+## 3.2. Implementación SQL
+
+Se crearán las tablas dimensionales mediante instrucciones SQL CREATE TABLE, respetando los atributos, tipos de datos, claves primarias y restricciones establecidos durante el diseño dimensional.
+
+Las tablas dimensionales que se implementarán son:
+
+- DimDate: dimensión temporal que permitirá analizar la información mediante diferentes niveles de granularidad, incluyendo días, semanas, meses, trimestres y años.
+- DimItem: dimensión de productos que almacenará los atributos descriptivos y comerciales de los artículos, incorporando gestión histórica mediante SCD Tipo 2.
+- DimSupplier: dimensión de proveedores que contendrá información descriptiva, geográfica y de clasificación de los proveedores, incorporando gestión histórica mediante SCD Tipo 2.
+- DimCustomer: dimensión de clientes que almacenará información descriptiva, geográfica y de clasificación de los clientes, incorporando gestión histórica mediante SCD Tipo 2.
+
