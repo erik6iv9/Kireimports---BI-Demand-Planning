@@ -23,6 +23,8 @@ CREATE DATABASE kireimportsDW;
 GO
 ```
 
+![Creación de la base de datos](../img/implementaciones/creaciondw.png)
+
 ## 1.3. Verificación de la implementación
 
 ```sql
@@ -35,6 +37,5 @@ FROM sys.databases
 WHERE name = 'kireimportsDW';
 GO
 ```
-![Creación de la base de datos](../evidencias/01_creacion_database.png)
-![Verificación de la base de datos](../evidencias/02_verificacion_database.png)
+![Verificación de la base de datos](../img/implementaciones/verificaciondw.png)
 
