@@ -68,6 +68,8 @@ CREATE SCHEMA fact AUTHORIZATION dbo;
 GO
 ```
 
+![Creación de los esquemas](../img/implementaciones/esquemasdw.png)
+
 ## 2.3. Verificación de la implementación
 
 ```sql
@@ -80,4 +82,5 @@ WHERE name IN ('dim', 'fact')
 ORDER BY name;
 GO
 ```
+![Verificación de los esquemas](../img/implementaciones/esquemaverifidw.png)
 
