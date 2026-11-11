@@ -39,3 +39,45 @@ GO
 ```
 ![Verificación de la base de datos](../img/implementaciones/verificaciondw.png)
 
+# 2. Creación de esquemas de organización
+
+## 2.1. Descripción
+
+Se establecieron dos esquemas dentro de la base de datos KireImportsDW para organizar físicamente las estructuras del Data Warehouse.
+
+El esquema `dim` almacenará las tablas dimensionales, incluyendo las dimensiones conformadas compartidas entre los diferentes procesos de negocio.
+
+El esquema `fact` almacenará las tablas de hechos correspondientes a los procesos de negocio de KireImports, permitiendo mantener una separación lógica entre las dimensiones y los datos transaccionales y analíticos.
+
+## 2.2. Implementación SQL
+
+```sql
+-- Seleccionar la base de datos del Data Warehouse
+
+USE [kireimportsDW];
+GO
+
+-- Crear esquema dimensional
+
+CREATE SCHEMA dim AUTHORIZATION dbo;
+GO
+
+-- Crear esquema de hechos
+
+CREATE SCHEMA fact AUTHORIZATION dbo;
+GO
+```
+
+## 2.3. Verificación de la implementación
+
+```sql
+SELECT
+    name AS SchemaName,
+    schema_id AS SchemaID,
+    USER_NAME(principal_id) AS SchemaOwner
+FROM sys.schemas
+WHERE name IN ('dim', 'fact')
+ORDER BY name;
+GO
+```
+
