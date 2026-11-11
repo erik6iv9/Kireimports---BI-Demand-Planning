@@ -56,22 +56,22 @@ Para llevar a cabo este proyecto, se integraron distintas herramientas y conocim
 
 El desarrollo se estructuró de manera secuencial, siguiendo el flujo de transformación de datos operativos → información analítica → conocimiento para la toma de decisiones.
 
-<h3>Definición del problema y objetivos del negocio</h3>
+<h3>1. Definición del problema y objetivos del negocio</h3>
 
-- Identificación de la problemática de negocio, objetivos y preguntas de negocio → [Ver documentación](documentacion/problematica.md)
+- 1.1 Identificación de la problemática de negocio, objetivos y preguntas de negocio → [Ver documentación](documentacion/problematica.md)
 
-<h3>Fuentes de Datos y Análisis Transaccional (OLTP)</h3>
+<h3>2. Fuentes de Datos y Análisis Transaccional (OLTP)</h3>
 
-- Identificación del sistema origen (OLTP) → [Ver documentación](documentacion/oltp.md)
-- Análisis de esquemas y tablas transaccionales → [Ver documentación](documentacion/esquemas-operacionales.md)
-- Mapeo de entidades y relaciones clave → [Ver documentación](documentacion/datadiscovery.md)
+- 2.1 Identificación del sistema origen (OLTP) → [Ver documentación](documentacion/oltp.md)
+- 2.2 Análisis de esquemas y tablas transaccionales → [Ver documentación](documentacion/esquemas-operacionales.md)
+- 2.3 Mapeo de entidades y relaciones clave → [Ver documentación](documentacion/datadiscovery.md)
 
-<h3>Diseño e implementación del Data Warehouse para KireImports</h3>
+<h3>3. Diseño e implementación del Data Warehouse para KireImports</h3>
 
-- Diseño de estructuras dimensionales: tablas de hechos y dimensiones → [Ver documentación](documentacion/modelodimensional.md)
-- Diseño de modelos estrella por proceso de negocio → [Ver documentación](documentacion/modeladoprocesonegocio.md) 
-- Integración del modelo dimensional (esquema constelación) → [Ver documentación](documentacion/esquemaconstelacion.md)
-- Implementación física y construcción del Data Warehouse → [Ver documentación](documentacion/wharehouse.md)
+- 3.1 Diseño de estructuras dimensionales: tablas de hechos y dimensiones → [Ver documentación](documentacion/modelodimensional.md)
+- 3.2 Diseño de modelos estrella por proceso de negocio → [Ver documentación](documentacion/modeladoprocesonegocio.md) 
+- 3.3 Integración del modelo dimensional (esquema constelación) → [Ver documentación](documentacion/esquemaconstelacion.md)
+- 3.4 Implementación física y construcción del Data Warehouse → [Ver documentación](documentacion/wharehouse.md)
 
 <h3>Diseño e implementación del proceso ETL/ELT</h3>
 
