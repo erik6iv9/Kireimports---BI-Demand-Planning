@@ -236,4 +236,45 @@ GO
 ```
 ![Dimension Supplier](../img/implementaciones/dimsupplierdw.png)
 
+## 3.2.4. Creación de DimCustomer
+Dimensión de clientes que almacenará información descriptiva, geográfica y de clasificación de los clientes.
+
+Al igual que las dimensiones de productos y proveedores, implementará el seguimiento histórico mediante SCD Tipo 2.
+
+```sql
+-- =============================================
+-- KireImports Data Warehouse
+-- Dimension: DimCustomer
+-- =============================================
+
+CREATE TABLE dim.DimCustomer (
+    CustomerKey INT IDENTITY(1,1) NOT NULL,
+    CustomerID INT NOT NULL,
+    CustomerName NVARCHAR(100) NOT NULL,
+    CustomerCategory NVARCHAR(50) NOT NULL,
+    Country NVARCHAR(60) NOT NULL,
+    State NVARCHAR(50) NOT NULL,
+    City NVARCHAR(50) NOT NULL,
+    ValidFrom DATETIME2 NOT NULL,
+    ValidTo DATETIME2 NOT NULL,
+    IsCurrent BIT NOT NULL,
+
+    CONSTRAINT PK_DimCustomer
+        PRIMARY KEY (CustomerKey),
+
+    CONSTRAINT CK_DimCustomer_ValidityPeriod
+        CHECK (ValidFrom < ValidTo)
+);
+GO
+
+-- Garantiza una única versión actual por cliente
+
+CREATE UNIQUE INDEX UQ_DimCustomer_Current
+ON dim.DimCustomer (CustomerID)
+WHERE IsCurrent = 1;
+GO
+```
+
+![Dimension Customer](../img/implementaciones/dimcustomerdw.png)
+
 
