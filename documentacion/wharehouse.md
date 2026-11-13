@@ -152,4 +152,49 @@ CREATE TABLE dim.DimDate (
 );
 GO
 ```
+![Dimension Date](../img/implementaciones/dimdatedw.png)
+
+## 3.2.2. Creación de DimItem
+Dimensión de productos que almacenará los atributos descriptivos y comerciales de los artículos.
+
+Se incorporan los campos ValidFrom, ValidTo e IsCurrent para gestionar el historial de cambios mediante SCD Tipo 2.
+
+```sql
+-- =============================================
+-- KireImports Data Warehouse
+-- Dimension: DimItem
+-- =============================================
+
+CREATE TABLE dim.DimItem (
+    ItemKey INT IDENTITY(1,1) NOT NULL,
+    StockItemID INT NOT NULL,
+    StockItemName NVARCHAR(100) NOT NULL,
+    UnitPrice DECIMAL(18,2) NOT NULL,
+    RecommendedRetailPrice DECIMAL(18,2) NOT NULL,
+    UnitPackage NVARCHAR(50) NOT NULL,
+    OuterPackage NVARCHAR(50) NOT NULL,
+    QuantityPerOuter INT NOT NULL,
+    StockGroupName NVARCHAR(50) NOT NULL,
+    ValidFrom DATETIME2 NOT NULL,
+    ValidTo DATETIME2 NOT NULL,
+    IsCurrent BIT NOT NULL,
+
+    CONSTRAINT PK_DimItem
+        PRIMARY KEY (ItemKey),
+
+    CONSTRAINT CK_DimItem_ValidityPeriod
+        CHECK (ValidFrom < ValidTo)
+);
+GO
+
+-- Garantiza una única versión actual por ítem
+
+CREATE UNIQUE INDEX UQ_DimItem_Current
+ON dim.DimItem (StockItemID)
+WHERE IsCurrent = 1;
+GO
+```
+![Dimension Item](../img/implementaciones/dimditemdw.png)
+
+
 
