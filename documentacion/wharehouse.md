@@ -324,4 +324,29 @@ GO
 ```
 ![Verifi Columnas Dimensiones](../img/implementaciones/dimverificolumdw.png)
 
+## 3.3.3. Verificación de claves primarias e índices
+```sql
+
+-- =============================================
+-- Verificación de restricciones de dimensiones
+-- =============================================
+
+SELECT
+    t.name AS TableName,
+    i.name AS IndexName,
+    i.type_desc AS IndexType,
+    i.is_primary_key AS IsPrimaryKey,
+    i.is_unique AS IsUnique,
+    i.filter_definition AS FilterDefinition
+FROM sys.tables t
+INNER JOIN sys.indexes i
+    ON t.object_id = i.object_id
+WHERE t.schema_id = SCHEMA_ID('dim')
+  AND i.index_id > 0
+ORDER BY
+    t.name,
+    i.index_id;
+GO
+```
+![Verifi Claves Dimensiones](../img/implementaciones/dimverificlavedw.png)
 
