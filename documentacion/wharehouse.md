@@ -90,20 +90,66 @@ GO
 
 Se implementarán físicamente las cuatro tablas dimensionales del Data Warehouse de KireImports en SQL Server, tomando como referencia el modelo dimensional integrado (esquema constelación) definido durante la etapa de diseño.
 
-Las dimensiones se almacenarán dentro del esquema `dim` y proporcionarán los atributos descriptivos necesarios para analizar los diferentes procesos de negocio de inventarios, demanda de venta, ventas facturadas y abastecimiento.
+Las dimensiones se almacenarán dentro del esquema dim y proporcionarán los atributos descriptivos necesarios para analizar los diferentes procesos de negocio de inventarios, demanda de venta, ventas facturadas y abastecimiento.
 
 La implementación contempla la definición de claves sustitutas (Surrogate Keys), claves de negocio (Business Keys), tipos de datos, restricciones de integridad y atributos para la gestión de cambios históricos mediante Slowly Changing Dimensions Tipo 2 (SCD Type 2), en las dimensiones correspondientes.
 
 Las dimensiones conformadas se implementarán como estructuras únicas y compartidas entre las diferentes tablas de hechos, evitando la duplicación de información y manteniendo la consistencia del modelo dimensional.
 
+Las tablas dimensionales que se implementarán son:
+- DimDate: dimensión temporal.
+- DimItem: dimensión de productos.
+- DimSupplier: dimensión de proveedores.
+- DimCustomer: dimensión de clientes.
+
 ## 3.2. Implementación SQL
 
-Se crearán las tablas dimensionales mediante instrucciones SQL CREATE TABLE, respetando los atributos, tipos de datos, claves primarias y restricciones establecidos durante el diseño dimensional.
+La implementación se realizará mediante instrucciones CREATE TABLE dentro del esquema dim, respetando las estructuras definidas en el modelo dimensional.
 
-Las tablas dimensionales que se implementarán son:
+## 3.2.1. Creación de DimDate
+Dimensión temporal que permitirá analizar la información mediante diferentes niveles de granularidad: días, semanas, meses, trimestres y años.
 
-- DimDate: dimensión temporal que permitirá analizar la información mediante diferentes niveles de granularidad, incluyendo días, semanas, meses, trimestres y años.
-- DimItem: dimensión de productos que almacenará los atributos descriptivos y comerciales de los artículos, incorporando gestión histórica mediante SCD Tipo 2.
-- DimSupplier: dimensión de proveedores que contendrá información descriptiva, geográfica y de clasificación de los proveedores, incorporando gestión histórica mediante SCD Tipo 2.
-- DimCustomer: dimensión de clientes que almacenará información descriptiva, geográfica y de clasificación de los clientes, incorporando gestión histórica mediante SCD Tipo 2.
+```sql
+-- KireImports Data Warehouse
+-- Dimension: DimDate
+USE [kireimportsDW];
+GO
+
+CREATE TABLE dim.DimDate (
+    DateKey INT NOT NULL,
+    FullDate DATE NOT NULL,
+    DayNumberOfWeek TINYINT NOT NULL,
+    DayName VARCHAR(15) NOT NULL,
+    DayNumberOfMonth TINYINT NOT NULL,
+    DayNumberOfYear SMALLINT NOT NULL,
+    ISOWeekNumber TINYINT NOT NULL,
+    ISOYear SMALLINT NOT NULL,
+    ISOYearWeek CHAR(8) NOT NULL,
+    WeekStartDate DATE NOT NULL,
+    WeekEndDate DATE NOT NULL,
+    MonthNumber TINYINT NOT NULL,
+    MonthName VARCHAR(15) NOT NULL,
+    MonthYear CHAR(7) NOT NULL,
+    MonthStartDate DATE NOT NULL,
+    MonthEndDate DATE NOT NULL,
+    Quarter TINYINT NOT NULL,
+    QuarterName CHAR(7) NOT NULL,
+    Year SMALLINT NOT NULL,
+    IsWeekend BIT NOT NULL,
+    IsWorkingDay BIT NOT NULL,
+    IsHoliday BIT NOT NULL,
+    HolidayName VARCHAR(100) NULL,
+    IsFirstDayOfMonth BIT NOT NULL,
+    IsLastDayOfMonth BIT NOT NULL,
+    IsFirstDayOfQuarter BIT NOT NULL,
+    IsLastDayOfQuarter BIT NOT NULL,
+
+    CONSTRAINT PK_DimDate
+        PRIMARY KEY (DateKey),
+
+    CONSTRAINT UQ_DimDate_FullDate
+        UNIQUE (FullDate)
+);
+GO
+```
 
