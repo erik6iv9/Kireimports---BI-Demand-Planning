@@ -296,4 +296,32 @@ GO
 ```
 ![Verifi Dimensiones](../img/implementaciones/dimverifidw.png)
 
+## 3.3.2. Verificación de columnas y tipos de datos
+
+```sql
+
+-- =============================================
+-- Verificación de columnas de dimensión
+-- =============================================
+
+SELECT
+    t.name AS TableName,
+    c.column_id AS ColumnID,
+    c.name AS ColumnName,
+    TYPE_NAME(c.user_type_id) AS DataType,
+    c.max_length AS MaxLength,
+    c.is_nullable AS IsNullable,
+    c.is_identity AS IsIdentity
+FROM sys.tables t
+INNER JOIN sys.columns c
+    ON t.object_id = c.object_id
+WHERE t.schema_id = SCHEMA_ID('dim')
+ORDER BY
+    t.name,
+    c.column_id;
+GO
+
+```
+![Verifi Columnas Dimensiones](../img/implementaciones/dimverificolumdw.png)
+
 
