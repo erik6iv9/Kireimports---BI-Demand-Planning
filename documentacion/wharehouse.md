@@ -194,7 +194,46 @@ ON dim.DimItem (StockItemID)
 WHERE IsCurrent = 1;
 GO
 ```
-![Dimension Item](../img/implementaciones/dimditemdw.png)
+![Dimension Item](../img/implementaciones/dimitemdw.png)
 
+## 3.2.3. Creación de DimSupplier
+Dimensión de proveedores que almacenará información descriptiva, de clasificación y ubicación geográfica.
+
+Se incorporan los atributos de control histórico para conservar las diferentes versiones de cada proveedor.
+
+```sql
+-- =============================================
+-- KireImports Data Warehouse
+-- Dimension: DimSupplier
+-- =============================================
+
+CREATE TABLE dim.DimSupplier (
+    SupplierKey INT IDENTITY(1,1) NOT NULL,
+    SupplierID INT NOT NULL,
+    SupplierName NVARCHAR(100) NOT NULL,
+    SupplierCategoryName NVARCHAR(50) NOT NULL,
+    DeliveryCityName NVARCHAR(50) NOT NULL,
+    StateProvinceName NVARCHAR(50) NOT NULL,
+    CountryName NVARCHAR(50) NOT NULL,
+    ValidFrom DATETIME2 NOT NULL,
+    ValidTo DATETIME2 NOT NULL,
+    IsCurrent BIT NOT NULL,
+
+    CONSTRAINT PK_DimSupplier
+        PRIMARY KEY (SupplierKey),
+
+    CONSTRAINT CK_DimSupplier_ValidityPeriod
+        CHECK (ValidFrom < ValidTo)
+);
+GO
+
+-- Garantiza una única versión actual por proveedor
+
+CREATE UNIQUE INDEX UQ_DimSupplier_Current
+ON dim.DimSupplier (SupplierID)
+WHERE IsCurrent = 1;
+GO
+```
+![Dimension Supplier](../img/implementaciones/dimsupplierdw.png)
 
 
