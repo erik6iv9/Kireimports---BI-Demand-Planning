@@ -277,4 +277,23 @@ GO
 
 ![Dimension Customer](../img/implementaciones/dimcustomerdw.png)
 
+## 3.3. Verificación de la implementación
+Una vez creadas las cuatro dimensiones, ejecutaremos consultas para comprobar que las estructuras físicas se hayan implementado correctamente.
+## 3.3.1. Verificación de existencia de las dimensiones
+```sql
+-- =============================================
+-- Verificación de tablas de dimensiones
+-- =============================================
+
+SELECT
+    SCHEMA_NAME(t.schema_id) AS SchemaName,
+    t.name AS TableName,
+    t.create_date AS CreationDate
+FROM sys.tables t
+WHERE t.schema_id = SCHEMA_ID('dim')
+ORDER BY t.name;
+GO
+```
+![Verifi Dimensiones](../img/implementaciones/dimverifidw.png)
+
 
