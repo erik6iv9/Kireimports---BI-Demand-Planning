@@ -464,5 +464,34 @@ OrderID permite identificar el pedido al que pertenece cada línea, mientras que
 
 ![Hecho Demanda](../img/implementaciones/factordersdw.png)
 
+## 4.2.4. Creación de FactSalesLines
+Esta tabla almacenará las líneas de venta facturadas, permitiendo analizar las cantidades vendidas y los precios asociados a las transacciones comerciales completadas mediante facturación.
+
+Su granularidad será de un registro por cada línea de factura de venta.
+```sql
+-- =============================================
+-- KireImports Data Warehouse
+-- Fact Table: FactSalesLines
+-- =============================================
+
+CREATE TABLE fact.FactSalesLines (
+    InvoiceLineKey INT NOT NULL,
+    InvoiceID INT NOT NULL,
+    OrderID INT NOT NULL,
+    DateKey INT NOT NULL,
+    ItemKey INT NOT NULL,
+    CustomerKey INT NOT NULL,
+    Quantity INT NOT NULL,
+    UnitPrice DECIMAL(18,2) NULL,
+
+    CONSTRAINT PK_FactSalesLines
+        PRIMARY KEY (InvoiceLineKey)
+);
+GO
+```
+Se conservan tanto InvoiceID como OrderID para permitir relacionar las ventas facturadas con sus respectivos documentos comerciales de origen.
+
+![Hecho Venta](../img/implementaciones/factsalesdw.png)
+
 
 
