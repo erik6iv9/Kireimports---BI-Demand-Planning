@@ -493,5 +493,36 @@ Se conservan tanto InvoiceID como OrderID para permitir relacionar las ventas fa
 
 ![Hecho Venta](../img/implementaciones/factsalesdw.png)
 
+## 4.2.5. Creación de FactPurchaseLines
+Esta tabla almacenará información de las líneas de órdenes de compra, permitiendo analizar las cantidades solicitadas, recibidas y los precios esperados de adquisición.
+
+Su granularidad será de un registro por cada línea de orden de compra.
+
+```sql
+-- KireImports Data Warehouse
+-- Fact Table: FactPurchaseLines
+-- =============================================
+
+CREATE TABLE fact.FactPurchaseLines (
+    PurchaseLineKey INT NOT NULL,
+    PurchaseOrderID INT NOT NULL,
+    DateKey INT NOT NULL,
+    ItemKey INT NOT NULL,
+    SupplierKey INT NOT NULL,
+    OrderedOuters INT NOT NULL,
+    ReceivedOuters INT NOT NULL,
+    ExpectedUnitPricePerOuter DECIMAL(18,2) NULL,
+    LastReceiptDateKey INT NULL,
+    IsOrderLineFinalized BIT NOT NULL,
+
+    CONSTRAINT PK_FactPurchaseLines
+        PRIMARY KEY (PurchaseLineKey)
+);
+GO
+```
+LastReceiptDateKey permite valores nulos porque una línea de compra puede no tener todavía una fecha de última recepción registrada.
+
+![Hecho Compra](../img/implementaciones/factpurchasedw.png)
+
 
 
