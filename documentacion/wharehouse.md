@@ -775,4 +775,12 @@ GO
 
 ![Verifi Claves Primarias Hechos](../img/implementaciones/factverifipkdw.png)
 
+## 5.1 Diagrama del Data Warehouse implementado
+
+Con la implementación de las tablas dimensionales y de hechos, se ha completado la construcción física del Data Warehouse de KireImports. La estructura resultante integra los procesos de inventarios, movimientos de productos, ventas y compras mediante dimensiones compartidas, permitiendo mantener una visión integrada de la información.
+
+Esta implementación establece la base para la siguiente etapa del proyecto: el desarrollo de los procesos ETL, encargados de extraer, transformar, validar y cargar los datos desde la base de datos OLTP hacia el Data Warehouse.
+
+![Modelo SqlServer](../img/implementaciones/Datawharehousesql.png)
+
 
