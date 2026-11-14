@@ -665,5 +665,26 @@ GO
 
 ![Relaciones](../img/implementaciones/relacionesdw.png)
 
+## 4.3. Verificación de la implementación
+Una vez creadas las tablas de hechos y sus relaciones, realizaremos consultas al catálogo del sistema de SQL Server para comprobar que las estructuras físicas se hayan implementado correctamente.
+
+## 4.3.1. Verificación de existencia de las tablas de hechos
+
+```sql
+-- =============================================
+-- Verificación tablas de hechos 
+-- =============================================
+
+SELECT
+    SCHEMA_NAME(t.schema_id) AS SchemaName,
+    t.name AS TableName,
+    t.create_date AS CreationDate
+FROM sys.tables t
+WHERE t.schema_id = SCHEMA_ID('fact')
+ORDER BY t.name;
+GO
+```
+
+![Verifi Hechos](../img/implementaciones/factverifidw.png)
 
 
