@@ -524,5 +524,146 @@ LastReceiptDateKey permite valores nulos porque una línea de compra puede no te
 
 ![Hecho Compra](../img/implementaciones/factpurchasedw.png)
 
+## 4.2.6. Creación de claves foráneas y relaciones dimensionales
+Una vez creadas las cinco tablas de hechos, estableceremos las relaciones con las dimensiones correspondientes mediante restricciones FOREIGN KEY.
+
+Estas relaciones permitirán mantener la integridad referencial entre las tablas de hechos y las dimensiones del Data Warehouse.
+
+De acuerdo con el modelo dimensional, las relaciones serán las siguientes:
+
+| Tabla de hechos           | Dimensión   | Clave relacionada  |
+| ------------------------- | ----------- | ------------------ |
+| FactStockHoldings         | DimItem     | ItemKey            |
+| FactStockHoldings         | DimDate     | DateKey            |
+| FactStockItemTransactions | DimItem     | ItemKey            |
+| FactStockItemTransactions | DimDate     | DateKey            |
+| FactStockItemTransactions | DimCustomer | CustomerKey        |
+| FactStockItemTransactions | DimSupplier | SupplierKey        |
+| FactSalesOrderLines       | DimDate     | DateKey            |
+| FactSalesOrderLines       | DimCustomer | CustomerKey        |
+| FactSalesOrderLines       | DimItem     | ItemKey            |
+| FactSalesLines            | DimDate     | DateKey            |
+| FactSalesLines            | DimItem     | ItemKey            |
+| FactSalesLines            | DimCustomer | CustomerKey        |
+| FactPurchaseLines         | DimDate     | DateKey            |
+| FactPurchaseLines         | DimItem     | ItemKey            |
+| FactPurchaseLines         | DimSupplier | SupplierKey        |
+| FactPurchaseLines         | DimDate     | LastReceiptDateKey |
+
+```sql
+
+-- =============================================
+-- KireImports Data Warehouse
+-- Fact Tables: Foreign Key Constraints
+-- =============================================
+
+USE [kireimportsDW];
+GO
+
+-- FactStockHoldings
+
+ALTER TABLE fact.FactStockHoldings
+ADD CONSTRAINT FK_FactStockHoldings_DimItem
+FOREIGN KEY (ItemKey)
+REFERENCES dim.DimItem (ItemKey);
+
+ALTER TABLE fact.FactStockHoldings
+ADD CONSTRAINT FK_FactStockHoldings_DimDate
+FOREIGN KEY (DateKey)
+REFERENCES dim.DimDate (DateKey);
+GO
+
+-- FactStockItemTransactions
+
+ALTER TABLE fact.FactStockItemTransactions
+ADD CONSTRAINT FK_FactStockItemTransactions_DimItem
+FOREIGN KEY (ItemKey)
+REFERENCES dim.DimItem (ItemKey);
+
+ALTER TABLE fact.FactStockItemTransactions
+ADD CONSTRAINT FK_FactStockItemTransactions_DimDate
+FOREIGN KEY (DateKey)
+REFERENCES dim.DimDate (DateKey);
+
+ALTER TABLE fact.FactStockItemTransactions
+ADD CONSTRAINT FK_FactStockItemTransactions_DimCustomer
+FOREIGN KEY (CustomerKey)
+REFERENCES dim.DimCustomer (CustomerKey);
+
+ALTER TABLE fact.FactStockItemTransactions
+ADD CONSTRAINT FK_FactStockItemTransactions_DimSupplier
+FOREIGN KEY (SupplierKey)
+REFERENCES dim.DimSupplier (SupplierKey);
+GO
+
+-- FactSalesOrderLines
+
+ALTER TABLE fact.FactSalesOrderLines
+ADD CONSTRAINT FK_FactSalesOrderLines_DimDate
+FOREIGN KEY (DateKey)
+REFERENCES dim.DimDate (DateKey);
+
+ALTER TABLE fact.FactSalesOrderLines
+ADD CONSTRAINT FK_FactSalesOrderLines_DimCustomer
+FOREIGN KEY (CustomerKey)
+REFERENCES dim.DimCustomer (CustomerKey);
+
+ALTER TABLE fact.FactSalesOrderLines
+ADD CONSTRAINT FK_FactSalesOrderLines_DimItem
+FOREIGN KEY (ItemKey)
+REFERENCES dim.DimItem (ItemKey);
+GO
+
+-- FactSalesLines
+
+ALTER TABLE fact.FactSalesLines
+ADD CONSTRAINT FK_FactSalesLines_DimDate
+FOREIGN KEY (DateKey)
+REFERENCES dim.DimDate (DateKey);
+
+ALTER TABLE fact.FactSalesLines
+ADD CONSTRAINT FK_FactSalesLines_DimItem
+FOREIGN KEY (ItemKey)
+REFERENCES dim.DimItem (ItemKey);
+
+ALTER TABLE fact.FactSalesLines
+ADD CONSTRAINT FK_FactSalesLines_DimCustomer
+FOREIGN KEY (CustomerKey)
+REFERENCES dim.DimCustomer (CustomerKey);
+GO
+
+-- FactPurchaseLines
+
+ALTER TABLE fact.FactPurchaseLines
+ADD CONSTRAINT FK_FactPurchaseLines_DimDate
+FOREIGN KEY (DateKey)
+REFERENCES dim.DimDate (DateKey);
+
+ALTER TABLE fact.FactPurchaseLines
+ADD CONSTRAINT FK_FactPurchaseLines_DimItem
+FOREIGN KEY (ItemKey)
+REFERENCES dim.DimItem (ItemKey);
+
+ALTER TABLE fact.FactPurchaseLines
+ADD CONSTRAINT FK_FactPurchaseLines_DimSupplier
+FOREIGN KEY (SupplierKey)
+REFERENCES dim.DimSupplier (SupplierKey);
+
+ALTER TABLE fact.FactPurchaseLines
+ADD CONSTRAINT FK_FactPurchaseLines_LastReceiptDate
+FOREIGN KEY (LastReceiptDateKey)
+REFERENCES dim.DimDate (DateKey);
+GO
+
+```
+
+-   Se utiliza `ALTER TABLE` para incorporar las relaciones después de crear las tablas.
+-   Las claves foráneas apuntan a las claves sustitutas de las dimensiones.
+-   Las relaciones con `CustomerKey`, `SupplierKey` y `LastReceiptDateKey` permiten valores nulos cuando así lo establece el diseño.
+-   SQL Server utiliza `NO ACTION` como comportamiento predeterminado para las operaciones de eliminación y actualización cuando no se especifica otra acción. Por tanto, se conserva el comportamiento definido en tu modelo.
+-   `LastReceiptDateKey` establece una segunda relación de `FactPurchaseLines` con `DimDate`, esta vez para representar la fecha de última recepción.
+
+![Relaciones](../img/implementaciones/relacionesdw.png)
+
 
 
