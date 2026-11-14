@@ -715,6 +715,7 @@ GO
 
 ## 4.3.3. Verificación de claves foráneas
 
+```sql
 -- =============================================
 -- Verificación de claves foráneas de tablas de hechos
 -- =============================================
@@ -741,7 +742,7 @@ ORDER BY
     FactTable,
     ForeignKeyName;
 GO
-
+```
 ![Verifi Claves Foraneas Hechos](../img/implementaciones/factverififkdw.png)
 
 
