@@ -713,4 +713,35 @@ GO
 ```
 ![Verifi Hechos Columnas](../img/implementaciones/factverificolumdw.png)
 
+## 4.3.3. Verificación de claves foráneas
+
+-- =============================================
+-- Verificación de claves foráneas de tablas de hechos
+-- =============================================
+
+SELECT
+    OBJECT_NAME(fk.parent_object_id) AS FactTable,
+    fk.name AS ForeignKeyName,
+    COL_NAME(
+        fkc.parent_object_id,
+        fkc.parent_column_id
+    ) AS FactColumn,
+    OBJECT_SCHEMA_NAME(fk.referenced_object_id)
+        + '.' +
+    OBJECT_NAME(fk.referenced_object_id) AS ReferencedTable,
+    COL_NAME(
+        fkc.referenced_object_id,
+        fkc.referenced_column_id
+    ) AS ReferencedColumn
+FROM sys.foreign_keys fk
+INNER JOIN sys.foreign_key_columns fkc
+    ON fk.object_id = fkc.constraint_object_id
+WHERE OBJECT_SCHEMA_NAME(fk.parent_object_id) = 'fact'
+ORDER BY
+    FactTable,
+    ForeignKeyName;
+GO
+
+![Verifi Claves Foraneas Hechos](../img/implementaciones/factverififkdw.png)
+
 
