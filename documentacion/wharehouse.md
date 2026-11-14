@@ -435,6 +435,34 @@ CustomerKey y SupplierKey permiten valores nulos porque no todas las transaccion
 
 ![Hecho Transaccion](../img/implementaciones/factstocktransacdw.png)
 
+## 4.2.3. Creación de FactSalesOrderLines
+Esta tabla registrará la demanda de productos originada por las órdenes de venta, permitiendo analizar con precisión las cantidades demandadas, los volúmenes de requerimiento y los precios asociados a los artículos. 
+
+Su granularidad será de un registro por cada línea de detalle de pedido de venta.
+
+```sql
+-- =============================================
+-- KireImports Data Warehouse
+-- Fact Table: FactSalesOrderLines
+-- =============================================
+
+CREATE TABLE fact.FactSalesOrderLines (
+    OrderLineKey INT NOT NULL,
+    OrderID INT NOT NULL,
+    DateKey INT NOT NULL,
+    CustomerKey INT NOT NULL,
+    ItemKey INT NOT NULL,
+    Quantity INT NOT NULL,
+    UnitPrice DECIMAL(18,2) NULL,
+
+    CONSTRAINT PK_FactSalesOrderLines
+        PRIMARY KEY (OrderLineKey)
+);
+GO
+```
+OrderID permite identificar el pedido al que pertenece cada línea, mientras que OrderLineKey identifica individualmente cada registro dentro de la tabla de hechos.
+
+![Hecho Demanda](../img/implementaciones/factordersdw.png)
 
 
 
