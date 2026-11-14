@@ -402,6 +402,39 @@ GO
 ```
 La restricción UNIQUE (ItemKey, DateKey) garantiza que no existan registros duplicados para un mismo artículo en una misma fecha de captura.
 
-![Hecho Stock](../img/implementaciones/fectstockdw.png)
+![Hecho Stock](../img/implementaciones/factstockdw.png)
+
+## 4.2.2. Creación de FactStockItemTransactions
+Esta tabla registrará los movimientos y transacciones de los artículos del inventario, permitiendo analizar sus cantidades, tipos de movimiento y relaciones con clientes y proveedores.
+
+Su granularidad será de un registro por cada transacción individual de inventario.
+```sql
+-- =============================================
+-- KireImports Data Warehouse
+-- Fact Table: FactStockItemTransactions
+-- =============================================
+
+CREATE TABLE fact.FactStockItemTransactions (
+    StockItemTransactionKey INT NOT NULL,
+    ItemKey INT NOT NULL,
+    DateKey INT NOT NULL,
+    CustomerKey INT NULL,
+    SupplierKey INT NULL,
+    PurchaseOrder INT NULL,
+    Invoice INT NULL,
+    TransactionType NVARCHAR(50) NOT NULL,
+    Quantity INT NOT NULL,
+    TransactionOccurredWhen DATETIME2 NOT NULL,
+
+    CONSTRAINT PK_FactStockItemTransactions
+        PRIMARY KEY (StockItemTransactionKey)
+);
+GO
+```
+CustomerKey y SupplierKey permiten valores nulos porque no todas las transacciones de inventario necesariamente están asociadas a un cliente o proveedor.
+
+![Hecho Transaccion](../img/implementaciones/factstocktransacdw.png)
+
+
 
 
