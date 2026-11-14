@@ -745,4 +745,34 @@ GO
 ```
 ![Verifi Claves Foraneas Hechos](../img/implementaciones/factverififkdw.png)
 
+## 4.3.4. Verificación de claves primarias y restricciones de unicidad
+
+```sql
+
+-- =============================================
+-- Verificación de claves primarias e índices únicos de tablas de hechos
+-- =============================================
+
+SELECT
+    t.name AS TableName,
+    i.name AS ConstraintName,
+    i.is_primary_key AS IsPrimaryKey,
+    i.is_unique AS IsUnique
+FROM sys.tables t
+INNER JOIN sys.indexes i
+    ON t.object_id = i.object_id
+WHERE t.schema_id = SCHEMA_ID('fact')
+  AND i.index_id > 0
+  AND (
+      i.is_primary_key = 1
+      OR i.is_unique_constraint = 1
+  )
+ORDER BY
+    t.name,
+    i.name;
+GO
+```
+
+![Verifi Claves Primarias Hechos](../img/implementaciones/factverifipkdw.png)
+
 
