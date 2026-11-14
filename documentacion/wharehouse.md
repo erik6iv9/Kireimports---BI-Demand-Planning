@@ -350,3 +350,58 @@ GO
 ```
 ![Verifi Claves Dimensiones](../img/implementaciones/dimverificlavedw.png)
 
+## 4. Implementación de las tablas de hechos
+## 4.1. Descripción
+Se implementarán físicamente las cinco tablas de hechos del Data Warehouse de KireImports en SQL Server, tomando como referencia los modelos dimensionales por proceso de negocio definidos durante la etapa de diseño.
+
+Las tablas de hechos se almacenarán dentro del esquema fact y contendrán las medidas e identificadores necesarios para analizar los procesos de inventarios, demanda de venta, ventas facturadas y abastecimiento.
+
+La implementación contempla la definición de claves primarias (Primary Keys), claves foráneas (Foreign Keys), restricciones de unicidad, tipos de datos y relaciones con las dimensiones conformadas del Data Warehouse.
+
+Asimismo, se establecerá la granularidad de cada tabla de hechos, definiendo el nivel de detalle que representa cada registro y garantizando la correspondencia con el diseño dimensional previamente desarrollado.
+
+Las tablas de hechos que se implementarán son:
+- FactStockHoldings: almacena información de existencias de inventario mediante registros de seguimiento periódico.
+- FactStockItemTransactions: registra los movimientos y transacciones asociados a los artículos del inventario.
+- FactSalesOrderLines: almacena información de las líneas de pedidos de venta.
+- FactSalesLines: registra las líneas de venta facturadas.
+- FactPurchaseLines: almacena información de las líneas de órdenes de compra y recepción de mercancías.
+
+## 4.2. Implementación SQL
+La implementación se realizará mediante instrucciones CREATE TABLE dentro del esquema fact, respetando las estructuras, atributos, tipos de datos y claves establecidos en el modelo dimensional.
+## 4.2.1. Creación de FactStockHoldings
+Esta tabla almacenará información de las existencias de inventario mediante fotografías periódicas (Periodic Snapshot).
+
+Su granularidad será de un registro por artículo y fecha de captura, permitiendo analizar la evolución de las existencias y los niveles de inventario a través del tiempo.
+
+```sql
+-- =============================================
+-- KireImports Data Warehouse
+-- Fact Table: FactStockHoldings
+-- =============================================
+
+USE [kireimportsDW];
+GO
+
+CREATE TABLE fact.FactStockHoldings (
+    StockHoldingKey INT IDENTITY(1,1) NOT NULL,
+    ItemKey INT NOT NULL,
+    DateKey INT NOT NULL,
+    QuantityOnHand INT NOT NULL,
+    LastCostPrice DECIMAL(18,2) NOT NULL,
+    LastStocktakeQuantity INT NOT NULL,
+    TargetStockLevel INT NOT NULL,
+
+    CONSTRAINT PK_FactStockHoldings
+        PRIMARY KEY (StockHoldingKey),
+
+    CONSTRAINT UQ_FactStockHoldings_ItemKey_DateKey
+        UNIQUE (ItemKey, DateKey)
+);
+GO
+```
+La restricción UNIQUE (ItemKey, DateKey) garantiza que no existan registros duplicados para un mismo artículo en una misma fecha de captura.
+
+![Hecho Stock](../img/implementaciones/fectstockdw.png)
+
+
